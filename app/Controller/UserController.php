@@ -155,7 +155,7 @@ class UserController extends Controller
 		$auth -> logUserOut($user);
 		//redirection vers l'accueil
 		$auth-> setFlash('Vous êtes deconnecté(e)', 'info');
-		$this -> redirectToRoute('movie_index');
+		$this -> redirectToRoute('hello');
 	}
 
 	// si mot de passe est oublié 

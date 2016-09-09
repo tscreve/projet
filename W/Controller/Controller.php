@@ -45,7 +45,7 @@ class Controller
 	public function redirect($uri)
 	{
 		header("Location: $uri");
-		//die();	
+		die();
 	}
 
 	/**
