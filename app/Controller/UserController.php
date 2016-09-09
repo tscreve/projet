@@ -133,9 +133,11 @@ class UserController extends Controller
 	public function profil()
 	{
 		// récupération d'un objet de la classe AuthentificationModel
-		$auth = new AuthentificationModel;
+		// $auth = new AuthentificationModel;
+
 		//déconnexion de l'utilisateur (session)
-		$auth -> logUserOut($user);
+		// $auth -> logUserOut($user);
+		
 		//redirection vers l'accueil
 		$this -> show('user/profil');
 	}
