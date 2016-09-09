@@ -17,9 +17,9 @@
 
 		['POST', '/film/[:id]/commentaire', 'User#comment', 'user_comment'],
 
-		/* Ajouter-Supprimer un commentaire*/
+		/* Ajouter-Supprimer un commentaire
 		['POST', '/addComment', 'Comment#addComment', 'comment_add_comment'],
-		['POST', '/deleteComment', 'User#deleteComment', 'user_delete_comment'],
+		['POST', '/deleteComment', 'User#deleteComment', 'user_delete_comment'],*/
 
 //2.1	/* inscription utilisateur dans la BDD*/
 		['GET', '/register', 'User#registerForm', 'user_register_form'],

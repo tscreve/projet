@@ -2,17 +2,14 @@
 namespace Model;
 use \W\Model\Model;
 
-class MoviesModel extends Model 
+class ProjetModel extends Projet 
 {
-
 
 	public function findAllMovies()
 	{	
-		$movies = Model::findAll($orderBy = 'id', $orderDir = 'ASC', $limit = null, $offset = null);
+		$movies = Projet::findAll($orderBy = 'id', $orderDir = 'ASC', $limit = null, $offset = null);
 		return $movies;
 	}
-
-
 
 	public function findWithComments($id)
 	{
@@ -38,7 +35,7 @@ class MoviesModel extends Model
 	function findByName($name) 
 	{
 		// Pour rechercher un film par le champs title
-    	$movie = Model::search(['title'=> $name]);
+    	$movie = Projet::search(['title'=> $name]);
     	// On utilise ici La fonction search()
     	// qui est diponible dans le coeur du framework dans W/Model/model.php
     	return $movie;

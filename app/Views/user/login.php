@@ -11,8 +11,8 @@ $this->start('main_content') ?>
 
  
         <form class="login-form" method="POST" action="<?= $this->url('user_login')?>"> 
-            <label for="login">Login</label> 
-            <input placeholder="Choisissez un Login" type="text" name="username">
+            <label for="login">Prenom</label> 
+            <input placeholder="Choisissez un Login" type="text" name="prenom">
 
             <label for="login">Mot de passe</label> 
             <input placeholder="Choisissez un mot de passe" type="text" name="password">

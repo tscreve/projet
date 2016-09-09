@@ -19,7 +19,7 @@ class UserController extends Controller
 		// (il ne doit pas à accéder à la page d'inscription)
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
-			$this -> redirectToRoute('movie_index');
+			$this -> redirectToRoute('default_hello');
 		}
 
 		$title = 'Inscription';
@@ -35,7 +35,7 @@ class UserController extends Controller
 		// (il ne doit pas à accéder à la page de connexion)
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
-			$this -> redirectToRoute('movie_index');
+			$this -> redirectToRoute('');
 		}
 
 		$title = 'Connexion';
@@ -48,20 +48,21 @@ class UserController extends Controller
 	 */
 	public function addUser()
 	{
-		//Instanciation d'un objet du la class "UsersModel" pour l'accès à la BDD
+		//Instanciation d'un objet de la class "UsersModel" pour l'accès à la BDD
 		$userTable = new UsersModel;
 	 	// récupération d'un objet de la classe AuthentificationModel
 		$auth = new AuthentificationModel;
         /* 
-        ** On vérifie que l'Email et le Username ne sont pas déjà utilisés avant d'insérer les données.
-        ** Si l'Email ou le Username sont déjà utilisés, on redirige l'utilisateur vers la page du formulaire d'inscription avec le message d'erreur.
+        ** On vérifie que l'Email et le prénom ne sont pas déjà utilisés avant d'insérer les données.
+        ** Si l'Email ou le prénom sont déjà utilisés, on redirige l'utilisateur vers la page du formulaire d'inscription avec le message d'erreur.
         */
+        //var_dump($_POST);
 		if($userTable->emailExists($_POST['email'])) {
 			$message = 'Cet Email existe déjà, veuillez en choisir un autre.';
 			$auth-> setFlash($message, 'error');
 			$this -> redirectToRoute('user_register_form');
 		}
-		if($userTable->usernameExists($_POST['username'])) {
+		if($userTable->usernameExists($_POST['firstname'])) {
 			$message = 'Ce pseudo existe déjà, veuillez en choisir un autre.';
 			$auth-> setFlash($message, 'error');
 			$this -> redirectToRoute('user_register_form');
@@ -71,7 +72,7 @@ class UserController extends Controller
         ** Si l'Email et le Username n'existent pas alors on peut ajouter le nouvel utilisateur en BDD
         */
 		$newUser = array(
-			'username' => htmlentities($_POST['username']),
+			'firstname' => htmlentities($_POST['firstname']),
 			'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
 			'email' => $_POST['email'],
 			'role' => 'user'
@@ -83,7 +84,7 @@ class UserController extends Controller
 			$title = 'Tous les films';
 			$message = "Votre inscription est validée.";
 			$auth-> setFlash($message, 'success');
-			$this -> redirectToRoute('movie_index', ['title' => $title]);
+			$this -> redirectToRoute('default_home', ['title' => $title]);
 		} else {
 			// Sinon on reste sur la page et on affiche le message d'erreur
 			$title = 'Inscription';
@@ -92,7 +93,6 @@ class UserController extends Controller
 			$this -> redirectToRoute('user_register_form', ['title' => $title]);
 		}
 	
-
 	}
 
 
@@ -104,11 +104,11 @@ class UserController extends Controller
 		// récupération d'un objet de la classe AuthentificationModel
 		$auth = new AuthentificationModel;
 		//vérification login/password
-		if($auth -> isValidLoginInfo($_POST['username'], $_POST['password']))
+		if($auth -> isValidLoginInfo($_POST['firstname'], $_POST['password']))
 		{
 			//récupération d'un "modèle" Utilisateur
 			$util = new UsersModel;
-			$user = $util -> getUserByUsernameOrEmail($_POST['username']);
+			$user = $util -> getUserByUsernameOrEmail($_POST['firstname']);
 			//connexion de l'utilisateur
 			$auth -> logUserIn($user);
 			//affichage
@@ -132,8 +132,8 @@ class UserController extends Controller
 	*/
 	public function profil()
 	{
-		// récupération d'un objet de la classe AuthentificationModel
-		// $auth = new AuthentificationModel;
+		// récupération d'un objet de la classe AuthentificationProjet
+		// $auth = new AuthentificationProjet;
 
 		//déconnexion de l'utilisateur (session)
 		// $auth -> logUserOut($user);
@@ -152,11 +152,23 @@ class UserController extends Controller
 		// récupération d'un objet de la classe AuthentificationModel
 		$auth = new AuthentificationModel;
 		//déconnexion de l'utilisateur (session)
-		$auth -> logUserOut();
+		$auth -> logUserOut($user);
 		//redirection vers l'accueil
 		$auth-> setFlash('Vous êtes deconnecté(e)', 'info');
 		$this -> redirectToRoute('movie_index');
 	}
+
+	// si mot de passe est oublié 
+	public function passwordLost()
+	{
+		//si le bouton envoyer est  enragistrée 
+		if(isset($_POST['envoyer'])){
+			foreach ($_POST['email'] as $key => $value){
+				echo $_POST['password'];
+			}
+		}
+	}
+
 
 
 }

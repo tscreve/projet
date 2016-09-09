@@ -8,21 +8,39 @@
 
 // On place le contenu de la vue
 $this->start('main_content') ?>
+ <!-- Modal content -->
+  <div class="modal-content">
+	 <h2 class="titre_inscription">Inscription</h2>
+     <form class="login-form" method="POST" action="<?= $this->url('user_add_user')?>"> 
 
- 
-        <form class="login-form" method="POST" action="<?= $this->url('user_add_user')?>"> 
-            <label for="login">Login</label> 
-            <input placeholder="Choisissez un Login" type="text" name="username">
+	<!-- bouton radio pour determiner le sexe  -->
+      <label for="Homme">H</label>
+      <input type="radio" name="sexe" value="H">
+      <label for="Femme">F</label>
+      <input type="radio" name="sexe" value="F">
+    <br><br>
 
-            <label for="login">Email</label> 
-            <input placeholder="Votre Email" type="text" name="email">
+      <label for="Prenom">Prenom</label><br>
+      <input placeholder="prenom" type="text" name="firstname" >
+			<br>
 
-            <label for="login">Mot de passe</label> 
+	<label for="date de naissance">Date d'anniversaire</label>
+	<input type="text" placeholder="ex : 29/04/1993" name="birthdate" >
+	
+		<br><br>
+
+            <label for="login">Email</label><br>
+            <input placeholder="Votre Email" type="text" name="email"><br><br>
+
+            <label for="login">Mot de passe</label><br>
             <input placeholder="Choisissez un mot de passe" type="text" name="password">
+            <br><br>
 
-           
             <input type="submit" value="S'inscrire">   
         </form>
+  </div>
+
+</div>
   
 
 <?php $this->stop('main_content');  
