@@ -8,8 +8,8 @@
 		@Param3 : Le controller et la méthode appelée (controller#methode)
 		@Param4 : Le nom de la route. Réutilisable dans les vues et les controller pour créer des liens ou rediriger
 		*/
-		['GET', '/', 'Default#home', 'default_home'],
-		['GET', '/hello', 'Default#hello', 'default_hello'],
+		['GET', '/', 'Default#index', 'default_index'],
+	
 		
 		['GET', '/films', 'Movie#index', 'movie_index'],
 		['POST', '/films', 'Movie#searchByName', 'movie_searchByName'],

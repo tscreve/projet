@@ -7,12 +7,6 @@ class CommentsModel extends Model
 {
 
 
-	
-		
-		
-
-	
-
 
 }
 

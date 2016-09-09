@@ -24,3 +24,16 @@ h1 {
 h2 {
 	color: #66D9EF;
 } 
+#map{
+	width: 50%;
+	height: 500px;
+}
+#coord{
+	width: 800px;
+	margin:0 auto;
+	border: solid 1px #ccc;
+}
+.pac-input{
+	height: 50px;
+}
+

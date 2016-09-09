@@ -3,21 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<title><?= $this->e($title) ?></title>
-
+	<meta name="viewport" content="initial-scale=1.0">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
 </head>
 <body>
 	<div class="container">
 		<header>
-			<h1>W :: <?= $this->e($title) ?></h1>
+			<h1><?= $this->e($title) ?></h1>
 		</header>
 
 		<section>
 			<?= $this->section('main_content') ?>
 		</section>
+		
 
 		<footer>
 		</footer>
+
+
+
 	</div>
+	<?= $this->section('scripts') ?>
 </body>
 </html>

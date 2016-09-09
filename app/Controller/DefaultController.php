@@ -10,18 +10,12 @@ class DefaultController extends Controller
 	/**
 	 * Page d'accueil par défaut
 	 */
-	public function home()
+	public function index()
 	{
-		$this->show('default/home');
+		$this->show('default/index');
 	}
 
 
-	/**
-	 * Page hello
-	 */
-	public function hello()
-	{
-		$this->show('default/hello', ['username' => 'Bruce Willis']);
-	}
+
 
 }
