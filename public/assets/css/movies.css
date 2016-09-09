@@ -318,3 +318,56 @@ p{
     }
 }
 /*FIN NAVIGATION BAR*/
+
+
+/*DEBUT du MODEL*/
+/* The Modal (background) */
+.modal {
+    display: none; /* caché par default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* apparais en surcouche du site */
+    padding-top: 100px; /* endroit ou est placer la box */
+    left: 0;
+    top: 0;
+    width: 100%; /* largeur max  */
+    height: 100%; /* hauteur max  */
+    overflow: auto; /* desactive scroll si besoin  */
+    background-color: rgb(0,0,0); /* couleur de fond (réactivé si besoin) */
+    background-color: rgba(0,0,0,0.7); /* couleur de fond avec l'opacitité*/
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #4aa3df;
+    margin: auto;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius:15px;
+    border: solid black 2px;;
+    
+}
+.titre_inscription.depot_annonce{
+color:#4aa3df;
+background-color:white;
+width: 100%;
+text-align:center;
+line-height:45px;
+margin-top:0;
+border-radius:14px 13px 0 0 ;
+}
+
+form{
+margin-left:25px;
+margin-bottom:10px;
+}
+label{
+color:white;
+}
+input{
+    line-height:15px;
+    margin-bottom:5px;
+}
+
+
+
+
