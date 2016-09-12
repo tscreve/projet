@@ -20,6 +20,12 @@ class DefaultController extends Controller
 		$this->show('default/hello');
 	}
 
+	public function addPlace(){
+		// $this->show('default/index');		
 
+		// $place=array(
+		// 	'place'
+		// 	);
+	}
 
 }

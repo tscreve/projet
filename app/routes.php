@@ -11,6 +11,11 @@
 		['GET', '/', 'Default#index', 'default_index'],
 		['GET', '/hello', 'Default#hello', 'default_hello'],	
 
+		// ajoute un lieux
+		['POST', '/', 'Default#addPlace', 'default_addPlace'],	
+
+
+
 		/* Ajouter-Supprimer un commentaire
 		['POST', '/addComment', 'Comment#addComment', 'comment_add_comment'],
 		['POST', '/deleteComment', 'User#deleteComment', 'user_delete_comment'],*/

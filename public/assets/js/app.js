@@ -11,6 +11,8 @@
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
     // affichage des coordonnées
     var position=document.getElementById("adress");  
+    var latStr=document.getElementById("data-lat");  
+    var lngStr=document.getElementById("data-lng");  
     // Bias the SearchBox results towards current map's viewport.
     map.addListener('bounds_changed', function() {
       searchBox.setBounds(map.getBounds());
@@ -45,7 +47,7 @@
           bounds.extend(place.geometry.location);
         }
         var infoPos="Position déterminé : <br>";
-        infoPos+="Latitude : "+place.geometry.location.lat()+"<br>";
+        infoPos+="Latitude : "+place.geometry.location.lat()+"<br>";   
         infoPos+="Longitude : "+place.geometry.location.lng()+"<br>";
         position.innerHTML=infoPos;
 
@@ -84,6 +86,10 @@
       position.innerHTML=infoPos;
 
       var placeStr=latLng.lat()+';'+latLng.lng();
+
+      latStr.value=latLng.lat();
+      lngStr.value=latLng.lng();
+      
       console.log(placeStr);
 
 
