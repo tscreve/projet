@@ -25,13 +25,13 @@
         "league/plates": "^3.1",
         "ircmaxell/random-lib": "^1.1",
         "ircmaxell/password-compat": "^1.0",
-        "league/url": "^3.3",
-        "phpmailer/phpmailer": "^5.2"
+        "phpmailer/phpmailer": "^5.2",
+        "league/uri": "^4.1"
     },
     "autoload": {
         "psr-4": {
             "W\\": "W/",
-            "" : "app/"
+            "": "app/"
         }
     },
     "repositories": [
