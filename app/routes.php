@@ -9,13 +9,7 @@
 		@Param4 : Le nom de la route. Réutilisable dans les vues et les controller pour créer des liens ou rediriger
 		*/
 		['GET', '/', 'Default#index', 'default_index'],
-	
-		
-		['GET', '/films', 'Movie#index', 'movie_index'],
-		['POST', '/films', 'Movie#searchByName', 'movie_searchByName'],
-		['GET', '/film/[:slug]/[:id]', 'Movie#details', 'movie_details'],
-
-		['POST', '/film/[:id]/commentaire', 'User#comment', 'user_comment'],
+		['GET', '/hello', 'Default#hello', 'default_hello'],	
 
 		/* Ajouter-Supprimer un commentaire
 		['POST', '/addComment', 'Comment#addComment', 'comment_add_comment'],
@@ -29,7 +23,6 @@
 		['GET', '/login', 'User#loginForm', 'user_login_form'],
 		['POST', '/login', 'User#login', 'user_login'],
 		['GET', '/profil', 'User#profil', 'user_profil'],
-		['GET', '/suite2', 'User#suite2', 'suite2'],
 		['GET', '/logout', 'User#logout', 'user_logout'],
 
 		/* Partie Admin - Ajouter-Modifier-Supprimer un film*/

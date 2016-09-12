@@ -15,6 +15,10 @@ class DefaultController extends Controller
 		$this->show('default/index');
 	}
 
+		public function hello()
+	{
+		$this->show('default/hello');
+	}
 
 
 

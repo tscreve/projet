@@ -6,7 +6,7 @@
 	<p>Et maintenant, RTFM dans <strong><a href="../docs/tuto/" title="Documentation de W">docs/tuto</a></strong>.</p>
 
 
-	<div id="mapos">Détection mais aucune données affichées...</div>
+	<div id="adress">Détection mais aucune données affichées...</div>
 
 
 

@@ -1,3 +1,25 @@
+<?php  
+// Traitement message flash et session user
+if(isset($_SESSION['message'])) { 
+  $class_alert = $_SESSION['type'];
+  $message = $_SESSION['message']; 
+  unset($_SESSION['message']);
+  unset($_SESSION['type']);  
+}
+else {
+  $message = null;
+}
+
+if(isset($_SESSION['user'])) { 
+  $username = $_SESSION['user']['username'];
+}
+else {
+  $username = null;
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

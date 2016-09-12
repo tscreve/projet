@@ -25,7 +25,6 @@ var markers = [];
     if (places.length == 0) {
       return;
     }
-
     // Clear out the old markers.
     markers.forEach(function(marker) {
       marker.setMap(null);
@@ -36,13 +35,13 @@ var markers = [];
     var bounds = new google.maps.LatLngBounds();
 
     places.forEach(function(place) {
-      var icon = {
-        url: place.icon,
-        size: new google.maps.Size(171, 171),
-        origin: new google.maps.Point(0, 0),
-        anchor: new google.maps.Point(17, 34),
-        scaledSize: new google.maps.Size(14, 14)
-      };
+         // Create a marker for each place.
+      markers.push(new google.maps.Marker({
+        map: map,
+        title: place.name,
+        position: place.geometry.location
+      }));
+
 
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
@@ -52,37 +51,29 @@ var markers = [];
       }
     });
     map.fitBounds(bounds);
-    map.setZoom(15);    
+    map.setZoom(17);    
   });
 
-var position=document.getElementById("adress");  
+
 var maPosMarker = new google.maps.Marker({map: map});
-
-
-
 
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(pos) {
+      
       var pos = {
         lat: pos.coords.latitude,
         lng: pos.coords.longitude
       };
 
-      // var infoPos="Position déterminé : <br>";
 
-      // infoPos+="Latitude : "+pos.coords.latitude+"<br>";
-      // infoPos+="Longitude : "+pos.coords.longitude+"<br>";
-      // infoPos+="Altitude : "+pos.coords.altitude+"<br>";
-      // position.innerHTML=infoPos;
-
-
-
+     
       maPosMarker.setPosition(pos);
       maPosMarker.setLabel('C ');
       maPosMarker.setTitle('C Moi');
       map.setCenter(pos);
+
     }, function() {
       handleLocationError(true, maPosMarker, map.getCenter());
     });
@@ -90,6 +81,35 @@ var maPosMarker = new google.maps.Marker({map: map});
     // Browser doesn't support Geolocation
     handleLocationError(false, maPosMarker, map.getCenter());
   }
+
+
+
+function placeMarkerAndPanTo(latLng, map) {
+  var position=document.getElementById("adress"); 
+  var infoPos="Position déterminé : <br>";    
+    infoPos+="Latitude : "+latLng.lat()+"<br>";
+    infoPos+="Longitude : "+latLng.lng()+"<br>";
+    position.innerHTML=infoPos;
+
+  markers.push(new google.maps.Marker({
+    position: latLng,
+    map: map
+  }));
+  
+  console.log(typeof(LatLng));
+  // map.panTo(latLng);
+}
+
+  map.addListener('click', function(e) {      
+        // Clear out the old markers.
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+
+    markers = [];
+    placeMarkerAndPanTo(e.latLng, map);
+  });
+
 }
 
 function handleLocationError(browserHasGeolocation, maPosMarker, pos) {
@@ -98,3 +118,9 @@ function handleLocationError(browserHasGeolocation, maPosMarker, pos) {
                         'Error: The Geolocation service failed.' :
                         'Error: Your browser doesn\'t support geolocation.');
 }
+
+
+
+
+
+

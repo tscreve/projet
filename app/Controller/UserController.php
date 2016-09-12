@@ -53,7 +53,7 @@ class UserController extends Controller
 	 	// récupération d'un objet de la classe AuthentificationModel
 		$auth = new AuthentificationModel;
 
-		if(!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)== false){
+		if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)== false){
 			$message = 'veuillez rentrer une adresse mail valide ex : nom@domaine.com/fr';
 			$auth-> setFlash($message,'error');
 			$this -> redirectToRoute('user_register_form');

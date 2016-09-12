@@ -45,8 +45,8 @@ else {
       <?php 
       } 
       else { ?>
-        <li><a class="modal" href="<?= $this->url('user_login_form')?>">Login</a></li> /
-        <li><a class="modal" href="<?= $this->url('user_register_form')?>">Inscription</a></li>
+        <li><a href="<?= $this->url('user_login_form')?>">Login</a></li> /
+        <li><a href="<?= $this->url('user_register_form')?>">Inscription</a></li>
       <?php } ?>
     </ul>
   </div>
