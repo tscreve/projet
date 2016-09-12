@@ -76,7 +76,7 @@ else {
     </section>
 
    <footer>
-        Exercice Framework W / Frederic LOSSIGNOL
+        Exercice Framework W / Frederic LOSSIGNOL 
    </footer>
     
 </body>

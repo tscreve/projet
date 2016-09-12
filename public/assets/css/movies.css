@@ -343,7 +343,8 @@ p{
     border: 1px solid #888;
     width: 50%;
     border-radius:15px;
-    border: solid black 2px;;
+    border: solid black 2px;
+    z-index: 2;
     
 }
 .titre_inscription.depot_annonce{

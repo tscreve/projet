@@ -52,6 +52,12 @@ class UserController extends Controller
 		$userTable = new UsersModel;
 	 	// récupération d'un objet de la classe AuthentificationModel
 		$auth = new AuthentificationModel;
+
+		if(!filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)== false){
+			$message = 'veuillez rentrer une adresse mail valide ex : nom@domaine.com/fr';
+			$auth-> setFlash($message,'error');
+			$this -> redirectToRoute('user_register_form');
+		}
         /* 
         ** On vérifie que l'Email et le prénom ne sont pas déjà utilisés avant d'insérer les données.
         ** Si l'Email ou le prénom sont déjà utilisés, on redirige l'utilisateur vers la page du formulaire d'inscription avec le message d'erreur.
@@ -62,14 +68,16 @@ class UserController extends Controller
 			$auth-> setFlash($message, 'error');
 			$this -> redirectToRoute('user_register_form');
 		}
-		if($userTable->usernameExists($_POST['firstname'])) {
-			$message = 'Ce pseudo existe déjà, veuillez en choisir un autre.';
-			$auth-> setFlash($message, 'error');
-			$this -> redirectToRoute('user_register_form');
-		}
+		
+		//étant donner qu'il y'a la possibiliter que l'on a le même prenom j'enleve ce if on ne verifira que  l'email entrée en base (dans notre cas)
+		// if($userTable->usernameExists($_POST['firstname'])) {
+		// 	$message = 'Ce pseudo existe déjà, veuillez en choisir un autre.';
+		// 	$auth-> setFlash($message, 'error');
+		// 	$this -> redirectToRoute('user_register_form');
+		// }
 		
 		/* 
-        ** Si l'Email et le Username n'existent pas alors on peut ajouter le nouvel utilisateur en BDD
+        ** Si l'Email(dans notre cas il n'ya que l'émail) et le Username n'existent pas alors on peut ajouter le nouvel utilisateur en BDD
         */
 		$newUser = array(
 			'firstname' => htmlentities($_POST['firstname']),
@@ -84,7 +92,7 @@ class UserController extends Controller
 			$title = 'Tous les films';
 			$message = "Votre inscription est validée.";
 			$auth-> setFlash($message, 'success');
-			$this -> redirectToRoute('default_home', ['title' => $title]);
+			$this -> redirectToRoute('default_index', ['title' => $title]);
 		} else {
 			// Sinon on reste sur la page et on affiche le message d'erreur
 			$title = 'Inscription';
@@ -161,9 +169,10 @@ class UserController extends Controller
 	// si mot de passe est oublié 
 	public function passwordLost()
 	{
-		//si le bouton envoyer est  enragistrée 
+		//si le bouton envoyer est  enregistrée 
 		if(isset($_POST['envoyer'])){
-			foreach ($_POST['email'] as $key => $value){
+			foreach ($_POST['email'] as $key => $value){// on chercher dans chaque ligne si la valeur nous renvoie  l'email  (à vérifier)  
+
 				echo $_POST['password'];
 			}
 		}

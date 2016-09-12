@@ -1,26 +1,27 @@
+function modal(){
+	// definie le modal 
+	var modal = document.getElementById('myModal');
 
-// Get the modal
-var modal = document.getElementById('myModal');
+	// le bouton ouvrire le modal 
+	var btn = document.getElementsByClassName("modal");//(/!\mettre la classe à login et inscription) 
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+	// definie  l' <span> element qui ferme ce modal 
+	var span = document.getElementsByClassName("close")[0];
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+	// Quand  l'utilisateur clique  sur le  bouton sa ouvre la popin 
+	modal.onclick = function() {
+	    modal.style.display = "block";
+	}
 
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-    modal.style.display = "block";
-}
+	// Quand l'utilisateur cliks sur le modal <span> (x), ferme le modal
+	span.onclick = function() {
+	    modal.style.display = "none";
+	}
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+	//quand l'utilisateur click partout en dehors du modal pour le fermer.
+	window.onclick = function(event) {
+	    if (event.target == modal) {
+	        modal.style.display = "none";
+	    }
+	}
 }

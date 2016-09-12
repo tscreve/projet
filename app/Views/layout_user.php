@@ -35,8 +35,9 @@ else {
 <nav id="site-navigation" class="main-navigation" role="navigation">
   <div class="nav-menu">
     <ul>
-      <li><a href="<?= $this->url('default_home')?>" title="Home">Home</a></li>
+      <li><a href="<?= $this->url('default_index')?>" title="Home">Home</a></li>
       <li><a href="<?= $this->url('movie_index')?>">Tous les films</a></li>
+
       <?php 
       if($username!=null) { ?>
         <li><a href="<?= $this->url('user_logout')?>">Deconnexion</a></li>
@@ -44,8 +45,8 @@ else {
       <?php 
       } 
       else { ?>
-        <li><a href="<?= $this->url('user_login_form')?>">Login</a></li> /
-        <li><a href="<?= $this->url('user_register_form')?>">Inscription</a></li>
+        <li><a class="modal" href="<?= $this->url('user_login_form')?>">Login</a></li> /
+        <li><a class="modal" href="<?= $this->url('user_register_form')?>">Inscription</a></li>
       <?php } ?>
     </ul>
   </div>
