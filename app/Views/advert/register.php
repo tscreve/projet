@@ -13,7 +13,8 @@
 		<form action="" method="POST">
 			<input id="data-lat" type="text" name="data-lat" style="display:none;">
 			<input id="data-lng" type="text" name="data-lng" style="display:none;">
-			<input type="submit" value="Enregistrer un lieu">
+			
+			<input type="submit" value="Enregistrer une annonce">
 		</form>
 		
 

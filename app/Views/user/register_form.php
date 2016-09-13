@@ -6,8 +6,10 @@
  $this->layout('layout_user', ['title' => $title, 'message' => $message]);
 
 
+
 // On place le contenu de la vue
 $this->start('main_content') ?>
+
  <!-- Modal content -->
   <div class="modal-content">
 	 <h2 class="titre_inscription">Inscription</h2>
@@ -40,9 +42,8 @@ $this->start('main_content') ?>
         </form>
   </div>
 
-</div>
-  
-
+</div> 
+<?php var_dump($_POST); ?>
 <?php $this->stop('main_content');  
 // fin du contenu de la vue
 

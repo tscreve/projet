@@ -19,6 +19,11 @@
 		['POST', '/addComment', 'Comment#addComment', 'comment_add_comment'],
 		['POST', '/deleteComment', 'User#deleteComment', 'user_delete_comment'],*/
 
+
+
+
+
+
 //2.1	/* inscription utilisateur dans la BDD*/
 		['GET', '/register', 'User#registerForm', 'user_register_form'],
 		['POST', '/adduser', 'User#addUser', 'user_add_user'],

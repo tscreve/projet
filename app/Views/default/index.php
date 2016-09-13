@@ -1,6 +1,6 @@
 	<?php $this->layout('layout', ['title' => 'Accueil']) ?>
 	
-
+	
 	<?php $this->start('places_list') ?>
 		<?php foreach($coordsPlaces as $coordsPlace): 
 			// var_dump($coordslPlace['place']);
@@ -18,6 +18,7 @@
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
 
 	<?php $this->start('main_content') ?>
+
 		<h2>Let's cod</h2>
 		<p>Vous avez atteint la page d'accueil. Bravo.</p>
 		

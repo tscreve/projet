@@ -8,9 +8,9 @@
 
 	// On place le contenu de la vue
 	$this->start('main_content') ?>
+	
 
-
-	<form class="login-form " method="POST" action="<?= $this->url('user_login')?>"> 
+	<form class="login-form" method="POST" action="<?= $this->url('user_login')?>"> 
 	<label for="login">Prenom</label> 
 	<input placeholder="Choisissez un Login" type="text" name="prenom">
 
