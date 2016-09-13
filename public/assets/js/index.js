@@ -30,7 +30,7 @@
         handleLocationError(true, maPosMarker, map.getCenter());
       });
 
-      // ajout d'un marqueur pour une entrée dans la liste #placesList
+      // ajout d'un marqueur par entrée de #placesList
       for($i=0;$i<list.childElementCount;$i++){
         // console.log(list.children[$i].getAttribute('data-lat'));
         // console.log(list.children[$i].getAttribute('data-lng'));

@@ -20,14 +20,6 @@ class DefaultController extends Controller
 		$this->show('default/index',['coordsPlaces'=>$allPlaces]);
 	}
 
-		public function hello()
-	{
-		$this->show('default/hello');
-	}
-
-
-
-
 
 	public function addPlace(){
 		$lat=$_POST['data-lat'];
@@ -38,15 +30,17 @@ class DefaultController extends Controller
 
 		$AdvertModel=new AdvertModel();
 
-
 		$advert=array(
 			'place'=>$placeStr
 			);
 
 		$AdvertModel->insert($advert);
 
-		$this->show('default/index');		
-	
+		$this->show('advert/register');	
+	}
+
+	public function registerPlace(){
+		$this->show('advert/register');
 	}
 
 }

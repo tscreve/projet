@@ -35,7 +35,7 @@ else {
 		</header>
 
     <section>
-      <ul id="placesList">
+      <ul id="placesList" style="display:none;">
         <?= $this->section('places_list') ?>
       </ul>      
     </section>
@@ -88,13 +88,9 @@ else {
             <input type="submit" value="S'inscrire">   
         </form>
   	</div>
-
-
-  
 		</section>
-		
 
-		<footer>
+    <footer>
 		</footer>
 
 

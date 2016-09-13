@@ -11,10 +11,9 @@
 		['GET', '/', 'Default#index', 'default_index'],
 		['GET', '/hello', 'Default#hello', 'default_hello'],	
 
-		// ajoute un lieux
-		['POST', '/', 'Default#addPlace', 'default_addPlace'],	
-
-
+		// enregistrement de l'annonce
+		['GET', '/advert/register', 'Default#registerPlace', 'default_registerPlace'],
+		['POST', '/advert/register', 'Default#addPlace', 'default_addPlace'],
 
 		/* Ajouter-Supprimer un commentaire
 		['POST', '/addComment', 'Comment#addComment', 'comment_add_comment'],

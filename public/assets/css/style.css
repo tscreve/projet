@@ -3,7 +3,6 @@ html, body {
 	background-color: #272822;
 	color: #F8F8F2;
 }
-
 .container {
 	margin: 50px;
 }
@@ -35,9 +34,6 @@ h2 {
 }
 .pac-input{
 	height: 50px;
-	display: none;
 }
-#placesList{
-	display: none;	
-}
+
 
