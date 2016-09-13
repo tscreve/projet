@@ -51,8 +51,8 @@
         infoPos+="Longitude : "+place.geometry.location.lng()+"<br>";
         position.innerHTML=infoPos;
 
-        var placeStr=place.geometry.location.lat()+';'+place.geometry.location.lng();
-        // console.log(placeStr);
+        latStr.value=place.geometry.location.lat();
+        lngStr.value=place.geometry.location.lng();
       });
       map.fitBounds(bounds);
       map.setZoom(17);    
@@ -85,13 +85,8 @@
       infoPos+="Longitude : "+latLng.lng()+"<br>";
       position.innerHTML=infoPos;
 
-      var placeStr=latLng.lat()+';'+latLng.lng();
-
       latStr.value=latLng.lat();
       lngStr.value=latLng.lng();
-      
-      // console.log(placeStr);
-
 
     markers.push(new google.maps.Marker({
       position: latLng,

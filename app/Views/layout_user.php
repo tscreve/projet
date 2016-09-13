@@ -45,8 +45,9 @@ else {
           <?php 
         } 
         else { ?>
-          <li><a href="#" onclick="">Login</a></li> /
-          <li><a href="#" onclick="$('#myModal').modal('show'); return false;">Inscription</a></li>
+          <li><a href="<?= $this->url('user_login_form')?>">Login</a></li> /
+          <!-- <li><a href="#" onclick="$('#myModal').modal('show'); return false;">Inscription</a></li> -->
+          <li><a href="<?= $this->url('user_register_form')?>">Inscription</a></li>
           <?php } ?>
         </ul>
       </div>

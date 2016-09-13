@@ -35,5 +35,15 @@ h2 {
 .pac-input{
 	height: 50px;
 }
-
+div.alert {
+    padding: 15px;
+    background: #3CBC8B;
+    color: #fff;
+}
+.alert-error { 
+    background:#AD4341 !important;  
+}
+.alert-info { 
+    background:#6D9AAA !important;  
+}
 

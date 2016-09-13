@@ -30,9 +30,13 @@ else {
 </head>
 <body>
 	<div class="container">
-		<header>
+		<header class="title-page">
+      <?php if($message!=null) { ?>
+        <div class="alert alert-<?php echo $class_alert ?>"> <?= $message ?></div>
+        <?php } ?>
 			<h1><?= $this->e($title) ?></h1>
 		</header>
+
 
     <section>
       <ul id="placesList">

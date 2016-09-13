@@ -87,8 +87,8 @@ class UserController extends Controller
 			
 			$message = "Votre inscription est validée.";
 			$auth-> setFlash($message, 'success');
-			// $this -> redirectToRoute('default_index');
-			var_dump($_POST);
+			$this -> redirectToRoute('default_index');
+			// var_dump($_POST);
 		} else {
 			// Sinon on reste sur la page et on affiche le message d'erreur
 			$title = 'Inscription';
@@ -145,10 +145,11 @@ class UserController extends Controller
 		// récupération d'un objet de la classe AuthentificationModel
 		$auth = new AuthentificationModel;
 		//déconnexion de l'utilisateur (session)
-		$auth -> logUserOut($user);
+		$auth -> logUserOut();
 		//redirection vers l'accueil
 		$auth-> setFlash('Vous êtes deconnecté(e)', 'info');
-		$this -> redirectToRoute('hello');
+		var_dump($_SESSION);
+		$this -> redirectToRoute('default_index');
 	}
 	// si mot de passe est oublié 
 	public function passwordLost()
