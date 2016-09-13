@@ -36,7 +36,7 @@ else {
     <div class="nav-menu">
       <ul>
         <li><a href="<?= $this->url('default_index')?>" title="Home">Home</a></li>
-        <li><a href="<?= $this->url('movie_index')?>">Tous les films</a></li>
+        <li><a href="<?= $this->url('default_index')?>">Tous les films</a></li>
 
         <?php 
         if($username!=null) { ?>
@@ -53,6 +53,8 @@ else {
     </nav>
     <!-- FIN navigation -->
 
+
+  <!-- Inscription -->
     <header class="title-page">
       <?php if($message!=null) { ?>
         <div class="alert alert-<?php echo $class_alert ?>"> <?= $message ?></div>
@@ -71,7 +73,7 @@ else {
             </div>
             <div class="modal-body">
               <section class="center">
-                <form method="post" action="<?=this->url(user_add_user)?>">
+                <form method="post" action="<?=$this->url('user_add_user')?>">
                   <!-- bouton radio pour determiner le sexe  -->
                   <label for="Homme">H</label>
                   <input type="radio" name="sexe" value="H">
@@ -92,7 +94,7 @@ else {
                   <input placeholder="Votre Email" type="text" name="email"><br><br>
 
                   <label for="login">Mot de passe</label><br>
-                  <input placeholder="Choisissez un mot de passe" type="text" name="password">
+                  <input placeholder="Choisissez un mot de passe" type="password" name="password">
                   <br><br>
 
                   <input type="submit" value="S'inscrire">
@@ -106,6 +108,8 @@ else {
         </div>
       </div>
 
+  <!-- connexion -->
+  
       <section>
         <?= $this->section('main_content') ?>
       </section>

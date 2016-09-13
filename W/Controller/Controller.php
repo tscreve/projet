@@ -51,7 +51,7 @@ class Controller
 	/**
 	 * Redirige vers une route nommée
 	 * @param  string $routeName Le nom de route vers laquelle rediriger
-	 * @param  array  $params    Tableau de paramètres optionnel de cette route
+	 * @param  array  $params Tableau de paramètres optionnel de cette route
 	 */
 	public function redirectToRoute($routeName, array $params = array())
 	{

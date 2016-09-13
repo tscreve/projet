@@ -58,6 +58,11 @@ class UserController extends Controller
 			$auth-> setFlash($message,'error');
 			$this -> redirectToRoute('user_register_form');
 		}
+		if(isset($_POST['birthdate']) && empty($_POST['birthdate'])){
+			$message = 'veuillez renseignez le champ au bon format';
+			$auth-> setFlash($message,'error');
+			$this -> redirectToRoute('user_register_form');
+		}
         /* 
         ** On vérifie que l'Email et le prénom ne sont pas déjà utilisés avant d'insérer les données.
         ** Si l'Email ou le prénom sont déjà utilisés, on redirige l'utilisateur vers la page du formulaire d'inscription avec le message d'erreur.
@@ -79,12 +84,14 @@ class UserController extends Controller
 		/* 
         ** Si l'Email(dans notre cas il n'ya que l'émail) et le Username n'existent pas alors on peut ajouter le nouvel utilisateur en BDD
         */
+        else{
 		$newUser = array(
 			'firstname' => htmlentities($_POST['firstname']),
 			'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
 			'email' => $_POST['email'],
 			'role' => 'user'
 		);
+		}
 
 		//ajout de l'utilisateur avec la fonction insert() dispo dans W/Model/Model.php
 		if($userTable-> insert($newUser)) {
@@ -121,7 +128,7 @@ class UserController extends Controller
 			$auth -> logUserIn($user);
 			//affichage
 			$auth-> setFlash('Génial vous êtes connecté(e)', 'success');
-			$this->redirectToRoute('movie_index');
+			$this->redirectToRoute('default_index');
 			//$this -> show('user/profil', ['user' => $user, 'auth' => $auth]);
 
 		}
@@ -141,13 +148,13 @@ class UserController extends Controller
 	public function profil()
 	{
 		// récupération d'un objet de la classe AuthentificationProjet
-		// $auth = new AuthentificationProjet;
+		 $auth = new AuthentificationProjet;
 
 		//déconnexion de l'utilisateur (session)
-		// $auth -> logUserOut($user);
+		 $auth -> logUserOut($user);
 		
 		//redirection vers l'accueil
-		$this -> show('user/profil');
+		$this -> show('default/index');
 	}
 
 
