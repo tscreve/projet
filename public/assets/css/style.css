@@ -35,5 +35,9 @@ h2 {
 }
 .pac-input{
 	height: 50px;
+	display: none;
+}
+#placesList{
+	display: none;	
 }
 

@@ -34,6 +34,12 @@ else {
 			<h1><?= $this->e($title) ?></h1>
 		</header>
 
+    <section>
+      <ul id="placesList">
+        <?= $this->section('places_list') ?>
+      </ul>      
+    </section>
+
 		<section>
 			<?= $this->section('main_content') ?>
 		

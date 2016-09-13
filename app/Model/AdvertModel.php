@@ -2,8 +2,7 @@
 namespace Model;
 use \W\Model\Model;
 
-class ProjetModel extends Model 
+class AdvertModel extends Model 
 {
-	
 
 }
