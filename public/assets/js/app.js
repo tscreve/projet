@@ -5,58 +5,13 @@
     });
     // marqueur ma position géolocalisée
     var maPosMarker = new google.maps.Marker({map: map});
-    // Create the search box and link it to the UI element.
-    var input = document.getElementById('pac-input');
-    var searchBox = new google.maps.places.SearchBox(input);
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-    // affichage des coordonnées
-    var position=document.getElementById("adress");  
-    var latStr=document.getElementById("data-lat");  
-    var lngStr=document.getElementById("data-lng");  
-    // Bias the SearchBox results towards current map's viewport.
-    map.addListener('bounds_changed', function() {
-      searchBox.setBounds(map.getBounds());
-    });
-  var markers = [];
-    // Listen for the event fired when the user selects a prediction and retrieve
-    // more details for that place.
-    searchBox.addListener('places_changed', function() {
-      var places = searchBox.getPlaces();
 
-      if (places.length == 0) {
-        return;
-      }
-      // Clear out the old markers.
-      markers.forEach(function(marker) {
-        marker.setMap(null);
-      });
-      markers = [];
-      // For each place, get the icon, name and location.
-      var bounds = new google.maps.LatLngBounds();
-      places.forEach(function(place) {
-           // Create a marker for each place.
-        markers.push(new google.maps.Marker({
-          map: map,
-          title: place.name,
-          position: place.geometry.location
-        }));
-        if (place.geometry.viewport) {
-          // Only geocodes have viewport.
-          bounds.union(place.geometry.viewport);
-        } else {
-          bounds.extend(place.geometry.location);
-        }
-        var infoPos="Position déterminé : <br>";
-        infoPos+="Latitude : "+place.geometry.location.lat()+"<br>";   
-        infoPos+="Longitude : "+place.geometry.location.lng()+"<br>";
-        position.innerHTML=infoPos;
 
-        var placeStr=place.geometry.location.lat()+';'+place.geometry.location.lng();
-        console.log(placeStr);
-      });
-      map.fitBounds(bounds);
-      map.setZoom(17);    
-    });
+    //la liste des coordonnées
+    var list=document.getElementById("placesList");
+    markers = [];
+    // console.log(list.childElementCount);
+
 
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
@@ -74,40 +29,27 @@
       }, function() {
         handleLocationError(true, maPosMarker, map.getCenter());
       });
+
+      // ajout d'un marqueur pour une entrée dans la liste #placesList
+      for($i=0;$i<list.childElementCount;$i++){
+        // console.log(list.children[$i].getAttribute('data-lat'));
+        // console.log(list.children[$i].getAttribute('data-lng'));
+
+        var pos = {
+          lat: Number(list.children[$i].getAttribute('data-lat')),
+          lng: Number(list.children[$i].getAttribute('data-lng'))
+        };
+
+        markers.push(new google.maps.Marker({
+           map: map,
+           position:pos
+        }));
+      }
+
     } else {
       // Browser doesn't support Geolocation
       handleLocationError(false, maPosMarker, map.getCenter());
     }
-
-  function placeMarkerAndPanTo(latLng, map) {     
-      var infoPos="Position déterminé : <br>";
-      infoPos+="Latitude : "+latLng.lat()+"<br>";
-      infoPos+="Longitude : "+latLng.lng()+"<br>";
-      position.innerHTML=infoPos;
-
-      var placeStr=latLng.lat()+';'+latLng.lng();
-
-      latStr.value=latLng.lat();
-      lngStr.value=latLng.lng();
-      
-      console.log(placeStr);
-
-
-    markers.push(new google.maps.Marker({
-      position: latLng,
-        map: map
-    }));  
-    // map.panTo(latLng); // centrer la carte sur l'endroit cliqué
-  }
-
-    map.addListener('click', function(e) {      
-          // Clear out the old markers.
-      markers.forEach(function(marker) {
-        marker.setMap(null);
-      });
-      markers = [];
-      placeMarkerAndPanTo(e.latLng, map);
-    });
   }
 
   function handleLocationError(browserHasGeolocation, maPosMarker, pos) {
