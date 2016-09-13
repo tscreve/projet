@@ -75,10 +75,11 @@ else {
               <section class="center">
                 <form method="post" action="<?=$this->url('user_add_user')?>">
                   <!-- bouton radio pour determiner le sexe  -->
-                  <label for="Homme">H</label>
-                  <input type="radio" name="sexe" value="H">
-                  <label for="Femme">F</label>
-                  <input type="radio" name="sexe" value="F">
+                  <p>Je suis :</p>
+                  <label for="homme">Un Homme</label>
+                  <input type="radio" id="homme" name="sexe" value="m">
+                  <label for="femme">Une femme</label>
+                  <input type="radio" id="femme" name="sexe" value="f">
                   <br><br>
 
                   <label for="Prenom">Prenom</label><br>

@@ -15,12 +15,13 @@ $this->start('main_content') ?>
 	 <h2 class="titre_inscription">Inscription</h2>
      <form class="login-form" method="POST" action="<?= $this->url('user_add_user')?>"> 
 
-	<!-- bouton radio pour determiner le sexe  -->
-      <label for="Homme">H</label>
-      <input type="radio" name="sexe" value="H">
-      <label for="Femme">F</label>
-      <input type="radio" name="sexe" value="F">
-    <br><br>
+  <!-- bouton radio pour determiner le sexe  -->
+                  <p>Je suis :</p>
+                  <label for="homme">Un Homme</label>
+                  <input type="radio" id="homme" name="sexe" value="m">
+                  <label for="femme">Une femme</label>
+                  <input type="radio" id="femme" name="sexe" value="f">
+                  <br><br>
 
       <label for="Prenom">Prenom</label><br>
       <input placeholder="prenom" type="text" name="firstname" >
@@ -43,7 +44,7 @@ $this->start('main_content') ?>
   </div>
 
 </div> 
-<?php var_dump($_POST); ?>
+
 <?php $this->stop('main_content');  
 // fin du contenu de la vue
 

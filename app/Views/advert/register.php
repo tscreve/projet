@@ -10,7 +10,7 @@
 		<div id="adress">Détection mais aucune données affichées...</div>
 
 
-		<form action="" method="POST">
+		<form action="<?= $this->url('default_addPlace')?>" method="POST">
 			<input id="data-lat" type="text" name="data-lat" style="display:none;">
 			<input id="data-lng" type="text" name="data-lng" style="display:none;">
 			

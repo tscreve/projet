@@ -11,7 +11,7 @@ else {
 }
 
 if(isset($_SESSION['user'])) { 
-  $username = $_SESSION['user']['username'];
+  $username = $_SESSION['user']['firstname'];
 }
 else {
   $username = null;
@@ -35,7 +35,7 @@ else {
 		</header>
 
     <section>
-      <ul id="placesList" style="display:none;">
+      <ul id="placesList">
         <?= $this->section('places_list') ?>
       </ul>      
     </section>

@@ -19,7 +19,8 @@ class UserController extends Controller
 		// (il ne doit pas à accéder à la page d'inscription)
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
-			$this -> redirectToRoute('default_hello');
+			var_dump($_SESSION);
+			// $this -> redirectToRoute('default_hello');
 		}		
 		$title = 'Inscription';
 		$this -> show('user/register_form', ['title' => $title]);
@@ -34,7 +35,8 @@ class UserController extends Controller
 		// (il ne doit pas à accéder à la page de connexion)
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
-			$this -> redirectToRoute('');
+			var_dump($_SESSION);
+			// $this -> redirectToRoute('');
 		}
 		$title = 'Connexion';
 		$this -> show('user/login', ['title' => $title]);
@@ -85,7 +87,8 @@ class UserController extends Controller
 			
 			$message = "Votre inscription est validée.";
 			$auth-> setFlash($message, 'success');
-			$this -> redirectToRoute('default_index');
+			// $this -> redirectToRoute('default_index');
+			var_dump($_POST);
 		} else {
 			// Sinon on reste sur la page et on affiche le message d'erreur
 			$title = 'Inscription';
@@ -102,11 +105,11 @@ class UserController extends Controller
 		// récupération d'un objet de la classe AuthentificationModel
 		$auth = new AuthentificationModel;
 		//vérification login/password
-		if($auth -> isValidLoginInfo($_POST['firstname'], $_POST['password']))
+		if($auth -> isValidLoginInfo($_POST['email'], $_POST['password']))
 		{
 			//récupération d'un "modèle" Utilisateur
 			$util = new UsersModel;
-			$user = $util -> getUserByUsernameOrEmail($_POST['firstname']);
+			$user = $util -> getUserByUsernameOrEmail($_POST['email']);
 			//connexion de l'utilisateur
 			$auth -> logUserIn($user);
 			//affichage
