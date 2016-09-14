@@ -3,13 +3,7 @@
 
 
 		<?php $this->start('main_content') ?>
-		<h2>Let's cod</h2>
-		<p>Vous avez atteint la page d'accueil. Bravo.</p>
 		
-
-		<div id="adress">Détection mais aucune données affichées...</div>
-
-
 		<form action="<?= $this->url('default_addPlace')?>" method="POST">
 			<input id="data-lat" type="text" name="data-lat" style="display:none;">
 			<input id="data-lng" type="text" name="data-lng" style="display:none;">

@@ -18,8 +18,6 @@ else {
 }
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -38,10 +36,8 @@ else {
 		</header>
 
 
-    <section>
-      <ul id="placesList">
-        <?= $this->section('places_list') ?>
-      </ul>      
+    <section>      
+        <?= $this->section('places_list') ?>           
     </section>
 
 		<section>
