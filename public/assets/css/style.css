@@ -1,31 +1,30 @@
 html, body {
-	font-family: Consolas, monaco, monospace;
-	background-color: #272822;
-	color: #F8F8F2;
+	font-family: roboto;
+	margin: 0;
+	padding: 0;
 }
+
+
+
 .container {
 	margin: 50px;
 }
-
 a {
 	text-decoration: none;
 	color: #A6E22E;
 }
-
 a:hover {
 	color: #F92672;
 }
-
 h1 {
 	color: #F92672;
 }
-
 h2 {
 	color: #66D9EF;
 } 
 #map{
-	width: 50%;
-	height: 500px;
+	width: 100%;
+	height: 740px;
 }
 #coord{
 	width: 800px;
@@ -47,3 +46,89 @@ div.alert {
     background:#6D9AAA !important;  
 }
 
+
+
+
+
+/* ---------------------------------        --------------------------------- */
+/* --------------------------------- LAYOUT --------------------------------- */
+/* ---------------------------------        --------------------------------- */
+
+
+/* --------------------------------- HEADER --------------------------------- */
+nav{
+	padding: 0 5%;
+}
+.navbar{
+	background-color: #566b7A;
+	border-radius: 0;
+	margin: 0;
+	border: none;
+}
+.navbar-header{
+	padding: 0;
+	width: 50px;
+}
+.navbar-brand{
+	height: 50px;
+	padding: 0;
+}
+.navbar-default .navbar-nav>li>a{
+	color: #FFFFFF;
+}
+.navbar-default .navbar-nav>li>a:hover{
+	background-color: #FFFFFF;
+}
+.access{
+	line-height: 50px;
+	text-align: right;
+	vertical-align: middle;
+}
+
+/* --------------------------------- CONTENT --------------------------------- */
+
+.content{
+	padding: 2% 5%;
+	height: 850px;
+	background-color: #4D535D;
+}
+.row{
+	margin: 0;
+}
+.gauche, .droite{
+	background-color: #FFFFFF;
+	color: #566b7A;
+	padding: 20px;
+	height: 780px;
+}
+.gauche{
+	width: 64%;
+	float: left;
+}
+.droite{
+	width: 34%;
+	float: right;
+}
+
+
+/* --------------------------------- FOOTER --------------------------------- */
+footer{
+	line-height: 50px;
+	background-color: #566b7A;
+	padding: 0 5%;
+	color: #FFFFFF;
+}
+
+footer a{
+	color: #FFFFFF;
+	display: table;
+	padding: 0 10px;
+}
+footer a:hover{
+	color: #566b7A;
+	background-color: #FFFFFF;
+	text-decoration: none;
+}
+.fa-envelope-o{
+	padding: 0 10px 0 0;
+}

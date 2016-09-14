@@ -1,7 +1,7 @@
-	<?php $this->layout('layout', ['title' => 'Accueil']) ?>
+	<?php $this->layout('layout_projet', ['title' => 'Accueil']) ?>
 	
 	
-	<?php $this->start('places_list') ?>
+	<?php $this->start('droite') ?>
 		<?php foreach($coordsPlaces as $coordsPlace): 
 			// var_dump($coordslPlace['place']);
 			$coords=explode(";", $coordsPlace['place']);
@@ -11,24 +11,17 @@
 		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?>>		
 		</li>
 		<?php endforeach; ?>
-	<?php $this->stop('places_list') ?>
+	<?php $this->stop('droite') ?>
 
 <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
 
-	<?php $this->start('main_content') ?>
-
-		<h2>Let's cod</h2>
-		<p>Vous avez atteint la page d'accueil. Bravo.</p>
-		
-
-		<div id="adress">Détection mais aucune données affichées...</div>
-
+	<?php $this->start('gauche') ?>
 		<div id="map">
 	    	Chargement en cours...
 	 	</div>
-	<?php $this->stop('main_content') ?>
+	<?php $this->stop('gauche') ?>
 
 <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
