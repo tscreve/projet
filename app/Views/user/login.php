@@ -12,10 +12,10 @@
 
 	<form class="login-form" method="POST" action="<?= $this->url('user_login')?>"> 
 	<label for="login">Prenom</label> 
-	<input placeholder="Choisissez un Login" type="text" name="email">
+	<input placeholder="Choisissez un Login" type="text" name="firstname">
 
 	<label for="login">Mot de passe</label> 
-	<input placeholder="Choisissez un mot de passe" type="text" name="password">
+	<input placeholder="Choisissez un mot de passe" type="password" name="password">
 
 	<input type="submit" value="Se connecter">   
 	</form>

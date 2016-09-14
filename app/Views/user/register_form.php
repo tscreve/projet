@@ -18,9 +18,9 @@ $this->start('main_content') ?>
   <!-- bouton radio pour determiner le sexe  -->
                   <p>Je suis :</p>
                   <label for="homme">Un Homme</label>
-                  <input type="radio" id="homme" name="sexe" value="m">
+                  <input type="radio" id="homme" name="gender" value="m">
                   <label for="femme">Une femme</label>
-                  <input type="radio" id="femme" name="sexe" value="f">
+                  <input type="radio" id="femme" name="gender" value="f">
                   <br><br>
 
       <label for="Prenom">Prenom</label><br>
@@ -36,7 +36,7 @@ $this->start('main_content') ?>
             <input placeholder="Votre Email" type="text" name="email"><br><br>
 
             <label for="login">Mot de passe</label><br>
-            <input placeholder="Choisissez un mot de passe" type="text" name="password">
+            <input placeholder="Choisissez un mot de passe" type="password" name="password">
             <br><br>
 
             <input type="submit" value="S'inscrire">   
