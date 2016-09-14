@@ -10,7 +10,6 @@
     var searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
     // affichage des coordonnées
-    var position=document.getElementById("adress");  
     var latStr=document.getElementById("data-lat");  
     var lngStr=document.getElementById("data-lng");  
     // Bias the SearchBox results towards current map's viewport.
@@ -46,11 +45,7 @@
         } else {
           bounds.extend(place.geometry.location);
         }
-        var infoPos="Position déterminé : <br>";
-        infoPos+="Latitude : "+place.geometry.location.lat()+"<br>";   
-        infoPos+="Longitude : "+place.geometry.location.lng()+"<br>";
-        position.innerHTML=infoPos;
-
+        
         latStr.value=place.geometry.location.lat();
         lngStr.value=place.geometry.location.lng();
       });
@@ -66,6 +61,9 @@
           lat: pos.coords.latitude,
           lng: pos.coords.longitude
         };
+        latStr.value=pos.lat;
+        lngStr.value=pos.lng;
+
         maPosMarker.setPosition(pos);
         maPosMarker.setLabel('C ');
         maPosMarker.setTitle('C Moi');
@@ -79,12 +77,7 @@
       handleLocationError(false, maPosMarker, map.getCenter());
     }
 
-  function placeMarkerAndPanTo(latLng, map) {     
-      var infoPos="Position déterminé : <br>";
-      infoPos+="Latitude : "+latLng.lat()+"<br>";
-      infoPos+="Longitude : "+latLng.lng()+"<br>";
-      position.innerHTML=infoPos;
-
+  function placeMarkerAndPanTo(latLng, map) {      
       latStr.value=latLng.lat();
       lngStr.value=latLng.lng();
 
@@ -113,7 +106,16 @@
   }
 
 
+  $( function() {
+    // SELECT
+    $( "#level" ).selectmenu();
+    $( "#nb_participant" ).selectmenu();
+    $( "#time" ).selectmenu();
+    // DATEPICKER
+    $( "#datepicker" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });
+    $( "#datepicker" ).datepicker( $.datepicker.regional[ "fr" ] );
 
+  } );
 
 
 

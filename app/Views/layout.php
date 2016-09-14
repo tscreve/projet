@@ -18,15 +18,15 @@ else {
 }
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
 	<title><?= $this->e($title) ?></title>
 	<meta name="viewport" content="initial-scale=1.0">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
+
 </head>
 <body>
 	<div class="container">
@@ -38,16 +38,16 @@ else {
 		</header>
 
 
-    <section>
-      <ul id="placesList">
-        <?= $this->section('places_list') ?>
-      </ul>      
+    <section>      
+        <?= $this->section('places_list') ?>           
     </section>
 
 		<section>
 			<?= $this->section('main_content') ?>
 		
-		<!-- je cherche actuellement a quoi correspond login-form (Aster) -->
+
+    <!--
+
 		<div class="modal-content">
 		<form class="login-form" method="POST" action="<?= $this->url('user_login')?>"> 
             <label for="login">Prenom</label> 
@@ -66,7 +66,6 @@ else {
 	 <h2 class="titre_inscription">Inscription</h2>
      <form class="login-form" method="POST" action="<?= $this->url('user_add_user')?>"> 
 
-	<!-- bouton radio pour determiner le sexe  -->
       <label for="Homme">H</label>
       <input type="radio" name="sexe" value="H">
       <label for="Femme">F</label>
@@ -93,6 +92,11 @@ else {
         </form>
   	</div>
 		</section>
+-->
+
+
+
+
 
     <footer>
 		</footer>
@@ -100,6 +104,9 @@ else {
 
 
 	</div>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>  
+    <script src="https://jqueryui.com/resources/demos/datepicker/i18n/datepicker-fr.js"></script>
 	<?= $this->section('scripts') ?>
 </body>
 </html>

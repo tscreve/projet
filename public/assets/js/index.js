@@ -6,7 +6,6 @@
     // marqueur ma position géolocalisée
     var maPosMarker = new google.maps.Marker({map: map});
 
-
     //la liste des coordonnées
     var list=document.getElementById("placesList");
     markers = [];
