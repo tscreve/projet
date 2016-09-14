@@ -65,7 +65,7 @@ class UserController extends Controller
         ** On vérifie que l'Email et le prénom ne sont pas déjà utilisés avant d'insérer les données.
         ** Si l'Email ou le prénom sont déjà utilisés, on redirige l'utilisateur vers la page du formulaire d'inscription avec le message d'erreur.
         */       
-       $birthdateTime = date_create_from_format('j-m-Y',$_POST['birthdate']);//méthode  procédural
+       $birthdateTime = date_create_from_format('j/m/Y',$_POST['birthdate']);//méthode  procédural
    		$birthdate = $birthdateTime->format('Y-m-d');
 
    		if($birthdate == false){
@@ -86,7 +86,7 @@ class UserController extends Controller
 		$newUser = array(
 			'firstname' => htmlentities($_POST['firstname']),
 			'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-			'birthdate'=> $birthdate,//03/11/2012
+			'birthdate'=> $birthdate,
 			'email' => $_POST['email'],
 			'gender' => $_POST['gender'],
 			'role' => 'user'
@@ -98,14 +98,15 @@ class UserController extends Controller
 			
 			$message = "Votre inscription est validée.";
 			$auth-> setFlash($message, 'success');
-			$this -> redirectToRoute('default_index');
-			// var_dump($_POST);
+			var_dump($_POST);
+			// $this -> redirectToRoute('default_index');
 		} else {
 			// Sinon on reste sur la page et on affiche le message d'erreur
 			$title = 'Inscription';
 			$message = "Il y a eu problème lors de l'inscription";
 			$auth-> setFlash($message, 'error');
-			$this -> redirectToRoute('user_register_form', ['title' => $title]);
+			var_dump($_POST);
+			// $this -> redirectToRoute('user_register_form', ['title' => $title]);
 		}	
 	}
 	/** 

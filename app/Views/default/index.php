@@ -19,14 +19,7 @@
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
 
-	<?php $this->start('main_content') ?>
-
-		<h2>Let's cod</h2>
-		<p>Vous avez atteint la page d'accueil. Bravo.</p>
-		
-
-		<div id="adress">Détection mais aucune données affichées...</div>
-
+	<?php $this->start('main_content') ?>		
 		<div id="map">
 	    	Chargement en cours...
 	 	</div>

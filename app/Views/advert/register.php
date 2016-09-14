@@ -57,6 +57,8 @@
 		<section class="map">
 				<!-- BOUTON SEARCH DE LA MAP -->
 		<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+
+		
 		<div id="map">
 	    	Chargement en cours...
 	 	</div>			
