@@ -2,6 +2,7 @@
 	
 	
 	<?php $this->start('droite') ?>
+	<ul>
 		<?php foreach($coordsPlaces as $coordsPlace): 
 			// var_dump($coordslPlace['place']);
 			$coords=explode(";", $coordsPlace['place']);
@@ -11,6 +12,7 @@
 		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?>>		
 		</li>
 		<?php endforeach; ?>
+	</ul>
 	<?php $this->stop('droite') ?>
 
 <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
