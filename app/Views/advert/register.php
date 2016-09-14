@@ -6,6 +6,15 @@
 		<form action="<?= $this->url('default_addPlace')?>" method="POST">
 			<input id="data-lat" type="text" name="data-lat" style="display:none;">
 			<input id="data-lng" type="text" name="data-lng" style="display:none;">
+			
+			<label for="id_sport">Sport :</label><br>
+		    <select name="id_sport" id="id_sport">
+			<?php foreach($allSports as $sport):  
+			?>
+		      <option value=<?= $sport['id'] ?>><?= $sport['name'] ?></option>
+		    <?php endforeach; ?>
+		    </select>
+			<br><br>
 
 			<label for="description">Description :</label><br>
 			<textarea name="description"></textarea>

@@ -35,8 +35,8 @@ class UserController extends Controller
 		// (il ne doit pas à accéder à la page de connexion)
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
-			// var_dump($_SESSION);
-			$this -> redirectToRoute('default_index');
+			var_dump($_SESSION);
+			// $this -> redirectToRoute('default_index');
 		}
 		$title = 'Connexion';
 		$this -> show('user/login', ['title' => $title]);

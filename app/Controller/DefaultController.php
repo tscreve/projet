@@ -5,6 +5,7 @@ namespace Controller;
 use \W\Controller\Controller;
 use \W\Model\Model;
 use \Model\AdvertModel;
+use \Model\SportsModel;
 
 class DefaultController extends Controller
 {
@@ -18,9 +19,6 @@ class DefaultController extends Controller
 	
 		$this->show('default/index',['coordsPlaces'=>$allPlaces]);
 	}
-
-
-
 	public function addPlace(){		
 		$strDate=date_create_from_format('d/m/Y', $_POST['date']);
 		$date=$strDate->format('Y-m-d');
@@ -34,6 +32,8 @@ class DefaultController extends Controller
 		$placeStr=$lat.';'.$lng;
 
 		$advert=array(
+			'id_member'=>$_SESSION['user']['id'],
+			'id_sport'=>$_POST['id_sport'],
 			'place'=>$placeStr,
 			'description'=>htmlentities($_POST['description']),
 			'level'=>$_POST['level'],
@@ -49,7 +49,15 @@ class DefaultController extends Controller
 	}
 
 	public function registerPlace(){
-		$this->show('advert/register');
-	}
+		$loggedUser = $this->getUser();
+		if($loggedUser) {
+			$SportsModel=new SportsModel();		
+			$allSports=$SportsModel->findAll();
 
+			$this->show('advert/register', ['allSports'=>$allSports]);	
+		}
+		$this -> redirectToRoute('default_index');
+
+		
+	}
 }
