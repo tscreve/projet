@@ -1,29 +1,22 @@
 <?php 
 
-// VUE DES FILMS - APPELEE PAR movie#index (/app/Controller/MovieController.php)
-
 // On charge le layout
- $this->layout('layout_user', ['title' => $title, 'message' => $message]);
+ $this->layout('layout', ['title' => $title, 'message' => $message]); ?>
 
-// On place le contenu de la vue
-$this->start('main_content') ?>
-<?php // var_dump($message); ?>
 
-<?php
-		//affichage de l'utilisateur (BDD)
-		//var_dump($user);
-		echo '<hr>';
-		//affichage de l'objet
-		//var_dump($auth);
-		//affichage des infos stockées en session
-		var_dump($_SESSION);
+
+<?php $this->start('bas-gauche') ?>		
+	<?php 
+	var_dump($adverts);
 	?>
+<?php $this->stop('bas-gauche') ?>
 
 
-
-
-
-<?php $this->stop('main_content');  
+<?php $this->start('droite') ?>
+	<?php
+		var_dump($profil);
+	?>
+<?php $this->stop('droite');  
 // fin du contenu de la vue
 
 

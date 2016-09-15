@@ -3,6 +3,7 @@ namespace Controller;
 
 use \W\Controller\Controller;
 use \W\Model\Model;
+use \Model\AdvertModel;
 use \W\Model\UsersModel;
 use \W\Security\AuthentificationModel;
 
@@ -30,8 +31,7 @@ class UserController extends Controller
 	* Affichage du formulaire de connexion
 	*/
 	public function loginForm()
-	{
-		// Si l'utilisateur est connecté on le redirige vers la page de tous les films 
+	{	 
 		// (il ne doit pas à accéder à la page de connexion)
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
@@ -126,9 +126,7 @@ class UserController extends Controller
 			$auth -> logUserIn($user);
 			//affichage
 			$auth-> setFlash('Génial vous êtes connecté(e)', 'success');
-			// var_dump($_SESSION);
-			$this->redirectToRoute('default_index');
-			//$this -> show('user/profil', ['user' => $user, 'auth' => $auth]);
+			$this->redirectToRoute('user_profil');
 		}
 		//sinon retour au formulaire
 		else {
@@ -137,18 +135,25 @@ class UserController extends Controller
 		}
 	}
 	/*
-	*Déconnexion
+	*Profil
 	*/
 	public function profil()
 	{
-		// récupération d'un objet de la classe AuthentificationProjet
-		 $auth = new AuthentificationProjet;
+		$loggedUser = $this->getUser();
+		if($loggedUser) {
+			$UsersModel=new UsersModel();
 
-		//déconnexion de l'utilisateur (session)
-		 $auth -> logUserOut($user);
-		
-		//redirection vers l'accueil
-		$this -> show('default/index');
+			$id_user=$_SESSION['user']['id'];
+			$user=$UsersModel->find($id_user);
+
+			$AdvertModel=new AdvertModel();
+			$sql="SELECT id FROM advert WHERE id_member=$id_user";
+			$adverts=$AdvertModel->query($sql);
+
+
+			$this -> show('user/profil', ['profil'=>$user, 'adverts'=>$adverts]);			
+		}
+		$this -> redirectToRoute('default_index');		
 	}
 	/*
 	*Déconnexion
@@ -174,7 +179,4 @@ class UserController extends Controller
 			}
 		}
 	}
-
-
-
 }
