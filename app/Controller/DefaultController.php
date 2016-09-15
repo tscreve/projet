@@ -15,9 +15,11 @@ class DefaultController extends Controller
 	public function index()
 	{
 		$AdvertModel=new AdvertModel();		
-		$allPlaces=$AdvertModel->findAll();			
+		$allAdverts=$AdvertModel->findAll();	
+		$SportsModel=new SportsModel();		
+		$allSports=$SportsModel->findAll();		
 	
-		$this->show('default/index',['coordsPlaces'=>$allPlaces]);
+		$this->show('default/index',['allAdverts'=>$allAdverts, 'allSports'=>$allSports]);
 	}
 	public function addPlace(){		
 		$strDate=date_create_from_format('d/m/Y', $_POST['date']);
@@ -56,8 +58,6 @@ class DefaultController extends Controller
 
 			$this->show('advert/register', ['allSports'=>$allSports]);	
 		}
-		$this -> redirectToRoute('default_index');
-
-		
+		$this -> redirectToRoute('default_index');		
 	}
 }
