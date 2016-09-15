@@ -108,6 +108,7 @@
 
   $( function() {
     // SELECT
+    $( "#id_sport" ).selectmenu();
     $( "#level" ).selectmenu();
     $( "#nb_participant" ).selectmenu();
     $( "#time" ).selectmenu();

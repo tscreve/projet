@@ -52,7 +52,7 @@ $this->start('main_content') ?>
           // SELECT
           $( "#gender" ).selectmenu();
               $( "#datepicker" ).datepicker({
-                yearRange: "c-50:c-20",
+                yearRange: "1966:2000",
                 changeMonth: true,
                 
                 changeYear: true

@@ -6,6 +6,15 @@
 		<form action="<?= $this->url('default_addPlace')?>" method="POST">
 			<input id="data-lat" type="text" name="data-lat" style="display:none;">
 			<input id="data-lng" type="text" name="data-lng" style="display:none;">
+			
+			<label for="id_sport">Sport :</label><br>
+		    <select name="id_sport" id="id_sport">
+			<?php foreach($allSports as $sport):  
+			?>
+		      <option value=<?= $sport['id'] ?>><?= $sport['name'] ?></option>
+		    <?php endforeach; ?>
+		    </select>
+			<br><br>
 
 			<label for="description">Description :</label><br>
 			<textarea name="description"></textarea>
@@ -76,7 +85,7 @@
 
 
 	<?php $this->start('scripts') ?>
-		<script src="1https://maps.googleapis.com/maps/api/js?key=AIzaSyA082QH94snG4T-XIsT6ayEukK-g5mNArg&libraries=places&callback=initMap"
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA082QH94snG4T-XIsT6ayEukK-g5mNArg&libraries=places&callback=initMap"
 	         async defer></script>
 	    <script type="text/javascript" src= <?= $this->assetUrl('js/advertregister.js') ?> ></script>
 	<?php $this->stop('scripts') ?>
