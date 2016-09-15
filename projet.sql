@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 13 Septembre 2016 à 17:41
+-- Généré le :  Jeu 15 Septembre 2016 à 08:39
 -- Version du serveur :  5.7.9
 -- Version de PHP :  5.6.16
 
@@ -32,32 +32,27 @@ CREATE TABLE IF NOT EXISTS `advert` (
   `id_member` int(11) DEFAULT NULL,
   `id_sport` int(11) DEFAULT NULL,
   `place` varchar(255) NOT NULL,
-  `level` enum('debutant','amateur','confirme') DEFAULT NULL,
-  `event_date` date DEFAULT NULL,
-  `event_time` time DEFAULT NULL,
-  `nb_participant` int(3) DEFAULT NULL,
-  `statut` enum('available','not_available') DEFAULT NULL,
-  `advert_post_date` date DEFAULT NULL,
+  `description` text NOT NULL,
+  `level` enum('debutant','amateur','confirme') NOT NULL,
+  `event_date` date NOT NULL,
+  `event_time` time NOT NULL,
+  `nb_participant` int(3) NOT NULL,
+  `statut` enum('available','not_available') NOT NULL,
+  `advert_post_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id_member` (`id_member`),
   KEY `id_sport` (`id_sport`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `advert`
 --
 
-INSERT INTO `advert` (`id`, `id_member`, `id_sport`, `place`, `level`, `event_date`, `event_time`, `nb_participant`, `statut`, `advert_post_date`) VALUES
-(29, NULL, NULL, '48.876698494932974;2.354249954223633', NULL, NULL, NULL, NULL, NULL, NULL),
-(30, NULL, NULL, '48.87754522680742;2.3439502716064453', NULL, NULL, NULL, NULL, NULL, NULL),
-(33, NULL, NULL, '48.87985955413635;2.344980239868164', NULL, NULL, NULL, NULL, NULL, NULL),
-(35, NULL, NULL, '48.87652914683817;2.3339080810546875', NULL, NULL, NULL, NULL, NULL, NULL),
-(37, NULL, NULL, '48.83270518465311;2.3390579223632812', NULL, NULL, NULL, NULL, NULL, NULL),
-(38, NULL, NULL, '48.880198227202804;2.344980239868164', NULL, NULL, NULL, NULL, NULL, NULL),
-(39, NULL, NULL, '48.87935154023695;2.344036102294922', NULL, NULL, NULL, NULL, NULL, NULL),
-(40, NULL, NULL, '48.8825124317825;2.359485626220703', NULL, NULL, NULL, NULL, NULL, NULL),
-(41, NULL, NULL, '48.864278114082104;2.339487075805664', NULL, NULL, NULL, NULL, NULL, NULL),
-(42, NULL, NULL, '48.86676243690998;2.325410842895508', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `advert` (`id`, `id_member`, `id_sport`, `place`, `description`, `level`, `event_date`, `event_time`, `nb_participant`, `statut`, `advert_post_date`) VALUES
+(72, 7, 1, '48.84130169705697;2.3474693298339844', 'descr', 'confirme', '2016-09-16', '12:00:00', 2, 'available', '2016-09-15 07:43:44'),
+(73, 7, 0, '48.840397861663064;2.327556610107422', 'des', 'amateur', '2016-09-21', '12:00:00', 2, 'available', '2016-09-15 07:51:11'),
+(74, 7, 0, '48.840397861663064;2.327556610107422', 'des', 'amateur', '2016-09-21', '12:00:00', 2, 'available', '2016-09-15 08:10:35'),
+(75, 7, 3, '48.842487956259674;2.333393096923828', 'grd', 'confirme', '2016-09-20', '12:00:00', 4, 'available', '2016-09-15 08:19:27');
 
 -- --------------------------------------------------------
 
@@ -81,17 +76,15 @@ CREATE TABLE IF NOT EXISTS `members` (
   `register_date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `members`
 --
 
 INSERT INTO `members` (`id`, `email`, `name`, `firstname`, `gender`, `birthdate`, `password`, `photo`, `description`, `phone`, `role`, `register_date`) VALUES
-(1, 'tscreve@hotmail.com', NULL, 'dqsv', NULL, NULL, '$2y$10$lOoGzY7edlMIVLQ9CYXzGOrHoz7ZKXerTdAuOv3XxY3tKCFzbkgy2', NULL, NULL, NULL, 'user', NULL),
-(2, 'egvb@htmail.com', NULL, 'ebfr', NULL, NULL, '$2y$10$DLHHy0pPsgmt2.Lhcs2v3ujIeLItK9ut0c6ISF800Q51/bLIE8DTe', NULL, NULL, NULL, 'user', NULL),
-(3, 'juju@hotmail.com', NULL, 'dfbh', NULL, NULL, '$2y$10$Ik40mlgulNbIpeSzdk1eReWIfDScfiBpHrZTO33FZKqnxIa1F2Q5m', NULL, NULL, NULL, 'user', NULL),
-(4, 'membre@exemple.com', NULL, 'fghnj', NULL, NULL, '$2y$10$juNE7mH1kAgYxkz9aVN8yuIfShOlH6Y1p8G88vPVJvSyB5Lq6tdsG', NULL, NULL, NULL, 'user', NULL);
+(7, 'tom@mail.com', NULL, 'tom', 'f', '2016-12-07', '$2y$10$rJ6i6ecxnKgyG/C1nBvrqucSnnbPqxXpHzxjTq7K7YJv6To.jSDBO', NULL, NULL, NULL, 'user', NULL),
+(8, 'egvb@hotmail.com', NULL, 'tom', 'f', '2016-12-07', '$2y$10$gQBtiyc9i4OwXnsLqpwaUONQ4WJXwobCME9S/Lp0R.9uZHRFmqTLu', NULL, NULL, NULL, 'user', NULL);
 
 -- --------------------------------------------------------
 
@@ -134,7 +127,18 @@ CREATE TABLE IF NOT EXISTS `sports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `sports`
+--
+
+INSERT INTO `sports` (`id`, `name`) VALUES
+(0, 'foot'),
+(1, 'tennis'),
+(2, 'velo'),
+(3, 'course'),
+(4, 'piscine');
 
 --
 -- Contraintes pour les tables exportées
