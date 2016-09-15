@@ -21,12 +21,14 @@
 		$coords="";
 		$coords=explode(";", $advert['place']);
 		var_dump($advert);	
+		var_dump($sport);	
+		var_dump($member);	
 	?>
 	<input id="data-lat" type="text" style="display:none;" value=<?= $coords[0] ?>>
 	<input id="data-lng" type="text" style="display:none;" value=<?= $coords[1] ?>>
 
 	<h2><?= $advert['description'] ?></h2>
-	<p><?= $advert['sport'] ?></p>
+	<p><?= $sport['name'] ?></p>
 
 	<?php $this->stop('bas-gauche') ?>
 

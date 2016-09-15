@@ -6,6 +6,7 @@ use \W\Controller\Controller;
 use \W\Model\Model;
 use \Model\AdvertModel;
 use \Model\SportsModel;
+use \W\Model\UsersModel;
 
 class DefaultController extends Controller
 {
@@ -24,8 +25,12 @@ class DefaultController extends Controller
 	public function viewAdvert($id){
 		$AdvertModel=new AdvertModel();
 		$advert=$AdvertModel->find($id);
+		$SportsModel=new SportsModel();
+		$sport=$SportsModel->find($advert['id_sport']);
+		$UsersModel=new UsersModel();
+		$user=$UsersModel->find($advert['id_member']);
 
-		$this->show('advert/view', ['advert'=>$advert]);
+		$this->show('advert/view', ['advert'=>$advert, 'sport'=>$sport, 'member'=>$user]);
 
 	}
 	public function addPlace(){		
