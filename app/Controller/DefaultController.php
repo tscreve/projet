@@ -21,6 +21,13 @@ class DefaultController extends Controller
 	
 		$this->show('default/index',['allAdverts'=>$allAdverts, 'allSports'=>$allSports]);
 	}
+	public function viewAdvert($id){
+		$AdvertModel=new AdvertModel();
+		$advert=$AdvertModel->find($id);
+
+		$this->show('advert/view', ['advert'=>$advert]);
+
+	}
 	public function addPlace(){		
 		$strDate=date_create_from_format('d/m/Y', $_POST['date']);
 		$date=$strDate->format('Y-m-d');

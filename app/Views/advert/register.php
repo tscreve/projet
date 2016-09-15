@@ -1,7 +1,7 @@
 	<?php $this->layout('layout', ['title' => 'Enregistrer une annonce']) ?>	
 
 
-		<?php $this->start('main_content') ?>
+		<?php $this->start('droite') ?>
 		
 		<form action="<?= $this->url('default_addPlace')?>" method="POST">
 			<input id="data-lat" type="text" name="data-lat" style="display:none;">
@@ -61,8 +61,11 @@
 		    </select>
 			<br><input class="ui-button ui-widget ui-corner-all" type="submit" value="Enregistrer une annonce">
 		</form>
-		
+	<?php $this->stop('droite') ?>
 
+
+
+	<?php $this->start('bas-gauche') ?>
 		<section class="map">
 				<!-- BOUTON SEARCH DE LA MAP -->
 		<input id="pac-input" class="controls" type="text" placeholder="Search Box">
@@ -77,7 +80,7 @@
 
 
 
-	<?php $this->stop('main_content') ?>
+	<?php $this->stop('bas-gauche') ?>
 
 
 

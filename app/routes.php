@@ -14,6 +14,9 @@
 		['GET', '/advert/register', 'Default#registerPlace', 'default_registerPlace'],
 		['POST', '/advert/register', 'Default#addPlace', 'default_addPlace'],
 
+		//vue d'une annonce
+		['GET', '/advert/[:id]', 'Default#viewAdvert', 'view_advert'],
+
 		/* Ajouter-Supprimer un commentaire
 		['POST', '/addComment', 'Comment#addComment', 'comment_add_comment'],
 		['POST', '/deleteComment', 'User#deleteComment', 'user_delete_comment'],*/
