@@ -21,7 +21,7 @@ class UserController extends Controller
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
 			// var_dump($_SESSION);
-			$this -> redirectToRoute('default_index');
+			$this -> redirectToRoute('user_profil');
 		}		
 		$title = 'Inscription';
 		$this -> show('user/register_form', ['title' => $title]);
@@ -35,8 +35,8 @@ class UserController extends Controller
 		// (il ne doit pas à accéder à la page de connexion)
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
-			var_dump($_SESSION);
-			// $this -> redirectToRoute('default_index');
+			// var_dump($_SESSION);
+			$this -> redirectToRoute('user_profil');
 		}
 		$title = 'Connexion';
 		$this -> show('user/login', ['title' => $title]);
@@ -99,7 +99,7 @@ class UserController extends Controller
 			$message = "Votre inscription est validée.";
 			$auth-> setFlash($message, 'success');
 			// var_dump($_POST);
-			$this -> redirectToRoute('default_index');
+			$this -> redirectToRoute('user_profil');
 		} else {
 			// Sinon on reste sur la page et on affiche le message d'erreur
 			$title = 'Inscription';

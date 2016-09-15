@@ -5,7 +5,7 @@
 
 
 // On place le contenu de la vue
-$this->start('main_content') ?>
+$this->start('droite') ?>
 
  <!-- Modal content -->
   <div class="modal-content">
@@ -43,7 +43,7 @@ $this->start('main_content') ?>
 </div> 
 
 <!-- // fin du contenu de la vue -->
-<?php $this->stop('main_content');  ?>
+<?php $this->stop('droite');  ?>
 
 
   <?php $this->start('scripts') ?>
