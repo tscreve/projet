@@ -1,8 +1,8 @@
-	<?php $this->layout('layout', ['title' => 'Accueil']) ?>
+	<?php $this->layout('layout_projet', ['title' => 'Accueil']) ?>
 	
 	
-	<?php $this->start('places_list') ?>
-	<ul id="placesList">
+	<?php $this->start('droite') ?>
+	<ul>
 		<?php foreach($coordsPlaces as $coordsPlace): 
 			// var_dump($coordslPlace['place']);
 			$coords=explode(";", $coordsPlace['place']);
@@ -12,18 +12,18 @@
 		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?>>		
 		</li>
 		<?php endforeach; ?>
-	</ul> 
-	<?php $this->stop('places_list') ?>
+	</ul>
+	<?php $this->stop('droite') ?>
 
 <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
 
-	<?php $this->start('main_content') ?>		
+	<?php $this->start('gauche') ?>
 		<div id="map">
 	    	Chargement en cours...
 	 	</div>
-	<?php $this->stop('main_content') ?>
+	<?php $this->stop('gauche') ?>
 
 <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
