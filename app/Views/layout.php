@@ -39,11 +39,11 @@ else {
 
 
     <section>      
-        <?= $this->section('places_list') ?>           
+        <?= $this->section('droite') ?>           
     </section>
 
 		<section>
-			<?= $this->section('main_content') ?>
+			<?= $this->section('gauche') ?>
 		
 
     <!--

@@ -1,27 +1,15 @@
-	<?php $this->layout('layout_projet', ['title' => 'Accueil']) ?>
+	<?php $this->layout('layout', ['title' => 'Accueil']) ?>
 	
 	
 	<?php $this->start('droite') ?>
-	<ul>
-		<?php foreach($coordsPlaces as $coordsPlace): 
-			// var_dump($coordslPlace['place']);
-			$coords=explode(";", $coordsPlace['place']);
-			// var_dump($coords[0]);
-			// var_dump($coords[1]);	
-	<?php $this->start('places_list') ?>
 	<ul id="placesList">
-	<?php  ?>
-		<?php 
+		<?php foreach($allAdverts as $advert): 
 
-			foreach($allAdverts as $advert): 
-				$idSport=$advert['id_sport'];
-				$sport=$allSports[$idSport]['name'];
-
-
-				$coords=explode(";", $advert['place']);	
-
-
-
+			$coords=explode(";", $advert['place']);
+			
+			$idSport=$advert['id_sport'];
+			$sport=$allSports[$idSport]['name'];
+			$coords=explode(";", $advert['place']);	
 
 		?>
 		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?>>
