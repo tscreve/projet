@@ -141,15 +141,17 @@ class UserController extends Controller
 	{
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
-			$UsersModel=new UsersModel();
-
 			$id_user=$_SESSION['user']['id'];
+			// var_dump($_SESSION);
+			$UsersModel=new UsersModel;
 			$user=$UsersModel->find($id_user);
 
 			$AdvertModel=new AdvertModel();
-			$sql="SELECT id FROM advert WHERE id_member=$id_user";
+			$sql="SELECT a.*, s.name AS sport FROM advert a, sports s, members m 
+											WHERE a.id_member=$id_user
+											AND a.id_member=m.id
+											AND a.id_sport=s.id";
 			$adverts=$AdvertModel->query($sql);
-
 
 			$this -> show('user/profil', ['profil'=>$user, 'adverts'=>$adverts]);			
 		}

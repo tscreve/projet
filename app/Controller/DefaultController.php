@@ -16,21 +16,22 @@ class DefaultController extends Controller
 	public function index()
 	{
 		$AdvertModel=new AdvertModel();		
-		$allAdverts=$AdvertModel->findAll();	
-		$SportsModel=new SportsModel();		
-		$allSports=$SportsModel->findAll();		
-	
-		$this->show('default/index',['allAdverts'=>$allAdverts, 'allSports'=>$allSports]);
+		$sql="SELECT s.name AS sport, a.id, a.description, a.place, a.level, a.event_date, a.event_time, a.nb_participant, a.advert_post_date FROM sports s, advert a WHERE a.id_sport=s.id";
+		$allAdverts=$AdvertModel->query($sql);	
+
+		$this->show('default/index',['allAdverts'=>$allAdverts]);
 	}
 	public function viewAdvert($id){
 		$AdvertModel=new AdvertModel();
-		$advert=$AdvertModel->find($id);
-		$SportsModel=new SportsModel();
-		$sport=$SportsModel->find($advert['id_sport']);
-		$UsersModel=new UsersModel();
-		$user=$UsersModel->find($advert['id_member']);
+		$sql="SELECT a.*, s.name AS sport, m.id as poster FROM advert a, sports s, members m WHERE a.id=$id
+						AND a.id_sport=s.id
+						AND a.id_member=m.id";
+		$advert=$AdvertModel->query($sql);
 
-		$this->show('advert/view', ['advert'=>$advert, 'sport'=>$sport, 'member'=>$user]);
+		$UsersModel=new UsersModel;
+		$user=$UsersModel->find($advert[0]['poster']);
+
+		$this->show('advert/view', ['advert'=>$advert, 'poster'=>$user]);
 
 	}
 	public function addPlace(){		
@@ -49,7 +50,7 @@ class DefaultController extends Controller
 			'id_member'=>$_SESSION['user']['id'],
 			'id_sport'=>$_POST['id_sport'],
 			'place'=>$placeStr,
-			'description'=>htmlentities($_POST['description']),
+			'presentation'=>htmlentities($_POST['description']),
 			'level'=>$_POST['level'],
 			'event_date'=>$date,
 			'event_time'=>$time,
