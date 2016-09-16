@@ -33,7 +33,10 @@
 		/* connexion un utilisateur*/
 		['GET', '/login', 'User#loginForm', 'user_login_form'],
 		['POST', '/login', 'User#login', 'user_login'],
+
 		['GET', '/profil', 'User#profil', 'user_profil'],
+		['POST', '/profil', 'User#updateProfil', 'user_update_profil'],
+		
 		['GET', '/logout', 'User#logout', 'user_logout'],
 
 		/* Partie Admin - Ajouter-Modifier-Supprimer un film*/

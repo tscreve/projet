@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 15 Septembre 2016 à 16:04
+-- Généré le :  Ven 16 Septembre 2016 à 11:32
 -- Version du serveur :  5.7.9
 -- Version de PHP :  5.6.16
 
@@ -71,27 +71,28 @@ CREATE TABLE IF NOT EXISTS `members` (
   `birthdate` date DEFAULT NULL,
   `password` varchar(255) NOT NULL,
   `photo` varchar(255) DEFAULT NULL,
-  `presentation` varchar(255) DEFAULT NULL,
-  `phone` int(20) DEFAULT NULL,
+  `presentation` text,
+  `phone` varchar(20) DEFAULT NULL,
   `role` enum('user','admin') NOT NULL,
   `register_date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `members`
 --
 
 INSERT INTO `members` (`id`, `email`, `name`, `firstname`, `gender`, `birthdate`, `password`, `photo`, `presentation`, `phone`, `role`, `register_date`) VALUES
-(1, 'tscreve@hotmail.com', NULL, 'dqsv', NULL, NULL, '$2y$10$lOoGzY7edlMIVLQ9CYXzGOrHoz7ZKXerTdAuOv3XxY3tKCFzbkgy2', NULL, 'presentation de tscreve@hotmail.com', NULL, 'user', NULL),
+(1, 'tscreve@hotmail.com', NULL, 'dqsv', 'm', '2016-09-28', '$2y$10$lOoGzY7edlMIVLQ9CYXzGOrHoz7ZKXerTdAuOv3XxY3tKCFzbkgy2', NULL, 'jhkhkuh		\r\n				\r\n		', '', 'user', NULL),
 (2, 'egvb@htmail.com', NULL, 'ebfr', NULL, NULL, '$2y$10$DLHHy0pPsgmt2.Lhcs2v3ujIeLItK9ut0c6ISF800Q51/bLIE8DTe', NULL, NULL, NULL, 'user', NULL),
 (3, 'juju@hotmail.com', NULL, 'dfbh', NULL, NULL, '$2y$10$Ik40mlgulNbIpeSzdk1eReWIfDScfiBpHrZTO33FZKqnxIa1F2Q5m', NULL, 'presentation de juju@hotmail.com', NULL, 'user', NULL),
-(4, 'membre@exemple.com', NULL, 'fghnj', NULL, NULL, '$2y$10$juNE7mH1kAgYxkz9aVN8yuIfShOlH6Y1p8G88vPVJvSyB5Lq6tdsG', NULL, NULL, NULL, 'user', NULL),
+(4, 'membre@exemple.com', NULL, 'fghnj bncfvhgfc', NULL, NULL, '$2y$10$juNE7mH1kAgYxkz9aVN8yuIfShOlH6Y1p8G88vPVJvSyB5Lq6tdsG', NULL, NULL, NULL, 'user', NULL),
 (5, 'treve@hotmail.com', NULL, 'fgj', NULL, NULL, '$2y$10$ynFhavIOguoYPZNj4PKYo.m1u3d8YL.TN9P7jWGUx1xFTtoL8G8Vu', NULL, 'presentation de treve@hotmail.com', NULL, 'user', NULL),
 (6, 'geraldine.harpon@gmail.com', NULL, 'gh', NULL, NULL, '$2y$10$mr8KMYkpTcaXnhTAmfOroOWxkZvQ.x/6lQ.oBMbNNcL2R9iSAQMyO', NULL, NULL, NULL, 'user', NULL),
 (7, 'tve@hotmail.com', NULL, 'gh', 'm', '2016-09-15', '$2y$10$/SVOZLly.5RiYxntl1s0PeiepiCXjZXWj1JJAQUO.z4MjhkfDw91u', NULL, NULL, NULL, 'user', NULL),
-(8, 'trev@hotmail.com', NULL, 'fj', 'm', '1976-09-23', '$2y$10$zAWF9.P4GZDuj6aCV6WTBufw..pAgnwiBRWj69FompFCROtcNWVvS', NULL, 'presentation de trev@hotmail.com', NULL, 'user', NULL);
+(8, 'trev@hotmail.com', NULL, 'fj', 'm', '1976-09-23', '$2y$10$zAWF9.P4GZDuj6aCV6WTBufw..pAgnwiBRWj69FompFCROtcNWVvS', NULL, 'presentation de trev@hotmail.com', NULL, 'user', NULL),
+(9, 'trev52@hotmail.com', NULL, 'MON PRENOM', 'f', '1974-03-15', '$2y$10$DNKhpXxL1kvw5NQpBMwQl.12XOPu/wHk8RrlxRL/i6H6/DoP3m356', NULL, NULL, NULL, 'user', NULL);
 
 -- --------------------------------------------------------
 
@@ -134,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `sports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `sports`

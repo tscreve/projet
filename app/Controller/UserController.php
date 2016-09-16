@@ -65,7 +65,7 @@ class UserController extends Controller
         ** On vérifie que l'Email et le prénom ne sont pas déjà utilisés avant d'insérer les données.
         ** Si l'Email ou le prénom sont déjà utilisés, on redirige l'utilisateur vers la page du formulaire d'inscription avec le message d'erreur.
         */       
-       $birthdateTime = date_create_from_format('j/m/Y',$_POST['birthdate']);//méthode  procédural
+        $birthdateTime = date_create_from_format('j/m/Y',$_POST['birthdate']);//méthode  procédural
    		$birthdate = $birthdateTime->format('Y-m-d');
 
    		if($birthdate == false){
@@ -94,8 +94,7 @@ class UserController extends Controller
 		}
 		//ajout de l'utilisateur avec la fonction insert() dispo dans W/Model/Model.php
 		if($userTable-> insert($newUser)) {
-			// Si l'enregistrement est OK on affiche la page d'acceuil avec le message de succès
-			
+			// Si l'enregistrement est OK on affiche la page d'acceuil avec le message de succès			
 			$message = "Votre inscription est validée.";
 			$auth-> setFlash($message, 'success');
 			// var_dump($_POST);
@@ -156,6 +155,39 @@ class UserController extends Controller
 			$this -> show('user/profil', ['profil'=>$user, 'adverts'=>$adverts]);			
 		}
 		$this -> redirectToRoute('default_index');		
+	}
+	public function updateProfil(){
+		// var_dump($_POST);
+		$auth = new AuthentificationModel;
+		$loggedUser = $this->getUser();
+		if($loggedUser) {
+			$id_user=$_SESSION['user']['id'];
+			$birthdateTime = date_create_from_format('j/m/Y',$_POST['birthdate']);
+   			$birthdate = $birthdateTime->format('Y-m-d');
+			$UsersModel=new UsersModel;
+			$user = array(
+				'firstname' => htmlentities($_POST['firstname']),				
+				'birthdate'=> $birthdate,
+				'presentation'=> $_POST['presentation'],
+				'phone'=> $_POST['phone'],				
+				'gender' => $_POST['gender']			
+			);
+			//update de l'utilisateur 
+			if($UsersModel-> update($user, $id_user)){
+				// Si l'enregistrement est OK 
+				$message = "Profil mis à jour !";
+				$auth-> setFlash($message, 'success');
+				// var_dump($_POST);
+				$this -> redirectToRoute('user_profil');
+			} 
+			else{
+				// Sinon on reste sur la page et on affiche le message d'erreur				
+				$message = "Il y a eu problème lors de la mise à jour de votre profil";
+				$auth-> setFlash($message, 'error');
+				// var_dump($_POST);
+				$this -> redirectToRoute('user_profil');
+			}	
+		}
 	}
 	/*
 	*Déconnexion

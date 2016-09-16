@@ -53,10 +53,8 @@ $this->start('droite') ?>
           $( "#gender" ).selectmenu();
               $( "#datepicker" ).datepicker({
                 yearRange: "1966:2000",
-                changeMonth: true,
-                
+                changeMonth: true,                
                 changeYear: true
-
               });
         });
 
