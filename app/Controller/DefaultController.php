@@ -50,7 +50,7 @@ class DefaultController extends Controller
 			'id_member'=>$_SESSION['user']['id'],
 			'id_sport'=>$_POST['id_sport'],
 			'place'=>$placeStr,
-			'presentation'=>htmlentities($_POST['description']),
+			'description'=>htmlentities($_POST['description']),
 			'level'=>$_POST['level'],
 			'event_date'=>$date,
 			'event_time'=>$time,
@@ -59,8 +59,10 @@ class DefaultController extends Controller
 			);
 
 		$AdvertModel->insert($advert);
+
+		$this -> redirectToRoute('user_profil');
 		// $this->show('advert/register');	
-		var_dump($_POST);
+		// var_dump($_POST);
 	}
 
 	public function registerPlace(){

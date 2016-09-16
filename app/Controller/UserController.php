@@ -98,7 +98,12 @@ class UserController extends Controller
 			$message = "Votre inscription est validée.";
 			$auth-> setFlash($message, 'success');
 			// var_dump($_POST);
+			$auth = new AuthentificationModel;
+			$user = $userTable -> getUserByUsernameOrEmail($newUser['email']);
+			//connexion de l'utilisateur
+			$auth -> logUserIn($user);
 			$this -> redirectToRoute('user_profil');
+			// var_dump($_SESSION);
 		} else {
 			// Sinon on reste sur la page et on affiche le message d'erreur
 			$title = 'Inscription';

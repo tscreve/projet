@@ -19,6 +19,7 @@
 	<?php 
 	// var_dump($adverts);
 	?>
+	<h2>Mes annonces</h2>
 	<ul id="placesList">
 		<?php foreach($adverts as $advert): 			
 			$coords=explode(";", $advert['place']);	
@@ -26,7 +27,7 @@
 		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?>>
 		<p><?= $advert['description'] ?></p>
 		<p><?= $advert['sport'] ?></p>
-		<p>Pour les <?php switch($advert['level']){
+		<p>Niveau : <?php switch($advert['level']){
 			case 'debutant':
 				echo "Débutant";
 				break;
@@ -39,9 +40,9 @@
 		}
 		 ?></p>
 		<p>Le <?= $advert['event_date'] ?></p>
-		<p>à <?= $advert['event_time'] ?></p>
-		<p>Besoin de <?= $advert['nb_participant'] ?> participants</p>
-		<p>Annonce postée le <?= $advert['advert_post_date'] ?></p>
+		
+		<p> Participants <?= $advert['nb_participant'] ?></p>
+		<p>Postée le <?= $advert['advert_post_date'] ?></p>
 		<p>Statut <?= $advert['statut'] ?></p>		
 		</li>
 		<?php endforeach; ?>

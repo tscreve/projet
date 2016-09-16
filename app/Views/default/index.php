@@ -3,7 +3,7 @@
 	
 	<?php $this->start('droite') ?>
 	<ul id="placesList">
-	<?php var_dump($allAdverts); ?>
+	<?php // var_dump($allAdverts); ?>
 		<?php foreach($allAdverts as $advert): 			
 			$coords=explode(";", $advert['place']);	
 		?>
