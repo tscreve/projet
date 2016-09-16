@@ -19,14 +19,14 @@
 
 	<?= 
 		$coords="";
-		$coords=explode(";", $advert[0]['place']);
+		$coords=explode(";", $advert['place']);
 		var_dump($advert);	
 		
 	?>
 	<input id="data-lat" type="text" style="display:none;" value=<?= $coords[0] ?>>
 	<input id="data-lng" type="text" style="display:none;" value=<?= $coords[1] ?>>
 
-	<h2><?= $advert[0]['description'] ?></h2>
+	<h2><?= $advert['description'] ?></h2>
 	
 
 	<?php $this->stop('bas-gauche') ?>

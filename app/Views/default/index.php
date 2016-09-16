@@ -9,18 +9,17 @@
 		?>
 		<a href="<?= $this->url('view_advert', ['id' => $advert['id']]) ?>">
 		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?>>
-		<!-- <h2><?= $sport ?></h2>	 -->
 		<p><?= $advert['description'] ?></p>
 		<p><?= $advert['sport'] ?></p>
 		<p>Pour les <?php switch($advert['level']){
 			case 'debutant':
-				echo "Débutant";
+				echo "débutants";
 				break;
 			case 'amateur':
-				echo "Amateur";
+				echo "amateurs";
 				break;
 			case 'confirme':
-				echo "Confirmé";
+				echo "confirmés";
 				break;
 		}
 		 ?></p>

@@ -31,7 +31,7 @@ class DefaultController extends Controller
 		$UsersModel=new UsersModel;
 		$user=$UsersModel->find($advert[0]['poster']);
 
-		$this->show('advert/view', ['advert'=>$advert, 'poster'=>$user]);
+		$this->show('advert/view', ['advert'=>$advert[0], 'poster'=>$user]);
 
 	}
 	public function addPlace(){		
