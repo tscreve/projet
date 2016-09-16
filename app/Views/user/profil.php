@@ -17,16 +17,22 @@
 
 <?php $this->start('bas-gauche') ?>		
 	<?php 
-	// var_dump($adverts);
+	// var_dump($adverts); 	
 	?>
 	<h2>Mes annonces</h2>
 	<ul id="placesList">
-		<?php foreach($adverts as $advert): 			
+		<?php foreach($adverts as $advert): 
+			$date=date_create_from_format('Y-m-d',$advert['event_date']);	
+			$eventDate=$date->format('d/m');
+			$date=date_create_from_format('H:i:s',$advert['event_time']);	
+			$eventTime=$date->format('H \h i \m\i\n');
+			$date=date_create_from_format('Y-m-d H:i:s',$advert['advert_post_date']);	
+			$advertPostDate=$date->format('d/m \à H \h i \m\i\n');			
 			$coords=explode(";", $advert['place']);	
 		?>		
 		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?>>
-		<p><?= $advert['description'] ?></p>
 		<p><?= $advert['sport'] ?></p>
+		<p>Détails :<br><?= $advert['description'] ?></p>		
 		<p>Niveau : <?php switch($advert['level']){
 			case 'debutant':
 				echo "Débutant";
@@ -39,11 +45,22 @@
 				break;
 		}
 		 ?></p>
-		<p>Le <?= $advert['event_date'] ?></p>
+		<p>Rdv le <?= $eventDate." à ".$eventTime ?></p>
 		
 		<p> Participants <?= $advert['nb_participant'] ?></p>
-		<p>Postée le <?= $advert['advert_post_date'] ?></p>
-		<p>Statut <?= $advert['statut'] ?></p>		
+		<p>Postée le <?= $advertPostDate ?></p>
+		<p>Statut :
+				<?php
+					switch($advert['statut']){
+						case 'available':
+							echo "en ligne";
+							break;
+						case 'not_available':
+							echo "hors ligne";
+							break;
+					} 
+
+				?></p>		
 		</li>
 		<?php endforeach; ?>
 	</ul>

@@ -7,6 +7,7 @@ use \W\Model\Model;
 use \Model\AdvertModel;
 use \Model\SportsModel;
 use \W\Model\UsersModel;
+use \W\Security\AuthentificationModel;
 
 class DefaultController extends Controller
 {
@@ -35,6 +36,7 @@ class DefaultController extends Controller
 
 	}
 	public function addPlace(){		
+		$auth = new AuthentificationModel;
 		$strDate=date_create_from_format('d/m/Y', $_POST['date']);
 		$date=$strDate->format('Y-m-d');
 		$strTime=date_create_from_format('H', $_POST['time']);
@@ -58,10 +60,17 @@ class DefaultController extends Controller
 			'statut'=>'available'
 			);
 
-		$AdvertModel->insert($advert);
-
-		$this -> redirectToRoute('user_profil');
-		// $this->show('advert/register');	
+		if($AdvertModel->insert($advert)){
+			$message = "Annonce enregistrée.";
+			$auth-> setFlash($message, 'success');
+			$this -> redirectToRoute('user_profil');
+		}
+		else{
+			$message = "Il y a eu problème lors de l'enregistrement de votre annonce";
+			$auth-> setFlash($message, 'error');
+			$this->show('advert/register');
+		}		
+		// 	
 		// var_dump($_POST);
 	}
 
