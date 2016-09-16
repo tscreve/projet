@@ -26,11 +26,12 @@
 			$eventDate=$date->format('d/m');
 			$date=date_create_from_format('H:i:s',$advert['event_time']);	
 			$eventTime=$date->format('H \h i \m\i\n');
+			$dataTime=$date->format('H\hi');
 			$date=date_create_from_format('Y-m-d H:i:s',$advert['advert_post_date']);	
 			$advertPostDate=$date->format('d/m \à H \h i \m\i\n');			
 			$coords=explode(";", $advert['place']);	
 		?>		
-		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?>>
+		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['nb_participant'] ?> data-level=<?= $advert['level'] ?>>
 		<p><?= $advert['sport'] ?></p>
 		<p>Détails :<br><?= $advert['description'] ?></p>		
 		<p>Niveau : <?php switch($advert['level']){

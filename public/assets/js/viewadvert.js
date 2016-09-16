@@ -26,7 +26,7 @@
       }, function() {
         handleLocationError(true, maPosMarker, map.getCenter());
       });
-
+        
         var pos = {
           lat: Number(strLat.value),
           lng: Number(strLng.value)

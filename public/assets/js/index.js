@@ -8,7 +8,7 @@
 
     //la liste des coordonnées
     var list=document.getElementById("placesList");
-    markers = [];
+    // markers = [];
     // console.log(list.childElementCount);
 
 
@@ -32,17 +32,57 @@
       // ajout d'un marqueur par entrée de #placesList
       for($i=0;$i<list.childElementCount;$i++){
         // console.log(list.children[$i].getAttribute('data-lat'));
-        // console.log(list.children[$i].getAttribute('data-lng'));
+        var sport=list.children[$i].getAttribute('data-sport');
+        var date=list.children[$i].getAttribute('data-date');
+        var time=list.children[$i].getAttribute('data-time');
+        var participant=list.children[$i].getAttribute('data-participant');
+        var level=list.children[$i].getAttribute('data-level');
+        switch(level){
+          case "debutant":
+            level="débutant(s)";
+            break;
+            case "amateur":
+            level="amateur(s)";
+            break;
+            case "confirme":
+            level="confirmé(s)";
+            break;
+        }
+
+
+
+        var contentString='<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h3 id="firstHeading" class="firstHeading">'+sport+' pour '+participant+' '+level+' le '+date+' à '+time+'</h3>'+
+            '<div id="bodyContent">'+
+            // '<p>sport</p>'+
+            '</div>'+
+            '</div>';
+  
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString,
+          maxWidth: 200
+        });
 
         var pos = {
           lat: Number(list.children[$i].getAttribute('data-lat')),
           lng: Number(list.children[$i].getAttribute('data-lng'))
         };
 
-        markers.push(new google.maps.Marker({
-           map: map,
-           position:pos
-        }));
+        var marker = new google.maps.Marker({
+          position: pos,
+          map: map          
+        });
+
+        // markers.push(new google.maps.Marker({
+        //    map: map,
+        //    position:pos
+
+        // }));
+
+        bindWindow(marker, map, infowindow);
+
       }
 
     } else {
@@ -50,6 +90,16 @@
       handleLocationError(false, maPosMarker, map.getCenter());
     }
   }
+  function bindWindow(marker, map, infowindow){
+     marker.addListener('click', function() {
+          infowindow.open(map, this);
+        });
+  }
+ 
+
+
+
+
 
   function handleLocationError(browserHasGeolocation, maPosMarker, pos) {
     maPosMarker.setPosition(pos);
