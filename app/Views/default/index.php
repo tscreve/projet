@@ -10,11 +10,12 @@
 			$date=date_create_from_format('H:i:s',$advert['event_time']);	
 			$eventTime=$date->format('H\h i\m\i\n');	
 			$dataTime=$date->format('H\hi');	
+			$dataUrl=$this->url('view_advert', ['id' => $advert['id']]);
 
 			$coords=explode(";", $advert['place']);	
 		?>
 		<a href="<?= $this->url('view_advert', ['id' => $advert['id']]) ?>">
-		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['nb_participant'] ?> data-level=<?= $advert['level'] ?>>	
+		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['nb_participant'] ?> data-level=<?= $advert['level'] ?> data-dUrl=<?= $dataUrl ?>>	
 		<h2><?= $advert['sport'] ?></h2>
 		<p>Pour les <?php switch($advert['level']){
 			case 'debutant':

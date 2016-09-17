@@ -1,3 +1,5 @@
+  
+
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 48.8376, lng:2.3341883},
@@ -5,6 +7,7 @@
     });
     // marqueur ma position géolocalisée
     var maPosMarker = new google.maps.Marker({map: map});
+    var infowindow;
 
     //la liste des coordonnées
     var list=document.getElementById("placesList");
@@ -37,6 +40,8 @@
         var time=list.children[$i].getAttribute('data-time');
         var participant=list.children[$i].getAttribute('data-participant');
         var level=list.children[$i].getAttribute('data-level');
+        var dUrl=list.children[$i].getAttribute('data-dUrl');
+       
         switch(level){
           case "debutant":
             level="débutant(s)";
@@ -56,11 +61,11 @@
             '</div>'+
             '<h3 id="firstHeading" class="firstHeading">'+sport+' pour '+participant+' '+level+' le '+date+' à '+time+'</h3>'+
             '<div id="bodyContent">'+
-            // '<p>sport</p>'+
+            '<a href="'+dUrl+'">Participer</a>'+
             '</div>'+
             '</div>';
   
-        var infowindow = new google.maps.InfoWindow({
+        infowindow = new google.maps.InfoWindow({
           content: contentString,
           maxWidth: 200
         });
@@ -74,32 +79,20 @@
           position: pos,
           map: map          
         });
-
-        // markers.push(new google.maps.Marker({
-        //    map: map,
-        //    position:pos
-
-        // }));
-
-        bindWindow(marker, map, infowindow);
-
+        bindWindow(marker, map, infowindow);         
       }
-
     } else {
       // Browser doesn't support Geolocation
       handleLocationError(false, maPosMarker, map.getCenter());
     }
   }
+
   function bindWindow(marker, map, infowindow){
      marker.addListener('click', function() {
+      console.log(infowindow);         
           infowindow.open(map, this);
         });
   }
- 
-
-
-
-
 
   function handleLocationError(browserHasGeolocation, maPosMarker, pos) {
     maPosMarker.setPosition(pos);

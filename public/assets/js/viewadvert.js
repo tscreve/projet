@@ -1,7 +1,7 @@
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 48.8376, lng:2.3341883},
-      zoom: 14
+      zoom: 15
     });
     // marqueur ma position géolocalisée
     var maPosMarker = new google.maps.Marker({map: map});
@@ -26,7 +26,7 @@
       }, function() {
         handleLocationError(true, maPosMarker, map.getCenter());
       });
-        
+
         var pos = {
           lat: Number(strLat.value),
           lng: Number(strLng.value)

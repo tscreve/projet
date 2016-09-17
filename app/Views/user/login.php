@@ -8,7 +8,13 @@
 
 	// On place le contenu de la vue
 	$this->start('main_content') ?>
-	
+	<?php  
+	if(isset($idAdvert)){
+		var_dump($idAdvert); 
+	}
+
+		
+	?>
 
 	<form class="login-form" method="POST" action="<?= $this->url('user_login')?>"> 
 	<label for="email">Email</label> 
@@ -18,6 +24,8 @@
 	<input placeholder="Votre mot de passe" type="password" name="password">
 
 	<input type="submit" value="Se connecter">   
+	<hr><hr>
+	<a href="<?= $this->url('user_register_form') ?>">Enregistrez vous</a>
 	</form>
 
 

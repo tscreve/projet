@@ -21,11 +21,11 @@ $this->start('droite') ?>
     <br><br>
 
       <label for="Prenom">Prenom</label><br>
-      <input placeholder="prenom" type="text" name="firstname" >
+      <input placeholder="prenom" type="text" name="firstname" required>
 			<br>
 
 	<label for="date de naissance">Date d'anniversaire :</label><br>
-	<input type="text" id="datepicker" name="birthdate"></input><br>
+	<input type="text" id="datepicker" name="birthdate" required></input><br>
 	
 		<br><br>
 

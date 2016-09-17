@@ -57,6 +57,7 @@ class DefaultController extends Controller
 			'event_date'=>$date,
 			'event_time'=>$time,
 			'nb_participant'=>$_POST['nb_participant'],
+			'remain_participant'=>$_POST['nb_participant'],
 			'statut'=>'available'
 			);
 
@@ -83,5 +84,39 @@ class DefaultController extends Controller
 			$this->show('advert/register', ['allSports'=>$allSports]);	
 		}
 		$this -> redirectToRoute('default_index');		
+	}
+
+	public function participate($id){
+		$loggedUser = $this->getUser();
+		$auth = new AuthentificationModel;
+		if($loggedUser) {			
+			// var_dump($_SESSION['user']);			
+			$idAdvert=$id;
+			$idMember=$_SESSION['user']['id'];
+			$add_participant=$_POST['participant'];
+
+			$AdvertModel=new AdvertModel;
+			$sql="SELECT remain_participant AS pp FROM advert WHERE id=$idAdvert";
+			$sql=$AdvertModel->query($sql);	
+			$remain_participant=$sql[0]['pp'];
+			$remain_participant=$remain_participant-$add_participant;
+
+			$advert=array(
+				'remain_participant'=>$remain_participant
+				);
+			var_dump($advert);
+			
+			$AdvertModel->update($advert, $idAdvert);
+			
+
+
+
+			// $this -> redirectToRoute('view_advert', ['id'=>$id]);
+		}
+		else{
+			$idAdvert=$id;
+			$this->show('user/login', ['idAdvert'=>$idAdvert]);
+		}
+		
 	}
 }

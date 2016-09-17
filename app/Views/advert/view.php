@@ -18,6 +18,7 @@
 	<?php $this->start('bas-gauche') ?>
 	
 	<h2>Détail de l'annonce</h2>
+	
 	<?php
 		// var_dump($advert);
 		$date=date_create_from_format('Y-m-d',$advert['event_date']);	
@@ -28,15 +29,12 @@
 		$coords=explode(";", $advert['place']);
 		// var_dump($advert);	
 
-		
+		$date=date_create_from_format('Y-m-d H:i:s',$advert['advert_post_date']);	
+		$advertDate=$date->format('d/m \à H \h i \m\i\n');
+       
 	?>
 	<input id="data-lat" type="text" style="display:none;" value=<?= $coords[0] ?>>
 	<input id="data-lng" type="text" style="display:none;" value=<?= $coords[1] ?>>
-	<?php
-		$date=date_create_from_format('Y-m-d H:i:s',$advert['advert_post_date']);	
-		$advertDate=$date->format('d/m \à H \h i \m\i\n');
-	?>
-
 	<p>Annonce pour <?= $advert['sport'] ?></p>
 	<p>Détails :<br><?= $advert['description'] ?></p>
 	<p>Niveau <?= $advert['level'] ?></p>
@@ -45,7 +43,29 @@
 	$poster['firstname'] ?> cherche <?= $advert['nb_participant'] ?> sportifs</p>
 	<p>Annonce postée le 
 		<?=	$advertDate; ?></p>
+	<form method="POST" action="">
+		<label for="participant">Place(s) disponibles:</label><br>
+        <select name="participant" id="participant">
+		<?php
+			$remain_participant=$advert['remain_participant'];
+			for($i=0;$i<$remain_participant;$i++){ ?>
+				<option value="<?= $i+1 ?>"><?= $i+1 ?></option>;
+			<?php }
+		?> 
+        </select>
+    	<br><br>		
+		<?php
+			if($remain_participant!=0){?>
+				<br><input class="ui-button ui-widget ui-corner-all" type="submit" value="Participer">
+			<?php }
+		?>		
+	</form>
+	<?php
 
+
+
+
+	?>
 	<?php $this->stop('bas-gauche') ?>
 
 
@@ -85,6 +105,13 @@
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA082QH94snG4T-XIsT6ayEukK-g5mNArg&libraries=places&callback=initMap"
 	         async defer></script>
 	    <script type="text/javascript" src= <?= $this->assetUrl('js/viewadvert.js') ?> ></script>
+	     <script>
+       $( function() {
+          // SELECT
+          $( "#participant" ).selectmenu();              
+        });
+
+   </script>
 	<?php $this->stop('scripts') ?>
 
 

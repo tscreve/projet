@@ -16,6 +16,7 @@
 
 		//vue d'une annonce
 		['GET', '/advert/[:id]', 'Default#viewAdvert', 'view_advert'],
+		['POST', '/advert/[:id]', 'Default#participate', 'advert_participate'],
 
 		/* Ajouter-Supprimer un commentaire
 		['POST', '/addComment', 'Comment#addComment', 'comment_add_comment'],
@@ -36,7 +37,7 @@
 
 		['GET', '/profil', 'User#profil', 'user_profil'],
 		['POST', '/profil', 'User#updateProfil', 'user_update_profil'],
-		
+
 		['GET', '/logout', 'User#logout', 'user_logout'],
 
 		/* Partie Admin - Ajouter-Modifier-Supprimer un film*/

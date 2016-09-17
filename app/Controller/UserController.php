@@ -38,6 +38,7 @@ class UserController extends Controller
 			// var_dump($_SESSION);
 			$this -> redirectToRoute('user_profil');
 		}
+		
 		$title = 'Connexion';
 		$this -> show('user/login', ['title' => $title]);
 	}
