@@ -55,17 +55,32 @@
 			<?php }
 		?> 
         </select>
-    	<br><br>		
+    	<br><br>
+    	<br>
 		<?php
-			if(($remain_participant!=0) && $poster['id']!=$_SESSION['user']['id']){?>
-				<br><input class="ui-button ui-widget ui-corner-all" type="submit" value="Participer">
-			<?php }
+			if(($remain_participant!=0) && $poster['id']!=$_SESSION['user']['id']){
+				
+					foreach($participants as $participant){
+						
+						if($participant['id']==$_SESSION['user']['id']){
+							$part=true;
+						}else{
+							$part=false;
+						}
+						var_dump($part);						
+					}
+					if($part==false){
+							?>
+								<input class="ui-button ui-widget ui-corner-all" type="submit" value="Participer">
+							<?php }
+				}
+				
 		?>		
 	</form>
 	<h2>Les participants</h2>
-
+	<ul>
 	<?php
-		// var_dump($participants);
+		
 
 		foreach($participants as $participant):
 			$birthdateTime = date_create_from_format('Y-m-d',$participant['birthdate']);
@@ -74,7 +89,7 @@
 	   		$age=$now->diff($birthdateTime);   		
 			// var_dump($age);
 		?>
-
+		<li>
 		<h3><?= $participant['firstname'] ?></h3>
 		
 		<p><?php switch($participant['gender']){
@@ -87,8 +102,9 @@
 			} ?></p>
 		<p><?= $age->format("%y") ?> ans</p>
 		<p><?= $participant['nb_participant'] ?> place(s)</p>
+		</li>
 		<?php endforeach; ?>
-		
+	</ul>
 	
 	<?php $this->stop('bas-gauche') ?>
 

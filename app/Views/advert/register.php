@@ -29,7 +29,7 @@
 			<br><br>
 
 			<p>Date de rdv: </p><br>
-			<input type="text" id="datepicker" name="date"></input><br>
+			<input type="text" id="datepicker" name="date" required></input><br>
 			
 			<label for="time">Heure :</label><br>
 		    <select name="time" id="time">	
