@@ -6,6 +6,7 @@ use \W\Controller\Controller;
 use \W\Model\Model;
 use \Model\AdvertModel;
 use \Model\SportsModel;
+use \Model\ParticipationModel;
 use \W\Model\UsersModel;
 use \W\Security\AuthentificationModel;
 
@@ -100,18 +101,25 @@ class DefaultController extends Controller
 			$sql=$AdvertModel->query($sql);	
 			$remain_participant=$sql[0]['pp'];
 			$remain_participant=$remain_participant-$add_participant;
-
 			$advert=array(
 				'remain_participant'=>$remain_participant
 				);
-			var_dump($advert);
-			
+			// var_dump($advert);			
 			$AdvertModel->update($advert, $idAdvert);
+
+			$participationModel=new ParticipationModel;
+			$participation=array(
+				'id_advert'=>$idAdvert,
+				'id_member'=>$idMember,
+				'nb_participant'=>$add_participant
+				);
+
+			$participationModel->insert($participation);
 			
 
 
 
-			// $this -> redirectToRoute('view_advert', ['id'=>$id]);
+			$this -> redirectToRoute('view_advert', ['id'=>$id]);
 		}
 		else{
 			$idAdvert=$id;

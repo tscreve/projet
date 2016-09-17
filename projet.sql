@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 17 Septembre 2016 à 08:29
+-- Généré le :  Sam 17 Septembre 2016 à 10:30
 -- Version du serveur :  5.7.9
 -- Version de PHP :  5.6.16
 
@@ -43,18 +43,15 @@ CREATE TABLE IF NOT EXISTS `advert` (
   PRIMARY KEY (`id`),
   KEY `id_member` (`id_member`),
   KEY `id_sport` (`id_sport`)
-) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `advert`
 --
 
 INSERT INTO `advert` (`id`, `id_member`, `id_sport`, `place`, `description`, `level`, `event_date`, `event_time`, `nb_participant`, `remain_participant`, `statut`, `advert_post_date`) VALUES
-(72, 13, 1, '48.873917500000005;2.339884', 'gfh', 'amateur', '2016-09-22', '12:00:00', 2, 0, 'available', '2016-09-16 13:13:52'),
-(73, 11, 1, '48.87391710000001;2.3398832', 'street tennis', 'debutant', '2016-09-29', '12:00:00', 2, 0, 'available', '2016-09-16 13:24:00'),
-(76, 10, 2, '48.87480270552913;2.346525192260742', 'descr', 'amateur', '2016-09-21', '12:00:00', 2, 0, 'available', '2016-09-16 15:46:47'),
-(77, 12, 3, '48.87636356056125;2.3285865783691406', '', 'amateur', '2016-09-06', '12:00:00', 2, 0, 'available', '2016-09-16 15:47:26'),
-(78, 12, 0, '48.87514141283454;2.3484134674072266', '', 'confirme', '2016-09-20', '18:00:00', 6, 0, 'available', '2016-09-16 21:14:18');
+(79, 11, 1, '48.86826332276116;2.3494434356689453', 'kgjhvhvh', 'debutant', '2016-09-29', '12:00:00', 2, 0, 'available', '2016-09-17 08:48:14'),
+(80, 11, 3, '48.86351961816249;2.3494434356689453', 'velo cool', 'debutant', '2016-09-30', '14:00:00', 10, 3, 'available', '2016-09-17 09:58:34');
 
 -- --------------------------------------------------------
 
@@ -93,11 +90,11 @@ INSERT INTO `members` (`id`, `email`, `name`, `firstname`, `gender`, `birthdate`
 -- --------------------------------------------------------
 
 --
--- Structure de la table `partiticipation`
+-- Structure de la table `participation`
 --
 
-DROP TABLE IF EXISTS `partiticipation`;
-CREATE TABLE IF NOT EXISTS `partiticipation` (
+DROP TABLE IF EXISTS `participation`;
+CREATE TABLE IF NOT EXISTS `participation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_advert` int(11) NOT NULL,
   `id_member` int(11) NOT NULL,
@@ -106,7 +103,15 @@ CREATE TABLE IF NOT EXISTS `partiticipation` (
   PRIMARY KEY (`id`),
   KEY `id_advert` (`id_advert`),
   KEY `id_member` (`id_member`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `participation`
+--
+
+INSERT INTO `participation` (`id`, `id_advert`, `id_member`, `nb_participant`, `participation_date`) VALUES
+(1, 80, 10, 2, '2016-09-17 10:29:26'),
+(2, 80, 10, 1, '2016-09-17 10:29:42');
 
 -- --------------------------------------------------------
 
@@ -157,11 +162,11 @@ ALTER TABLE `advert`
   ADD CONSTRAINT `advert_ibfk_2` FOREIGN KEY (`id_sport`) REFERENCES `sports` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `partiticipation`
+-- Contraintes pour la table `participation`
 --
-ALTER TABLE `partiticipation`
-  ADD CONSTRAINT `partiticipation_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `members` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `partiticipation_ibfk_2` FOREIGN KEY (`id_advert`) REFERENCES `advert` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `participation`
+  ADD CONSTRAINT `participation_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `members` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `participation_ibfk_2` FOREIGN KEY (`id_advert`) REFERENCES `advert` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `prefer_sports`

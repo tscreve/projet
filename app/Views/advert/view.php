@@ -27,7 +27,9 @@
 		$eventTime=$date->format('H \h i \m\i\n');
 		$coords="";
 		$coords=explode(";", $advert['place']);
-		// var_dump($advert);	
+
+		// var_dump($poster);	
+		// var_dump($_SESSION);	
 
 		$date=date_create_from_format('Y-m-d H:i:s',$advert['advert_post_date']);	
 		$advertDate=$date->format('d/m \à H \h i \m\i\n');
@@ -44,7 +46,7 @@
 	<p>Annonce postée le 
 		<?=	$advertDate; ?></p>
 	<form method="POST" action="">
-		<label for="participant">Place(s) disponibles:</label><br>
+		<label for="participant">Place(s) disponible(s):</label><br>
         <select name="participant" id="participant">
 		<?php
 			$remain_participant=$advert['remain_participant'];
@@ -55,7 +57,7 @@
         </select>
     	<br><br>		
 		<?php
-			if($remain_participant!=0){?>
+			if(($remain_participant!=0) && $poster['id']!=$_SESSION['user']['id']){?>
 				<br><input class="ui-button ui-widget ui-corner-all" type="submit" value="Participer">
 			<?php }
 		?>		
