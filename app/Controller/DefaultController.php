@@ -29,11 +29,18 @@ class DefaultController extends Controller
 						AND a.id_sport=s.id
 						AND a.id_member=m.id";
 		$advert=$AdvertModel->query($sql);
+		// var_dump($advert);
+
+		$participationModel=new ParticipationModel;
+		$sql="SELECT m.*, p.nb_participant FROM members m, participation p WHERE p.id_advert=$id AND m.id=p.id_member";
+		$participant=$participationModel->query($sql);
+		// var_dump($participant);
+
 
 		$UsersModel=new UsersModel;
 		$user=$UsersModel->find($advert[0]['poster']);
 
-		$this->show('advert/view', ['advert'=>$advert[0], 'poster'=>$user]);
+		$this->show('advert/view', ['advert'=>$advert[0], 'poster'=>$user, 'participants'=>$participant]);
 
 	}
 	public function addPlace(){		

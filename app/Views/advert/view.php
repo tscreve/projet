@@ -62,12 +62,34 @@
 			<?php }
 		?>		
 	</form>
+	<h2>Les participants</h2>
+
 	<?php
+		// var_dump($participants);
 
+		foreach($participants as $participant):
+			$birthdateTime = date_create_from_format('Y-m-d',$participant['birthdate']);
+			$date=time();		
+	   		$now=new DateTime("@$date");
+	   		$age=$now->diff($birthdateTime);   		
+			// var_dump($age);
+		?>
 
-
-
-	?>
+		<h3><?= $participant['firstname'] ?></h3>
+		
+		<p><?php switch($participant['gender']){
+			case 'm':
+				echo "Homme";
+				break;
+			case 'f':
+				echo "Femme";
+				break;
+			} ?></p>
+		<p><?= $age->format("%y") ?> ans</p>
+		<p><?= $participant['nb_participant'] ?> place(s)</p>
+		<?php endforeach; ?>
+		
+	
 	<?php $this->stop('bas-gauche') ?>
 
 
@@ -84,7 +106,7 @@
 		$date=date_create_from_format('Y-m-d H:i:s',$poster['register_date']);	
 		$registerDate=$date->format('d/m/Y');
 		?>
-		<p><?= $poster['firstname'] ?></p>
+		<h3><?= $poster['firstname'] ?></h3>
 		<p><?php switch($poster['gender']){
 			case 'm':
 				echo "Homme";
