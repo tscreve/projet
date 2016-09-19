@@ -70,6 +70,7 @@
 
 
 <?php $this->start('droite') ?>
+
 	<?php
 		// var_dump($profil);
 		$selectM=($profil['gender']=='m') ? 'selected="selected"' : null;

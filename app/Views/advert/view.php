@@ -82,7 +82,36 @@
 		?>		
 		
 	</form>
-	<h2>Les participants</h2>
+	<h2>Questions posées par les membres</h2>
+	<ul>
+		<?php
+		// var_dump($questions);
+		if(isset($questions)){
+			foreach($questions as $question){?>
+				<li>
+					<h3><?= $question['firstname'] ?></h3>
+					<p><?= $question['question'] ?></p>
+				</li>
+			
+
+		<?php }
+		}
+	?>
+	</ul>
+
+	<form method="POST" action="<?= $this->url('advert_question')?>">	
+	<?php 				
+		if(isset($_SESSION['user'])) {
+	?>
+		<input name="id_sender" type="text" value="<?= $_SESSION['user']['id'] ?>" style="display:none;">
+	<?php
+	}
+	?>		
+	<input name="id_advert" type="text" value="<?= $advert['id'] ?>" style="display:none;">
+	<textarea name="question"></textarea>
+	<input type="submit" value="Poser une question">
+</form>
+<h2>Les participants</h2>
 	<ul>
 	<?php
 		foreach($participants as $participant):
@@ -137,8 +166,6 @@
 		<p><?= $age->format("%y") ?> ans</p>
 		<p><?= $poster['presentation'] ?></p>
 		<p>Membre depuis le <?= $registerDate ?></p>
-
-
 
 	<?php $this->stop('droite') ?>
 
