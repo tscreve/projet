@@ -1,3 +1,7 @@
+*{
+	font-family: roboto;
+}
+
 html, body {
 	font-family: roboto;
 	margin: 0;
@@ -11,10 +15,11 @@ html, body {
 }
 a {
 	text-decoration: none;
-	color: #A6E22E;
+	color: #FFFFFF;
 }
 a:hover {
-	color: #F92672;
+	text-decoration: none;
+	color: #FFFFFF;
 }
 h1 {
 	color: #F92672;
@@ -22,29 +27,7 @@ h1 {
 h2 {
 	color: #66D9EF;
 } 
-#map{
-	width: 100%;
-	height: 740px;
-}
-#coord{
-	width: 800px;
-	margin:0 auto;
-	border: solid 1px #ccc;
-}
-.pac-input{
-	height: 50px;
-}
-div.alert {
-    padding: 15px;
-    background: #3CBC8B;
-    color: #fff;
-}
-.alert-error { 
-    background:#AD4341 !important;  
-}
-.alert-info { 
-    background:#6D9AAA !important;  
-}
+
 
 
 
@@ -57,7 +40,7 @@ div.alert {
 
 /* --------------------------------- HEADER --------------------------------- */
 nav{
-	padding: 0 5%;
+	padding: 0 10%;
 }
 .navbar{
 	background-color: #566b7A;
@@ -88,7 +71,7 @@ nav{
 /* --------------------------------- CONTENT --------------------------------- */
 
 .content{
-	padding: 2% 5%;
+	padding: 2% 10%;
 	height: 850px;
 	background-color: #4D535D;
 }
@@ -98,15 +81,15 @@ nav{
 .gauche, .droite{
 	background-color: #FFFFFF;
 	color: #566b7A;
-	padding: 20px;
+/*	padding: 20px;*/
 	height: 780px;
 }
 .gauche{
-	width: 64%;
+	width: 70%;
 	float: left;
 }
 .droite{
-	width: 34%;
+	width: 29%;
 	float: right;
 }
 
@@ -115,10 +98,17 @@ nav{
 footer{
 	line-height: 50px;
 	background-color: #566b7A;
-	padding: 0 5%;
+	padding: 0 10%;
 	color: #FFFFFF;
 }
-
+.copyright{
+	width: 70%;
+	float: left;
+}
+.contact{
+	width: 29%;
+	float: right;
+}
 footer a{
 	color: #FFFFFF;
 	display: table;
@@ -131,4 +121,151 @@ footer a:hover{
 }
 .fa-envelope-o{
 	padding: 0 10px 0 0;
+}
+
+
+
+/* ---------------------------------        --------------------------------- */
+/* ---------------------------------  VIEWS --------------------------------- */
+/* ---------------------------------        --------------------------------- */
+
+
+/*MAPS*/
+#map{
+	width: 100%;
+	height: 740px;
+}
+#coord{
+	width: 800px;
+	margin:0 auto;
+	border: solid 1px #ccc;
+}
+#pac-input{
+	width: 300px;
+	height: 31px;
+	margin: 10px;
+	padding: 8px;
+	border: none;
+	box-shadow: rgba(0, 0, 0, 0.298039) 0px 1px 4px -1px;
+	border-radius: 2px;
+}
+#pac-input[type="placeholder"]{
+	padding: 8px;
+}
+
+
+
+
+
+/*FORMULAIRE ANNONCE*/
+.register{
+	width: 80%;
+	height: 100%;
+	margin: 0 auto;
+}
+.register h1{
+	font-size: 1.6em;
+	color: #286090;
+	text-align: center;
+	padding: 0 0 20px 0;
+	margin: 0;
+}
+.ui-selectmenu-button.ui-button {
+    width: 100%;
+}
+.ui-button{
+	line-height:20px;
+	margin-right:10px;
+}
+.register>textarea{
+	width: 100%;
+	height: 150px;
+	padding: 10px;
+	resize: none;
+	border-radius: 3px;
+}
+.register>input[id="datepicker"]{
+	width: 100%;
+	background-color: #f6f6f6;;
+    line-height: 20px;
+    border: 1px solid #c5c5c5;
+    padding: 0.4em 1em;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.register>.btn[type="submit"]{
+	margin-top: 20px;
+	width: 100%;
+	text-align: center;
+	min-width: 190px;
+}
+.rdv_date{
+	display: inline-block;
+    max-width: 100%;
+    margin: 20px 0 5px 0;
+    font-weight: 700;
+}
+.register>label{
+	margin: 20px 0 0 0;
+}
+
+
+
+
+
+/*LISTE ANNONCES*/
+#placesList h2{
+	font-size: 1.4em;
+	margin: ;
+}
+#placesList img{
+	width: 30px;
+	height: 30px;
+}
+#placesList{
+	padding: 0;
+}
+#placesList .col-md-1{
+	padding: 0;
+}
+#placesList li{
+	list-style: none;
+	background-color: #E3E3E3;
+	padding: 5px;
+}
+#placesList li:nth-child(odd){
+	background-color: #FFFFFF;
+}
+p{
+	margin: 0;
+}
+.description{
+	font-size: 1em;
+	margin: 0;
+}
+.dispo_event{
+	border: solid 1px #cccccc;
+	border-radius: 3px;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	background-color: #3289C8;
+	color: #FFFFFF;
+}
+
+
+
+
+
+/*LOGIN - INSCRIPTION*/
+div.alert {
+    padding: 15px;
+    background: #3CBC8B;
+    color: #fff;
+}
+.alert-error { 
+    background:#AD4341 !important;  
+}
+.alert-info { 
+    background:#6D9AAA !important;  
 }

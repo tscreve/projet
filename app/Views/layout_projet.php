@@ -11,7 +11,7 @@ else {
 }
 
 if(isset($_SESSION['user'])) { 
-  $username = $_SESSION['user']['username'];
+  $username = $_SESSION['user']['firstname'];
 }
 else {
   $username = null;
@@ -33,9 +33,12 @@ else {
    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
    <link rel="stylesheet" href="<?= $this->assetUrl('css/bootstrap.min.css') ?>">
 
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="<?= $this->assetUrl('css/jquery-ui-1.12.0.css') ?>">
+
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
 
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
 </head>
 <body>
 
@@ -76,8 +79,8 @@ else {
          <div class="col-md-4">
             <div class="access">
                <!-- <div class="btn-group"> -->
-                     <button type="button" class="btn btn-primary">Connexion</button>
-                     <button type="button" class="btn btn-success">Inscription</button>
+               <button type="button" class="btn btn-primary"><a href="login">Connexion</a></button>
+               <button type="button" class="btn btn-success"><a href="">Inscription</a></button>
                <!-- </div> -->
             </div>
          </div>
@@ -102,10 +105,10 @@ else {
 
 <footer>
    <div class="row">
-      <div class="copyright col-md-7">
+      <div class="copyright">
          <div>&copy; Copyright 2016 - T.A.D - Tous droits réservés</div>
       </div>
-      <div class="contact col-md-4 col-md-offset-1">
+      <div class="contact">
          <a href="#"><i class="fa fa-envelope-o" aria-hidden="true"></i>Nous contacter</a>
       </div>
    </div>
@@ -115,8 +118,14 @@ else {
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
 <script src="<?= $this->assetUrl('js/jquery-2.2.4.js') ?>"></script>
 
+
+<!-- <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>  -->
+<script src="<?= $this->assetUrl('js/jquery-ui-1.12.0.js') ?>"></script>
+
+
 <!-- <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <script type="text/javascript" src="<?= $this->assetUrl('js/bootstrap.min.js') ?>"></script>
+
 
 <?= $this->section('scripts') ?>
 
