@@ -58,10 +58,10 @@
     	<br><br>
     	<br>
 		<?php
-			if(($remain_participant!=0) && $poster['id']!=$_SESSION['user']['id']){
-				
-					foreach($participants as $participant){
-						
+		if(isset($_SESSION['user'])){
+			if(($remain_participant!=0) && $poster['id']!=$_SESSION['user']['id']){		
+			$part=false;			
+					foreach($participants as $participant){						
 						if($participant['id']==$_SESSION['user']['id']){
 							$part=true;
 						}else{
@@ -73,15 +73,18 @@
 							?>
 								<input class="ui-button ui-widget ui-corner-all" type="submit" value="Participer">
 							<?php }
-				}
-				
+			}
+		}
+		else{
+			?>
+				<input class="ui-button ui-widget ui-corner-all" type="submit" value="Participer">
+			<?php }				
 		?>		
+		
 	</form>
 	<h2>Les participants</h2>
 	<ul>
 	<?php
-		
-
 		foreach($participants as $participant):
 			$birthdateTime = date_create_from_format('Y-m-d',$participant['birthdate']);
 			$date=time();		
