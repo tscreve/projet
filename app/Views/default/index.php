@@ -20,9 +20,9 @@
 		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['remain_participant'] ?> data-level=<?= $advert['level'] ?> data-dUrl=<?= $dataUrl ?>>
 			<a href="<?= $this->url('view_advert', ['id' => $advert['id']]) ?>">
 			<div class="row">
-				<div class="col-md-1"><img src="<?= $advert['logo'] ?>" alt=""></div>
+				<div class="col-md-2"><img src="<?= $advert['logo'] ?>" alt=""></div>
 				<!-- <h2><?= $sport ?></h2> -->
-				<div class="col-md-10"><p class="level">Pour <?= $advert['level'] ?></p>
+				<div class="col-md-9"><p class="level">Pour <?= $advert['level'] ?></p>
 				<!-- <p class="level">Pour les <?= $advert['level'] ?></p> -->
 				<p class="date_event">Le <?= $eventDate." à ".$eventTime ?></p>
 

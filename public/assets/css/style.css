@@ -209,16 +209,14 @@ footer a:hover{
 
 
 /*LISTE ANNONCES*/
-#placesList h2{
-	font-size: 1.4em;
-	margin: 0;
-}
 #placesList img{
 	width: 60px;
 	height: 60px;
+	margin-right: 10px;
 }
 #placesList{
 	padding: 0;
+	margin: 0;
 }
 #placesList a{
 	color: #566b7A;
@@ -229,10 +227,14 @@ footer a:hover{
 #placesList li{
 	list-style: none;
 	background-color: #E3E3E3;
-	padding: 5px;
+	padding: 10px;
 }
 #placesList li:nth-child(odd){
 	background-color: #FFFFFF;
+}
+#placesList .col-md-2{
+	margin: 0;
+	padding: 0;
 }
 p{
 	margin: 0;
@@ -242,13 +244,16 @@ p{
 	margin: 0;
 }
 .dispo_event{
+	font-size: 1.4em;
 	border: solid 1px #cccccc;
 	border-radius: 3px;
-	width: 20px;
-	height: 20px;
+	width: 30px;
+	height: 30px;
 	text-align: center;
 	background-color: #3289C8;
 	color: #FFFFFF;
+	line-height: 30px;
+	vertical-align: middle;
 }
 
 
