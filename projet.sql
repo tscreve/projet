@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 17 Septembre 2016 à 10:30
+-- Généré le :  Lun 19 Septembre 2016 à 10:31
 -- Version du serveur :  5.7.9
 -- Version de PHP :  5.6.16
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `members` (
   `register_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `members`
@@ -85,7 +85,8 @@ INSERT INTO `members` (`id`, `email`, `name`, `firstname`, `gender`, `birthdate`
 (10, 'tscreve@hotmail.com', NULL, 'gh', 'm', '1998-09-14', '$2y$10$rgoJHULoWMNPD7JbrFlGPOsLPblEW7vVGrYIRY/CZWcMikhL/Nlzi', NULL, NULL, NULL, 'user', '2016-09-16 12:50:57'),
 (11, 'trev@hotmail.com', NULL, 'tom', 'm', '1980-01-01', '$2y$10$79kzztvmYKvbVQl8C30j/u.FkmJsqIl8Y7OdOxuKrVshPP9dWFUwq', NULL, 'ma descr		\r\n				\r\n		', '', 'user', '2016-09-16 12:56:06'),
 (12, 'membre@exemple.com', NULL, 'dqsvGH', 'm', '1979-09-07', '$2y$10$ZY1RvwE7t5vy9GrC8yV3tuk38kKZff.vMGm9Zj8lx.F8xfcbYxMVO', NULL, 'ma description		\r\n				\r\n		', '', 'user', '2016-09-16 12:58:45'),
-(13, 'tve@hotmail.com', NULL, 'MON_PRENOM', 'f', '1973-09-01', '$2y$10$Nvc7dSm8eX0s1nHAo2IC4.OwK3Nr4NVR3aQjgnTpLardMm9ruYnkO', NULL, '	ma descre	\r\n		', '09876', 'user', '2016-09-16 13:00:14');
+(13, 'tve@hotmail.com', NULL, 'MON_PRENOM', 'f', '1973-09-01', '$2y$10$Nvc7dSm8eX0s1nHAo2IC4.OwK3Nr4NVR3aQjgnTpLardMm9ruYnkO', NULL, '	ma descre	\r\n		', '09876', 'user', '2016-09-16 13:00:14'),
+(14, 'dvizier@hotmail.com', NULL, 'David', 'm', '1977-11-28', '$2y$10$FgpWL1I6jxowjv3I8it/R.Bfyh3PLDMkt4DZqeMtVpeYtKLUuINcW', NULL, NULL, NULL, 'user', '2016-09-19 09:12:20');
 
 -- --------------------------------------------------------
 
@@ -137,6 +138,7 @@ DROP TABLE IF EXISTS `sports`;
 CREATE TABLE IF NOT EXISTS `sports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
+  `logo` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
@@ -144,11 +146,11 @@ CREATE TABLE IF NOT EXISTS `sports` (
 -- Contenu de la table `sports`
 --
 
-INSERT INTO `sports` (`id`, `name`) VALUES
-(0, 'foot'),
-(1, 'tennis'),
-(2, 'course'),
-(3, 'vélo');
+INSERT INTO `sports` (`id`, `name`, `logo`) VALUES
+(0, 'foot', ''),
+(1, 'tennis', 'http://icons.iconarchive.com/icons/iconsmind/outline/128/Tennis-icon.png'),
+(2, 'course', ''),
+(3, 'vélo', 'http://img1.cfstatic.com/insolite/un-coureur-cycliste-se-la-joue-equilibriste-lors-du-championnat-de-grande-bretagne_74013_w620.jpg');
 
 --
 -- Contraintes pour les tables exportées

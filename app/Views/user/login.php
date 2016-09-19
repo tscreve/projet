@@ -59,7 +59,7 @@
 	
 
 		
-	?>
+
 
 	<form class="login-form" method="POST" action="<?= $this->url('user_login')?>"> 
 	<label for="email">Email</label> 
@@ -74,7 +74,7 @@
 	</form>
 
 
-<?php $this->stop('droite');  
+<?php $this->stop('droite');  	?>
 	// fin du contenu de la vue
 
 

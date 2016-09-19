@@ -1,37 +1,38 @@
-	<?php $this->layout('layout', ['title' => 'Accueil']) ?>
+	<?php $this->layout('layout_projet', ['title' => 'Accueil']) ?>
 	
 	
 	<?php $this->start('droite') ?>
 	<ul id="placesList">
-	<?php // var_dump($allAdverts); ?>
 		<?php foreach($allAdverts as $advert): 	
 			$date=date_create_from_format('Y-m-d',$advert['event_date']);	
 			$eventDate=$date->format('d/m');
+			$advert_post_date=$date->format('d/m');
 			$date=date_create_from_format('H:i:s',$advert['event_time']);	
-			$eventTime=$date->format('H\h i\m\i\n');	
+			$eventTime=$date->format('H\hi');	
 			$dataTime=$date->format('H\hi');	
 			$dataUrl=$this->url('view_advert', ['id' => $advert['id']]);
 
 			$coords=explode(";", $advert['place']);	
+
 		?>
-		<a href="<?= $this->url('view_advert', ['id' => $advert['id']]) ?>">
-		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['nb_participant'] ?> data-level=<?= $advert['level'] ?> data-dUrl=<?= $dataUrl ?>>	
-		<h2><?= $advert['sport'] ?></h2>
-		<p>Pour les <?php switch($advert['level']){
-			case 'debutant':
-				echo "débutants";
-				break;
-			case 'amateur':
-				echo "amateurs";
-				break;
-			case 'confirme':
-				echo "confirmés";
-				break;
-		}
-		 ?></p>
-		<p>Prévu pour le <?= $eventDate." à ".$eventTime ?></p>
-		<p>Besoin de <?= $advert['nb_participant'] ?> participants</p>		
-		</a>
+		
+
+		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['remain_participant'] ?> data-level=<?= $advert['level'] ?> data-dUrl=<?= $dataUrl ?>>
+			<a href="<?= $this->url('view_advert', ['id' => $advert['id']]) ?>">
+			<div class="row">
+				<div class="col-md-1"><img src="<?= $advert['logo'] ?>" alt=""></div>
+				<!-- <h2><?= $sport ?></h2> -->
+				<div class="col-md-10"><p class="level">Pour <?= $advert['level'] ?></p>
+				<!-- <p class="level">Pour les <?= $advert['level'] ?></p> -->
+				<p class="date_event">Le <?= $eventDate." à ".$eventTime ?></p>
+
+				<p class="organizer">Postée par <?= $advert['firstname'] ?>, le <?= $advert_post_date ?></p>
+				</div>
+				<div class="col-md-1">
+					<p class="dispo_event"><?= $advert['remain_participant'] ?></p>
+				</div>
+			</div>
+			</a>
 		</li>
 		<?php endforeach; ?>
 	</ul>
@@ -41,11 +42,11 @@
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
 
-	<?php $this->start('bas-gauche') ?>
+	<?php $this->start('gauche') ?>
 		<div id="map" >
 	    	Chargement en cours...
 	 	</div>
-	<?php $this->stop('bas-gauche') ?>
+	<?php $this->stop('gauche') ?>
 
 <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
