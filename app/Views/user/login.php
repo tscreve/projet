@@ -8,19 +8,19 @@
 
 
 <?php $this->start('center') ?>
-
+<div class="light-box">
 	<form class="login-form" method="POST" action="<?= $this->url('user_login')?>"> 
 		<label for="email">Email</label> 
-		<input placeholder="Votre email" type="text" name="email">
+		<input type="email" name="email" id="email" placeholder="Votre email">
 
 		<label for="password">Mot de passe</label> 
-		<input placeholder="Votre mot de passe" type="password" name="password">
+		<input type="password" name="password" id="password" placeholder="Votre mot de passe" >
 
-		<input type="submit" value="Se connecter">   
+		<input type="submit" class="btn btn-success" value="Se connecter" id="button">   
 
-		<a href="<?= $this->url('user_register_form') ?>">Enregistrez vous</a>
+		<a href="<?= $this->url('user_register_form') ?>">Inscrivez-vous</a>
 	</form>
-
+</div>
 <?php $this->stop('center');  ?>
 
 
