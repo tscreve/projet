@@ -1,3 +1,4 @@
+
 	<?php $this->layout('layout_projet', ['title' => 'Détail de l\'annonce']) ?>	
 
 
@@ -77,6 +78,11 @@
 				<li>
 					<h3><?= $question['firstname'] ?></h3>
 					<p><?= $question['question'] ?></p>
+					<?php
+						if(isset($_SESSION['user']) && $_SESSION['user']['role']=='admin'){ ?>
+							<a href="<?= $this->url('admin_delete_message', ['id' => $question['id'], 'id_advert'=>$advert['id']]) ?>" style="color:red";>Supprimer</a>
+							 <?php }
+					?>
 				</li>
 		<?php }
 		}

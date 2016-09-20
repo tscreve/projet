@@ -37,7 +37,7 @@ class DefaultController extends Controller
 		// var_dump($participant);
 
 		$QuestionsModel=new QuestionsModel;
-		$sql="SELECT q.question, m.firstname FROM questions q, members m WHERE q.id_advert=$id AND q.id_sender=m.id";
+		$sql="SELECT q.id, q.question, m.firstname FROM questions q, members m WHERE q.id_advert=$id AND q.id_sender=m.id";
 		$questions=$QuestionsModel->query($sql);
 
 		$UsersModel=new UsersModel;

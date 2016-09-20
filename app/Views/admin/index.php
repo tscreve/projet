@@ -27,7 +27,7 @@
 				</select>
 				<input type="submit" value="Update">
 				</form>			
-				<a href="<?= $this->url('admin_delete_user', ['id' => $user['id']]) ?>">Supprimer le membre</a>	
+				<a href="<?= $this->url('admin_delete_user', ['id' => $user['id']]) ?>" style="color:red;">Supprimer le membre</a>	
 			</li>
 		<?php }
 		?>
@@ -48,9 +48,9 @@
 				?>
 				<li>
 					<h3>Annonce : <?= $advert['id'] ?></h3>
-					<p>Date de l\'évenement : <?= $eventDate ?></p>		
+					<p>Date de l'évenement : <?= $eventDate ?></p>		
 					<p>Postée le <?= $postDate ?></p>
-					<a href="<?= $this->url('admin_delete_advert', ['id' => $advert['id']]) ?>">Supprimer l\'annonce</a>	
+					<a href="<?= $this->url('admin_delete_advert', ['id' => $advert['id']]) ?>" style="color:red;">Supprimer l\'annonce</a>	
 				</li>
 				<?php }
 			?>			
@@ -88,7 +88,7 @@
 			</li>			
 		<?php } ?>
 		</ul>
-		<a href="<?= $this->url('admin_add_sport') ?>">Ajouter un sport</a>
+		<a href="<?= $this->url('admin_add_sport') ?>" style="color:red;">Ajouter un sport</a>
 		
 	
 

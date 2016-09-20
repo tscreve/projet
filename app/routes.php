@@ -49,5 +49,5 @@
 		['GET', '/admin/deleteAdvert/[:id]', 'User#adminDeleteAdvert', 'admin_delete_advert'],
 
 		// messages
-		['GET', '/admin/deleteMessage', 'User#adminDeleteMessage', 'admin_delete_message'],			
+		['GET', '/admin/deleteMessage/[:id]/[:id_advert]', 'User#adminDeleteMessage', 'admin_delete_message'],			
 	);

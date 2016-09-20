@@ -5,7 +5,7 @@ use \W\Controller\Controller;
 use \W\Model\Model;
 use \Model\AdvertModel;
 use \Model\SportsModel;
-use \Model\AdvertsModel;
+use \Model\QuestionsModel;
 use \W\Model\UsersModel;
 use \W\Security\AuthentificationModel;
 
@@ -223,6 +223,7 @@ class UserController extends Controller
 	}
 
 	public function adminIndex(){
+		$this->allowTo('admin');
 		$AdvertModel=new AdvertModel;
 		$UsersModel=new UsersModel;
 		$SportsModel=new SportsModel;
@@ -237,26 +238,53 @@ class UserController extends Controller
 	}
 
 	public function adminUpdateUser(){
-		var_dump($_POST);
+		$this->allowTo('admin');
+		// var_dump($_POST);
+
+		$UsersModel=new UsersModel;
+		$user=array('role'=>$_POST['role']);
+		$id=$_POST['id_user'];
+		$users=$UsersModel->update($user, $id);
+		$this -> redirectToRoute('user_admin_index');		
 	}
 
 	public function adminDeleteUser($id){
-		var_dump($id);
+		$this->allowTo('admin');
+		// var_dump($id);
 
+		$UsersModel=new UsersModel;
+		$UsersModel->delete($id);
+		$this -> redirectToRoute('user_admin_index');	
 	}
 
 	public function adminDeleteAdvert($id){
-		var_dump($id);
+		$this->allowTo('admin');
+		// var_dump($id);
 
+		$adverts=new AdvertModel;
+		$adverts->delete($id);
+		$this -> redirectToRoute('user_admin_index');
 	}
 
 	public function adminUpdateSports(){
+		$this->allowTo('admin');
 		var_dump($_POST);
 
 	}
 
 	public function adminAddSport(){
-		echo "string";;
+		$this->allowTo('admin');
+		echo "string";
+
+	}
+
+	public function adminDeleteMessage($id, $id_advert){
+		$this->allowTo('admin');
+		// var_dump($id);
+
+		$question=new QuestionsModel;
+		$question->delete($id);
+		$this -> redirectToRoute('view_advert', ['id'=>$id_advert]);
 
 	}
 	
