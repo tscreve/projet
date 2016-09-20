@@ -18,7 +18,7 @@ class DefaultController extends Controller
 	public function index()
 	{
 		$AdvertModel=new AdvertModel();		
-		$sql="SELECT s.name AS sport, s.logo, m.firstname, a.id, a.description, a.place, a.level, a.event_date, a.event_time, a.remain_participant, a.advert_post_date FROM sports s, advert a, members m WHERE a.id_sport=s.id AND a.id_member=m.id";
+		$sql="SELECT s.name AS sport, s.bkg_color, s.logo, m.firstname, a.id, a.description, a.place, a.level, a.event_date, a.event_time, a.remain_participant, a.advert_post_date FROM sports s, advert a, members m WHERE a.id_sport=s.id AND a.id_member=m.id";
 		$allAdverts=$AdvertModel->query($sql);	
 
 		$this->show('default/index',['allAdverts'=>$allAdverts]);

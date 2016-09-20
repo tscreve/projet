@@ -1,22 +1,12 @@
-	<?php $this->layout('layout', ['title' => 'Détail de l\'annonce']) ?>	
+	<?php $this->layout('layout_projet', ['title' => 'Détail de l\'annonce']) ?>	
 
 
-	<?php $this->start('haut-gauche') ?>
-		<section class="map">		
+	<?php $this->start('gauche') ?>		
 		<div id="map">
 	    	Chargement en cours...
 	 	</div>			
-		</section>		
 
-	<?php $this->stop('haut-gauche') ?>
-
-
-
-
-
-
-	<?php $this->start('bas-gauche') ?>
-	
+	<div class="detail-annonce">
 	<h2>Détail de l'annonce</h2>
 	
 	<?php
@@ -66,8 +56,7 @@
 							$part=true;
 						}else{
 							$part=false;
-						}
-						var_dump($part);						
+						}						
 					}
 					if($part==false){
 							?>
@@ -108,8 +97,8 @@
 		</li>
 		<?php endforeach; ?>
 	</ul>
-	
-	<?php $this->stop('bas-gauche') ?>
+</div>
+	<?php $this->stop('gauche') ?>
 
 
 

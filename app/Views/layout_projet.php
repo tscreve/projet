@@ -48,6 +48,11 @@ else {
 
 
 <header>
+
+<?php if($message!=null) { ?>
+        <div class="alert alert-<?php echo $class_alert ?>"> <?= $message ?></div>
+        <?php } ?>
+
    <nav class="navbar navbar-default">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="row">
