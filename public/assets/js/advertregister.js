@@ -113,8 +113,8 @@
     $( "#nb_participant" ).selectmenu();
     $( "#time" ).selectmenu();
     // DATEPICKER
-    $( "#datepicker" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });
-    $( "#datepicker" ).datepicker( $.datepicker.regional[ "fr" ] );
+    // $( "#datepicker" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });
+    // $( "#datepicker" ).datepicker( $.datepicker.regional[ "fr" ] );
 
   } );
 
