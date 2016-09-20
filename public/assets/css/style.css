@@ -99,7 +99,19 @@ nav{
 	width: 29%;
 	float: right;
 }
-
+.center{
+	width: 100%;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+	color: #566b7A;
+	height: 780px;
+}
+.center form{
+	width: 30%;
+	height: 30%;
+	margin: 0 auto;
+	border: 1px solid #343434;
+}
 
 /* --------------------------------- FOOTER --------------------------------- */
 footer{
@@ -132,9 +144,9 @@ footer a:hover{
 
 
 
-/* ---------------------------------        --------------------------------- */
-/* ---------------------------------  VIEWS --------------------------------- */
-/* ---------------------------------        --------------------------------- */
+/* ---------------------------------         --------------------------------- */
+/* ---------------------------------  VIEWS  --------------------------------- */
+/* ---------------------------------         --------------------------------- */
 
 
 /*MAPS*/
@@ -240,8 +252,8 @@ footer a:hover{
 }
 #placesList li{
 	list-style: none;
-	/*background-color: #E3E3E3;*/
 	padding: 10px;
+	border-bottom: 1px solid #FFFFFF;
 }
 #placesList li:nth-child(odd){
 	/*background-color: #FFFFFF;*/

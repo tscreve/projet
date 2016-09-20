@@ -79,7 +79,7 @@ else {
                   <li><a href="tennis">Tennis</a></li>
                   <li><a href="velo">Velo</a></li>
                </ul>
-               <input type="button" id="datepicker" class="filter-date btn btn-warning" name="filter_date" value="Choisir une date" required>
+               <input type="button" id="datepicker_header" class="filter-date btn btn-warning" name="filter_date" value="Choisir une date" required>
             </div>
          </div>
 

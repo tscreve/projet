@@ -31,6 +31,10 @@ $( function() {
     $( "#nb_participant" ).selectmenu();
     $( "#time" ).selectmenu();
     // DATEPICKER
+    // Datepicker dans le header
+    $( "#datepicker_header" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });
+    $( "#datepicker_header" ).datepicker( $.datepicker.regional[ "fr" ] );
+    // Datepicker dans le formulaire
     $( "#datepicker" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });
     $( "#datepicker" ).datepicker( $.datepicker.regional[ "fr" ] );
 
