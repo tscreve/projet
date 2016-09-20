@@ -83,8 +83,6 @@ class DefaultController extends Controller
 			$auth-> setFlash($message, 'error');
 			$this->show('advert/register');
 		}		
-		// 	
-		
 	}
 
 	public function registerPlace(){
