@@ -62,7 +62,18 @@ nav{
 	text-align: right;
 	vertical-align: middle;
 }
-
+.filter-date{
+	margin: 8px 0 0 20px;
+}
+.navbar .col-md-1{
+	padding: 0;
+}
+.navbar .col-md-7{
+	padding: 0;
+}
+.navbar .col-md-4{
+	padding: 0;
+}
 /* --------------------------------- CONTENT --------------------------------- */
 
 .content{
@@ -78,6 +89,7 @@ nav{
 	color: #566b7A;
 /*	padding: 20px;*/
 	height: 780px;
+	overflow: auto;
 }
 .gauche{
 	width: 70%;
@@ -147,7 +159,9 @@ footer a:hover{
 #pac-input[type="placeholder"]{
 	padding: 8px;
 }
-
+#bodyContent a{
+	color: #000000;
+}
 
 
 

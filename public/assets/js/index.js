@@ -61,7 +61,7 @@
             '</div>'+
             '<h3 id="firstHeading" class="firstHeading">'+sport+' pour '+participant+' '+level+' le '+date+' à '+time+'</h3>'+
             '<div id="bodyContent">'+
-            '<a href="'+dUrl+'">Participer</a>'+
+            '<a href="'+dUrl+'"><button type="button" class="btn btn-success">Participer</button></a>'+
             '</div>'+
             '</div>';
   
