@@ -339,9 +339,6 @@ p{
 	line-height: 30px;
 	margin-top: 30px;
 }
-.login-form label{
-	border:0;
-}
 .login-form a{
 	color: #4d535d;
 	padding-top: 10px;
@@ -353,12 +350,58 @@ p{
 
 
 
-
 /* INSCRIPTION */
-
-
-
-
+.register-form{
+	width: 400px;
+	height: 550px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	border: solid 1px #ccc;
+	padding: 10px 30px;
+	background: #fff;
+	box-shadow: 0 0 15px rgba(0,0,0,0.3);
+	margin: -275px 0 0 -200px;
+}
+.register-form input[type="email"],.register-form input[type="password"],.register-form input[type="text"]{
+	background: #EFEFEF;
+	-webkit-transition-duration: 0.5s;
+	-o-transition-duration: 0.5s;
+	transition-duration: 0.5s;
+}
+.register-form input[type="email"]:focus,.register-form input[type="password"]:focus,.register-form input[type="text"]:focus{
+	box-shadow: 0 0 20px rgba(0,0,200,0.5);
+}
+.register-form label{
+	display: block;
+	width: 100%;
+	line-height: 20px;
+	padding-left: 5px;
+	margin-top: 15px;
+}
+.register-form input{
+	display: block;
+	width: 100%;
+	border:solid 1px #ccc;
+	line-height: 40px;
+	padding-left: 5px;
+}
+.register-form input[type="submit"]{
+	display: block;
+	width: 100%;
+	line-height: 30px;
+	margin-top: 30px;
+}
+.register-form a{
+	color: #4d535d;
+	padding-top: 10px;
+	display: block;
+	text-decoration: underline;
+}
+.register-form>.ui-button{
+	line-height: 30px;
+	border-radius: 0;
+}
 
 
 
