@@ -79,10 +79,11 @@
 			foreach($sports as $sport){ ?>
 			<li>
 			<form method="POST" action="<?= $this->url('admin_update_sports')?>">
-				<input type="text" name="id_sport" style="display:none;" value=<?= $sport['id'] ?>><br>
-				<input type="text" name="sports_name" value=<?= $sport['name'] ?>><br>
-				<input type="text" name="logo" value=<?= $sport['logo'] ?>><br>
-				<input class="color" name="color" value=<?= $sport['bkg_color'] ?>><br>
+				</label><input type="text" name="id_sport" style="display:none;" value=<?= $sport['id'] ?>><br>
+				<label >Nom : </label><input type="text" name="sports_name" value=<?= $sport['name'] ?>><br>
+				<label >Logo : </label><input type="text" name="logo" value=<?= $sport['logo'] ?>><br>
+				<label >Couleur : </label>
+				<input name="color" value="<?= $sport['bkg_color'] ?>" class="jscolor {closable:true, width:243, height:150, position:'right', borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}">
 				<input type="submit" value="Update"><br><br>
 			</form>				
 			</li>			
@@ -108,7 +109,7 @@
 
 
 	<?php $this->start('scripts') ?>
-
+		<script type="text/javascript" src= <?= $this->assetUrl('js/jscolor.js') ?> ></script>
 	    
 	<?php $this->stop('scripts') ?>
 

@@ -268,13 +268,28 @@ class UserController extends Controller
 
 	public function adminUpdateSports(){
 		$this->allowTo('admin');
-		var_dump($_POST);
-
+		// var_dump($_POST);
+		
+		$id=$_POST['id_sport'];
+		$sports = new SportsModel;
+		$sport=array('bkg_color'=>"#".$_POST['color'],
+						'name'=>$_POST['sports_name'],
+						'logo'=>$_POST['logo']);
+		$sports->update($sport, $id);
+		$this -> redirectToRoute('user_admin_index');
 	}
 
 	public function adminAddSport(){
 		$this->allowTo('admin');
-		echo "string";
+		
+		$sports = new SportsModel;
+		$sport=array(
+			'name'=>'sport',
+			'logo'=>'logo',
+			'bkg_color'=>'couleur'
+			);
+		$sports->insert($sport);
+		$this -> redirectToRoute('user_admin_index');
 
 	}
 
