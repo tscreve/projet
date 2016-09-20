@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Lun 19 Septembre 2016 à 21:22
+-- Généré le :  Mar 20 Septembre 2016 à 10:14
 -- Version du serveur :  5.7.9
 -- Version de PHP :  5.6.16
 
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   PRIMARY KEY (`id`),
   KEY `id_sender` (`id_sender`),
   KEY `id_advert` (`id_advert`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `questions`
@@ -163,7 +163,9 @@ INSERT INTO `questions` (`id`, `id_sender`, `id_advert`, `question`, `date`) VAL
 (2, 11, 82, 'SALUT', '2016-09-19 21:12:26'),
 (3, 11, 82, 'duzagdbj', '2016-09-19 21:13:36'),
 (4, 11, 84, 'jhdbjkezdc', '2016-09-19 21:21:42'),
-(5, 11, 84, 'kqsjdbka', '2016-09-19 21:21:47');
+(5, 11, 84, 'kqsjdbka', '2016-09-19 21:21:47'),
+(6, 12, 80, 'QSNLFLQS?N', '2016-09-20 08:26:41'),
+(7, 12, 80, 'qkjsdbskjq', '2016-09-20 08:46:50');
 
 -- --------------------------------------------------------
 
@@ -176,18 +178,21 @@ CREATE TABLE IF NOT EXISTS `sports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `logo` varchar(255) NOT NULL,
+  `bkg_color` varchar(7) NOT NULL DEFAULT '#CCCCCC',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `sports`
 --
 
-INSERT INTO `sports` (`id`, `name`, `logo`) VALUES
-(0, 'foot', ''),
-(1, 'tennis', 'http://icons.iconarchive.com/icons/iconsmind/outline/128/Tennis-icon.png'),
-(2, 'course', ''),
-(3, 'vélo', 'http://img1.cfstatic.com/insolite/un-coureur-cycliste-se-la-joue-equilibriste-lors-du-championnat-de-grande-bretagne_74013_w620.jpg');
+INSERT INTO `sports` (`id`, `name`, `logo`, `bkg_color`) VALUES
+(0, 'football', 'http://www.iconshock.com/img_vista/FLAT/education/jpg/Ball_football_icon.jpg', '#b2dfdb'),
+(1, 'tennis', 'http://insmontsuar.cat/joomla/images/stories/Imatges_1213/Tennis.png', '#ffccbc'),
+(2, 'running', 'https://maxcdn.icons8.com/Android/PNG/512/Sports/exercise-512.png', '#b3e5fc'),
+(3, 'velo', 'http://img1.cfstatic.com/insolite/un-coureur-cycliste-se-la-joue-equilibriste-lors-du-championnat-de-grande-bretagne_74013_w620.jpg', '#fff9c4'),
+(4, 'basket', 'https://d30y9cdsu7xlg0.cloudfront.net/png/108213-200.png', '#ffe0b2'),
+(5, 'natation', 'http://www.icone-png.com/png/45/44979.png', '#b2ebf2');
 
 --
 -- Contraintes pour les tables exportées
@@ -211,8 +216,8 @@ ALTER TABLE `participation`
 -- Contraintes pour la table `prefer_sports`
 --
 ALTER TABLE `prefer_sports`
-  ADD CONSTRAINT `prefer_sports_ibfk_1` FOREIGN KEY (`id_member`) REFERENCES `members` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `prefer_sports_ibfk_2` FOREIGN KEY (`id_sport`) REFERENCES `sports` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `prefer_sports_ibfk_1` FOREIGN KEY (`id_sport`) REFERENCES `sports` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prefer_sports_ibfk_2` FOREIGN KEY (`id_member`) REFERENCES `members` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `questions`
