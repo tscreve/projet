@@ -14,14 +14,13 @@
 			$selectU=($user['role']=='user') ? 'selected="selected"' : null;	
 			?>
 			<li>
-				<h3>Membre : <?= $user['firstname'] ?></h3>
-				<p>Rôle : <?= $user['role'] ?></p>
+				<h3>Membre : <?= $user['firstname'] ?></h3>				
 				<p>Email : <?= $user['email'] ?></p>
 				<p>Membre depuis le <?= $registerDate ?></p>
 
 				<form method="POST" action="<?= $this->url('admin_update_user')?>">
 				<input type="text" name="id_user" style="display:none;" value="<?= $user['id'] ?>">				
-				<label for="role">Rôle :</label><br>
+				<label for="role">Rôle :</label>
 				<select name="role" id="role">
 					<option value="admin" <?= $selectA ?>>Admin</option>
 					<option value="user" <?= $selectU ?>>User</option>         
@@ -54,20 +53,9 @@
 					<a href="<?= $this->url('admin_delete_advert', ['id' => $advert['id']]) ?>">Supprimer l\'annonce</a>	
 				</li>
 				<?php }
-			?>
-			
+			?>			
 		</ul>
 		
-
-
-
-
-
-
-
-
-
-
 	</div>
 	
 	
@@ -91,11 +79,11 @@
 			foreach($sports as $sport){ ?>
 			<li>
 			<form method="POST" action="<?= $this->url('admin_update_sports')?>">
-				<input type="text" name="id_sport" style="display:none;" value=<?= $sport['id'] ?>>
-				<input type="text" name="sports_name" value=<?= $sport['name'] ?>>
-				<input type="text" name="logo" value=<?= $sport['logo'] ?>>
-				<input class="color" name="color" value=<?= $sport['bkg_color'] ?>>
-				<input type="submit" value="Update">
+				<input type="text" name="id_sport" style="display:none;" value=<?= $sport['id'] ?>><br>
+				<input type="text" name="sports_name" value=<?= $sport['name'] ?>><br>
+				<input type="text" name="logo" value=<?= $sport['logo'] ?>><br>
+				<input class="color" name="color" value=<?= $sport['bkg_color'] ?>><br>
+				<input type="submit" value="Update"><br><br>
 			</form>				
 			</li>			
 		<?php } ?>
