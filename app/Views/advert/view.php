@@ -17,10 +17,8 @@
 		$eventTime=$date->format('H \h i \m\i\n');
 		$coords="";
 		$coords=explode(";", $advert['place']);
-
 		// var_dump($poster);	
 		// var_dump($_SESSION);	
-
 		$date=date_create_from_format('Y-m-d H:i:s',$advert['advert_post_date']);	
 		$advertDate=$date->format('d/m \à H \h i \m\i\n');
        
@@ -68,8 +66,7 @@
 			?>
 				<input class="ui-button ui-widget ui-corner-all" type="submit" value="Participer">
 			<?php }				
-		?>		
-		
+		?>			
 	</form>
 	<h2>Questions posées par les membres</h2>
 	<ul>
@@ -81,13 +78,10 @@
 					<h3><?= $question['firstname'] ?></h3>
 					<p><?= $question['question'] ?></p>
 				</li>
-			
-
 		<?php }
 		}
 	?>
 	</ul>
-
 	<form method="POST" action="<?= $this->url('advert_question')?>">	
 	<?php 				
 		if(isset($_SESSION['user'])) {

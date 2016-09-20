@@ -21,15 +21,6 @@
 
 		['POST', '/question', 'Default#question', 'advert_question'],
 
-		/* Ajouter-Supprimer un commentaire
-		['POST', '/addComment', 'Comment#addComment', 'comment_add_comment'],
-		['POST', '/deleteComment', 'User#deleteComment', 'user_delete_comment'],*/
-
-
-
-
-
-
 //2.1	/* inscription utilisateur dans la BDD*/
 		['GET', '/register', 'User#registerForm', 'user_register_form'],
 		['POST', '/adduser', 'User#addUser', 'user_add_user'],
@@ -43,10 +34,13 @@
 
 		['GET', '/logout', 'User#logout', 'user_logout'],
 
-		/* Partie Admin - Ajouter-Modifier-Supprimer un film*/
-		['GET', '/admin', 'User#adminIndex', 'user_admin_index'],
-		['GET', '/admin/film/[:id]', 'User#adminMovie', 'user_admin_movie'],
-		['POST', '/admin/film/[:id]', 'User#adminAddMovie', 'user_admin_add_movie'],
-	
+		/* Partie Admin*/
+		['GET', '/admin', 'User#adminIndex', 'user_admin_index'],	
 
+		['GET', '/admin/deleteUser', 'User#adminDeleteUser', 'admin_delete_user'],		
+		['GET', '/admin/updateUser', 'User#adminUpdateUser', 'admin_update_user'],	
+
+		['GET', '/admin/deleteAdvert', 'User#adminDeleteAdvert', 'admin_delete_advert'],
+
+		['GET', '/admin/deleteMessage', 'User#adminDeleteMessage', 'admin_delete_message'],			
 	);

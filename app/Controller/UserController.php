@@ -4,6 +4,8 @@ namespace Controller;
 use \W\Controller\Controller;
 use \W\Model\Model;
 use \Model\AdvertModel;
+use \Model\SportsModel;
+use \Model\QuestionsModel;
 use \W\Model\UsersModel;
 use \W\Security\AuthentificationModel;
 
@@ -218,6 +220,20 @@ class UserController extends Controller
 				echo $_POST['password'];
 			}
 		}
+	}
+
+	public function adminIndex(){
+		$QuestionsModel=new QuestionsModel;
+		$UsersModel=new UsersModel;
+		$SportsModel=new SportsModel;
+
+		$questions=$QuestionsModel->findAll();
+		$users=$UsersModel->findAll();
+		$sports=$SportsModel->findAll();
+
+
+		$title = 'Administration';
+		$this -> show('admin/index', ['title' => $title, 'messages' => $questions, 'users' => $users, 'sports' => $sports]);
 	}
 
 	
