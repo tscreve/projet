@@ -34,22 +34,30 @@
 		?>
 		</ul>
 	
-
-
-
-
-
-
-
-
-
-
 	</div>
 	
 	<div>
 		<h2>Gestion des annonces</h2>
-
-		<?php var_dump($adverts) ?>
+		<ul><?php 
+			// var_dump($adverts) ;
+			
+			foreach($adverts as $advert){ 
+				$date=date_create_from_format('Y-m-d',$advert['event_date']);
+				$eventDate=$date->format('d/m/y');
+				$date=date_create_from_format('Y-m-d H:i:s',$advert['advert_post_date']);
+				$postDate=$date->format('d/m/y');
+				?>
+				<li>
+					<h3>Annonce : <?= $advert['id'] ?></h3>
+					<p>Date de l\'évenement : <?= $eventDate ?></p>		
+					<p>Postée le <?= $postDate ?></p>
+					<a href="<?= $this->url('admin_delete_advert', ['id' => $advert['id']]) ?>">Supprimer l\'annonce</a>	
+				</li>
+				<?php }
+			?>
+			
+		</ul>
+		
 
 
 
@@ -75,17 +83,26 @@
 		
 	<h2>Gestion des sports</h2>
 
-	<?php var_dump($sports) ?>
+		<?php 
+		// var_dump($sports) ;?>
 
-
-
-
-
-
-
-
-
-
+		<ul>
+			<?php
+			foreach($sports as $sport){ ?>
+			<li>
+			<form method="POST" action="<?= $this->url('admin_update_sports')?>">
+				<input type="text" name="id_sport" style="display:none;" value=<?= $sport['id'] ?>>
+				<input type="text" name="sports_name" value=<?= $sport['name'] ?>>
+				<input type="text" name="logo" value=<?= $sport['logo'] ?>>
+				<input class="color" name="color" value=<?= $sport['bkg_color'] ?>>
+				<input type="submit" value="Update">
+			</form>				
+			</li>			
+		<?php } ?>
+		</ul>
+		<a href="<?= $this->url('admin_add_sport') ?>">Ajouter un sport</a>
+		
+	
 
 	<?php $this->stop('droite') ?>
 
@@ -103,7 +120,7 @@
 
 
 	<?php $this->start('scripts') ?>
-	
+
 	    
 	<?php $this->stop('scripts') ?>
 

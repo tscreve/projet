@@ -37,10 +37,17 @@
 		/* Partie Admin*/
 		['GET', '/admin', 'User#adminIndex', 'user_admin_index'],	
 
+		// utilisateurs
 		['GET', '/admin/deleteUser/[:id]', 'User#adminDeleteUser', 'admin_delete_user'],		
 		['POST', '/admin/updateUser', 'User#adminUpdateUser', 'admin_update_user'],	
 
-		['GET', '/admin/deleteAdvert', 'User#adminDeleteAdvert', 'admin_delete_advert'],
+		// sports
+		['POST', '/admin/updateSports', 'User#adminUpdateSports', 'admin_update_sports'],
+		['GET', '/admin/addSport', 'User#adminAddSport', 'admin_add_sport'],
 
+		// annonces
+		['GET', '/admin/deleteAdvert/[:id]', 'User#adminDeleteAdvert', 'admin_delete_advert'],
+
+		// messages
 		['GET', '/admin/deleteMessage', 'User#adminDeleteMessage', 'admin_delete_message'],			
 	);

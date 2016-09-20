@@ -245,5 +245,19 @@ class UserController extends Controller
 
 	}
 
+	public function adminDeleteAdvert($id){
+		var_dump($id);
+
+	}
+
+	public function adminUpdateSports(){
+		var_dump($_POST);
+
+	}
+
+	public function adminAddSport(){
+		echo "string";;
+
+	}
 	
 }
