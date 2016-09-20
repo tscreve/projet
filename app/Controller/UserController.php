@@ -5,7 +5,7 @@ use \W\Controller\Controller;
 use \W\Model\Model;
 use \Model\AdvertModel;
 use \Model\SportsModel;
-use \Model\QuestionsModel;
+use \Model\AdvertsModel;
 use \W\Model\UsersModel;
 use \W\Security\AuthentificationModel;
 
@@ -223,17 +223,26 @@ class UserController extends Controller
 	}
 
 	public function adminIndex(){
-		$QuestionsModel=new QuestionsModel;
+		$AdvertModel=new AdvertModel;
 		$UsersModel=new UsersModel;
 		$SportsModel=new SportsModel;
 
-		$questions=$QuestionsModel->findAll();
+		$adverts=$AdvertModel->findAll();
 		$users=$UsersModel->findAll();
 		$sports=$SportsModel->findAll();
 
 
 		$title = 'Administration';
-		$this -> show('admin/index', ['title' => $title, 'messages' => $questions, 'users' => $users, 'sports' => $sports]);
+		$this -> show('admin/index', ['title' => $title, 'adverts' => $adverts, 'users' => $users, 'sports' => $sports]);
+	}
+
+	public function adminUpdateUser(){
+		var_dump($_POST);
+	}
+
+	public function adminDeleteUser($id){
+		var_dump($id);
+
 	}
 
 	

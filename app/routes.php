@@ -37,8 +37,8 @@
 		/* Partie Admin*/
 		['GET', '/admin', 'User#adminIndex', 'user_admin_index'],	
 
-		['GET', '/admin/deleteUser', 'User#adminDeleteUser', 'admin_delete_user'],		
-		['GET', '/admin/updateUser', 'User#adminUpdateUser', 'admin_update_user'],	
+		['GET', '/admin/deleteUser/[:id]', 'User#adminDeleteUser', 'admin_delete_user'],		
+		['POST', '/admin/updateUser', 'User#adminUpdateUser', 'admin_update_user'],	
 
 		['GET', '/admin/deleteAdvert', 'User#adminDeleteAdvert', 'admin_delete_advert'],
 
