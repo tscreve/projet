@@ -6,6 +6,7 @@ use \W\Controller\Controller;
 use \W\Model\Model;
 use \Model\AdvertModel;
 use \Model\SportsModel;
+use \Model\QuestionsModel;
 use \Model\ParticipationModel;
 use \W\Model\UsersModel;
 use \W\Security\AuthentificationModel;
@@ -20,7 +21,6 @@ class DefaultController extends Controller
 		$AdvertModel=new AdvertModel();		
 		$sql="SELECT s.name AS sport, s.bkg_color, s.logo, m.firstname, a.id, a.description, a.place, a.level, a.event_date, a.event_time, a.remain_participant, a.advert_post_date FROM sports s, advert a, members m WHERE a.id_sport=s.id AND a.id_member=m.id";
 		$allAdverts=$AdvertModel->query($sql);	
-
 		$this->show('default/index',['allAdverts'=>$allAdverts]);
 	}
 	public function viewAdvert($id){
@@ -36,11 +36,14 @@ class DefaultController extends Controller
 		$participant=$participationModel->query($sql);
 		// var_dump($participant);
 
+		$QuestionsModel=new QuestionsModel;
+		$sql="SELECT q.question, m.firstname FROM questions q, members m WHERE q.id_advert=$id AND q.id_sender=m.id";
+		$questions=$QuestionsModel->query($sql);
 
 		$UsersModel=new UsersModel;
 		$user=$UsersModel->find($advert[0]['poster']);
 
-		$this->show('advert/view', ['advert'=>$advert[0], 'poster'=>$user, 'participants'=>$participant]);
+		$this->show('advert/view', ['advert'=>$advert[0], 'poster'=>$user, 'participants'=>$participant, 'questions'=>$questions]);
 
 	}
 	public function addPlace(){		
@@ -72,6 +75,7 @@ class DefaultController extends Controller
 		if($AdvertModel->insert($advert)){
 			$message = "Annonce enregistrée.";
 			$auth-> setFlash($message, 'success');
+			// var_dump($_POST);
 			$this -> redirectToRoute('user_profil');
 		}
 		else{
@@ -80,7 +84,7 @@ class DefaultController extends Controller
 			$this->show('advert/register');
 		}		
 		// 	
-		// var_dump($_POST);
+		
 	}
 
 	public function registerPlace(){
@@ -90,6 +94,7 @@ class DefaultController extends Controller
 			$allSports=$SportsModel->findAll();
 
 			$this->show('advert/register', ['allSports'=>$allSports]);	
+
 		}
 		$this -> redirectToRoute('default_index');		
 	}
@@ -134,4 +139,28 @@ class DefaultController extends Controller
 		}
 		
 	}
+
+	public function question(){	
+	var_dump($_POST);	
+		$auth = new AuthentificationModel;
+		$loggedUser = $this->getUser();
+		$id=$_POST['id_advert'];
+		if($loggedUser) {
+			// var_dump($_POST);			
+			$Questions=new QuestionsModel;
+			$question = array(
+				'id_sender' => $_POST['id_sender'],				
+				'id_advert' => $_POST['id_advert'],
+				'question'=> htmlentities($_POST['question'])
+			);	
+			$Questions->insert($question);		
+			$this -> redirectToRoute('view_advert', ['id'=>$id]);
+		}else{
+			// var_dump($_POST);
+			// var_dump($id);	
+			$message = "Connecter vous pour poser une question.";
+			$auth-> setFlash($message, 'error');	
+			$this -> redirectToRoute('view_advert', ['id'=>$id]);
+		}		
+	}	
 }

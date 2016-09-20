@@ -3,6 +3,7 @@
 
 	<?php $this->start('droite') ?>
 	
+	
 		<form class="register" action="<?= $this->url('default_addPlace')?>" method="POST">
 		<h1>Déposer votre annonce</h1>
 			<input id="data-lat" type="text" name="data-lat" style="display:none;">

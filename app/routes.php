@@ -18,6 +18,9 @@
 		['GET', '/advert/[:id]', 'Default#viewAdvert', 'view_advert'],
 		['POST', '/advert/[:id]', 'Default#participate', 'advert_participate'],
 
+
+		['POST', '/question', 'Default#question', 'advert_question'],
+
 		/* Ajouter-Supprimer un commentaire
 		['POST', '/addComment', 'Comment#addComment', 'comment_add_comment'],
 		['POST', '/deleteComment', 'User#deleteComment', 'user_delete_comment'],*/
