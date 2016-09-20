@@ -1,12 +1,16 @@
 	<?php $this->layout('layout_projet', ['title' => 'Accueil']) ?>
 	
 	
-	<?php $this->start('droite') ?>
+	<?php $this->start('droite') ;?>
 	<ul id="placesList">
-		<?php foreach($allAdverts as $advert): 	
+		<?php foreach($allAdverts as $advert): 
+
 			$date=date_create_from_format('Y-m-d',$advert['event_date']);	
 			$eventDate=$date->format('d/m');
-			$advert_post_date=$date->format('d/m');
+
+			$date_post=date_create_from_format('Y-m-d H:i:s',$advert['advert_post_date']);
+			$advert_post_date=$date_post->format('d/m');
+
 			$date=date_create_from_format('H:i:s',$advert['event_time']);	
 			$eventTime=$date->format('H\hi');	
 			$dataTime=$date->format('H\hi');	
@@ -17,7 +21,7 @@
 		?>
 		
 
-		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['remain_participant'] ?> data-level=<?= $advert['level'] ?> data-dUrl=<?= $dataUrl ?>>
+		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['remain_participant'] ?> data-level=<?= $advert['level'] ?> data-dUrl=<?= $dataUrl ?> style="background-color:<?= $advert['bkg_color'] ?>;"">
 			<a href="<?= $this->url('view_advert', ['id' => $advert['id']]) ?>">
 			<div class="row">
 				<div class="col-md-2"><img src="<?= $advert['logo'] ?>" alt=""></div>

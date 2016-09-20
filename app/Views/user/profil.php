@@ -1,7 +1,7 @@
 <?php 
 
 // On charge le layout
- $this->layout('layout', ['title' => 'Mon profil', 'message' => $message]); ?>
+ $this->layout('layout_projet', ['title' => 'Mon profil', 'message' => $message]); ?>
 
  <?php $this->start('haut-gauche') ?>
 		<section class="map">		

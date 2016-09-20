@@ -69,7 +69,6 @@
 
 
 	<?php $this->start('gauche') ?>
-		<section class="map">
 				<!-- BOUTON SEARCH DE LA MAP -->
 		<input id="pac-input" class="controls" type="text" placeholder="Rechercher une adresse">
 
@@ -77,7 +76,6 @@
 		<div id="map">
 	    	Chargement en cours...
 	 	</div>			
-		</section>
 	<?php $this->stop('gauche') ?>
 
 
