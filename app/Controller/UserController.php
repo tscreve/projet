@@ -269,7 +269,7 @@ class UserController extends Controller
 	public function adminUpdateSports(){
 		$this->allowTo('admin');
 		// var_dump($_POST);
-		
+
 		$id=$_POST['id_sport'];
 		$sports = new SportsModel;
 		$sport=array('bkg_color'=>"#".$_POST['color'],
@@ -300,7 +300,5 @@ class UserController extends Controller
 		$question=new QuestionsModel;
 		$question->delete($id);
 		$this -> redirectToRoute('view_advert', ['id'=>$id_advert]);
-
-	}
-	
+	}	
 }

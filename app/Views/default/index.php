@@ -21,7 +21,7 @@
 		?>
 		
 
-		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['remain_participant'] ?> data-level=<?= $advert['level'] ?> data-dUrl=<?= $dataUrl ?>">
+		<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['remain_participant'] ?> data-level=<?= $advert['level'] ?> data-dUrl=<?= $dataUrl ?> data-color=<?= $advert['bkg_color'] ?>>
 			<a href="<?= $this->url('view_advert', ['id' => $advert['id']]) ?>">
 			<div class="row">
 				<div class="col-md-2"><img src="<?= $advert['logo'] ?>" alt=""></div>

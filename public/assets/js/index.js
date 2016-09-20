@@ -41,6 +41,7 @@
         var participant=list.children[$i].getAttribute('data-participant');
         var level=list.children[$i].getAttribute('data-level');
         var dUrl=list.children[$i].getAttribute('data-dUrl');
+        var color=list.children[$i].getAttribute('data-color');
        
         switch(level){
           case "debutant":
@@ -74,11 +75,19 @@
           lat: Number(list.children[$i].getAttribute('data-lat')),
           lng: Number(list.children[$i].getAttribute('data-lng'))
         };
-
+        console.log(color);
         var marker = new google.maps.Marker({
-          position: pos,
-          map: map          
+           icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                strokeColor: color,
+                scale: 12
+            },
+          position: pos,   
+
+          map: map         
         });
+        // marker.setLabel('C');
+        marker.setTitle(sport);
         bindWindow(marker, map, infowindow);         
       }
     } else {
