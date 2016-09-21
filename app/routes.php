@@ -10,6 +10,7 @@
 		*/
 		['GET', '/', 'Default#index', 'default_index'],	
 		['GET', '/search/[:id]', 'Default#searchBySport', 'search_by_sport'],	
+		['POST', '/search/date', 'Default#searchByDate', 'search_by_date'],	
 
 		// enregistrement de l'annonce
 		['GET', '/advert/register', 'Default#registerPlace', 'default_registerPlace'],

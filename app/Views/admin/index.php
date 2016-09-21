@@ -98,7 +98,7 @@
 			<li>
 			<form method="POST" action="<?= $this->url('admin_update_sports')?>">
 				</label><input type="text" name="id_sport" style="display:none;" value=<?= $sport['id'] ?>><br>
-				<label >Nom : </label><input type="text" name="sports_name" value=<?= $sport['name'] ?>><br>
+				<label >Nom : </label><input type="text" name="sports_name" value="<?= $sport['name'] ?>"><br>
 				<label >Logo : </label><input type="text" name="logo" value=<?= $sport['logo'] ?>><br>
 				<label >Couleur : </label>
 				<input name="color" value="<?= $sport['bkg_color'] ?>" class="jscolor {closable:true, width:243, height:150, position:'right', borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}">

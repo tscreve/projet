@@ -83,8 +83,8 @@
 	<form method="POST" action="">
 	
 	<label for="presentation">Ma description :</label><br>
-		<textarea name="presentation"><?= $profil['presentation'] ?>		
-		</textarea>
+		<textarea name="presentation"><?= $profil['presentation'] ?></textarea>	
+		
 	<br>
 
 	<label for="phone">Téléphone :</label><br>
@@ -99,7 +99,7 @@
 	<br><br>
 
 	<label for="firstname">Mon prénom</label><br>
-	<input placeholder="prenom" type="text" name="firstname" value=<?= $profil['firstname'] ?>>
+	<input placeholder="prenom" type="text" name="firstname" value="<?= $profil['firstname'] ?>">
 	<br>
 
 	<label for="birthdate">Ma date d'anniversaire :</label><br>

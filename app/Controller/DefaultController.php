@@ -32,9 +32,17 @@ class DefaultController extends Controller
 
 		// var_dump($allAdverts);
 		$this->show('default/index',['allAdverts'=>$allAdverts]);
+	}
 
+	public function searchByDate(){
+		$AdvertModel=new AdvertModel();	
+		$date=date_create_from_format('d/m/Y',$_POST['search_date']);		
+		$searchDate=$date->format('Y-m-d');	
 
-
+		$sql="SELECT s.name AS sport, s.bkg_color, s.logo, m.firstname, a.id, a.description, a.place, a.level, a.event_date, a.event_time, a.remain_participant, a.advert_post_date FROM sports s, advert a, members m WHERE a.id_sport=s.id AND a.id_member=m.id AND a.event_date='$searchDate'";
+		$allAdverts=$AdvertModel->query($sql);
+		
+		$this->show('default/index',['allAdverts'=>$allAdverts]);
 	}
 
 	public function viewAdvert($id){
