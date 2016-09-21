@@ -290,7 +290,6 @@ class UserController extends Controller
 			);
 		$sports->insert($sport);
 		$this -> redirectToRoute('user_admin_index');
-
 	}
 
 	public function adminDeleteSport($id){

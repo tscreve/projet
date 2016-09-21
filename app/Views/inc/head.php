@@ -72,12 +72,12 @@ else {
          <div class="col-md-7">
             <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
                <ul class="nav navbar-nav">
-                  <li><a href="basket">Basket</a></li>
-                  <li><a href="football">Football</a></li>
-                  <li><a href="natation">Natation</a></li>
-                  <li><a href="running">Running</a></li>
-                  <li><a href="tennis">Tennis</a></li>
-                  <li><a href="velo">Velo</a></li>
+                  <li><a href="<?= $this->url('search_by_sport', ['id' => "4"]) ?>">Basket</a></li>
+                  <li><a href="<?= $this->url('search_by_sport', ['id' => "0"]) ?>">Football</a></li>
+                  <li><a href="<?= $this->url('search_by_sport', ['id' => "5"]) ?>">Natation</a></li>
+                  <li><a href="<?= $this->url('search_by_sport', ['id' => "2"]) ?>">Running</a></li>
+                  <li><a href="<?= $this->url('search_by_sport', ['id' => "1"]) ?>">Tennis</a></li>
+                  <li><a href="<?= $this->url('search_by_sport', ['id' => "3"]) ?>">Velo</a></li>
                </ul>
                <input type="button" id="datepicker_header" class="filter-date btn btn-warning" name="filter_date" value="Choisir une date" required>
             </div>

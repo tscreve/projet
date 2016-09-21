@@ -23,6 +23,20 @@ class DefaultController extends Controller
 		$allAdverts=$AdvertModel->query($sql);	
 		$this->show('default/index',['allAdverts'=>$allAdverts]);
 	}
+
+	public function searchBySport($id){
+		$AdvertModel=new AdvertModel();
+
+		$sql="SELECT s.name AS sport, s.bkg_color, s.logo, m.firstname, a.id, a.description, a.place, a.level, a.event_date, a.event_time, a.remain_participant, a.advert_post_date FROM sports s, advert a, members m WHERE a.id_sport=s.id AND a.id_member=m.id AND s.id=$id";
+		$allAdverts=$AdvertModel->query($sql);	
+
+		// var_dump($allAdverts);
+		$this->show('default/index',['allAdverts'=>$allAdverts]);
+
+
+
+	}
+
 	public function viewAdvert($id){
 		$AdvertModel=new AdvertModel();
 		$sql="SELECT a.*, s.name AS sport, m.id as poster FROM advert a, sports s, members m WHERE a.id=$id

@@ -9,6 +9,7 @@
 		@Param4 : Le nom de la route. Réutilisable dans les vues et les controller pour créer des liens ou rediriger
 		*/
 		['GET', '/', 'Default#index', 'default_index'],	
+		['GET', '/search/[:id]', 'Default#searchBySport', 'search_by_sport'],	
 
 		// enregistrement de l'annonce
 		['GET', '/advert/register', 'Default#registerPlace', 'default_registerPlace'],
