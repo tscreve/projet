@@ -88,16 +88,21 @@ else {
          </div>
 
          <div class="col-md-4">
-            <div class="access">
-               <!-- <div class="btn-group"> -->
-               <a href="<?= $this->url('user_login_form') ?>"><button type="button" class="btn btn-primary">Connexion</button></a>
-               <a href="<?= $this->url('user_register_form') ?>"><button type="button" class="btn btn-success">Inscription</button></a>
-               <?php
+            <div class="access">              
+                <?php
+               if(isset($_SESSION['user'])){ ?>                  
+                  <span>Salut <?= $_SESSION['user']['firstname'] ?>&nbsp;&nbsp;&nbsp;</span>
+                  <a href="<?= $this->url('user_profil') ?>"><button type="button" class="btn btn-success">Mon profil</button></a>
+                  <a href="<?= $this->url('user_logout') ?>"><button type="button" class="btn btn-success">Déconnexion</button></a>
+                <?php }else{ ?>
+
+                   <a href="<?= $this->url('user_login_form') ?>"><button type="button" class="btn btn-primary">Connexion</button></a>
+                    <a href="<?= $this->url('user_register_form') ?>"><button type="button" class="btn btn-success">Inscription</button></a>
+               <?php }               
                if(isset($_SESSION['user']) && $_SESSION['user']['role']=='admin'){ ?>
                   <a href="<?= $this->url('user_admin_index') ?>"><button type="button" class="btn btn-success">Admin</button></a>
                 <?php }
-               ?>
-               
+               ?>               
                <!-- </div> -->
             </div>
          </div>

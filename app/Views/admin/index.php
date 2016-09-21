@@ -1,5 +1,4 @@
-	<?php $this->layout('layout_projet', ['title' => 'Administration']) ?>	
-
+	<?php $this->layout('layout_projet', ['title' => 'Administration']) ?>
 
 	<?php $this->start('gauche') ?>		
 	<div>
@@ -31,9 +30,8 @@
 					<option value="user" <?= $selectU ?>>User</option>         
 				</select>
 				</td>
-				<td>
-				<form method="POST" action="<?= $this->url('admin_update_user')?>">
-				<input type="text" name="id_user" style="display:none;" value="<?= $user['id'] ?>">				
+				<td>				
+				<input type="text" name="id_user" style="display:none;" value="<?= $user['id'] ?>">		
 				<input type="submit" value="Update">
 				</form>	
 				</td>
@@ -88,10 +86,8 @@
 	<?php $this->start('droite') ?>
 		
 	<h2>Gestion des sports</h2>
-
 		<?php 
 		// var_dump($sports) ;?>
-
 		<ul>
 			<?php
 			foreach($sports as $sport){ ?>

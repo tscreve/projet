@@ -113,8 +113,7 @@ class DefaultController extends Controller
 			$SportsModel=new SportsModel();		
 			$allSports=$SportsModel->findAll();
 
-			$this->show('advert/register', ['allSports'=>$allSports]);	
-
+			$this->show('advert/register', ['allSports'=>$allSports]);
 		}
 		$this -> redirectToRoute('default_index');		
 	}
@@ -145,19 +144,13 @@ class DefaultController extends Controller
 				'id_member'=>$idMember,
 				'nb_participant'=>$add_participant
 				);
-
 			$participationModel->insert($participation);
-			
-
-
-
 			$this -> redirectToRoute('view_advert', ['id'=>$id]);
 		}
 		else{
 			$idAdvert=$id;
 			$this->show('user/login', ['idAdvert'=>$idAdvert]);
-		}
-		
+		}		
 	}
 
 	public function question(){	
