@@ -88,6 +88,12 @@ else {
                <!-- <div class="btn-group"> -->
                <a href="<?= $this->url('user_login_form') ?>"><button type="button" class="btn btn-primary">Connexion</button></a>
                <a href="<?= $this->url('user_register_form') ?>"><button type="button" class="btn btn-success">Inscription</button></a>
+               <?php
+               if(isset($_SESSION['user']) && $_SESSION['user']['role']=='admin'){ ?>
+                  <a href="<?= $this->url('user_admin_index') ?>"><button type="button" class="btn btn-success">Admin</button></a>
+                <?php }
+               ?>
+               
                <!-- </div> -->
             </div>
          </div>
