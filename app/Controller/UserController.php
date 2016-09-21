@@ -293,6 +293,14 @@ class UserController extends Controller
 
 	}
 
+	public function adminDeleteSport($id){
+		$this->allowTo('admin');
+		
+		$sports = new SportsModel;
+		$sports->delete($id);
+		$this -> redirectToRoute('user_admin_index');
+	}
+
 	public function adminDeleteMessage($id, $id_advert){
 		$this->allowTo('admin');
 		// var_dump($id);

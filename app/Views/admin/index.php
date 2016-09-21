@@ -4,7 +4,14 @@
 	<?php $this->start('gauche') ?>		
 	<div>
 		<h2>Gestion des membres</h2>
-		<ul>
+		<table border='1'>
+		<tr>
+		<th>Membre:</th>
+		<th>Email:</th>
+		<th>Membre depuis le:</th>
+		<th>Rôle:</th>		
+		<th colspan='2'>Action</th>
+		</tr>
 		<?php 
 		// var_dump($users);
 		foreach($users as $user){ 
@@ -13,49 +20,60 @@
 			$selectA=($user['role']=='admin') ? 'selected="selected"' : null;
 			$selectU=($user['role']=='user') ? 'selected="selected"' : null;	
 			?>
-			<li>
-				<h3>Membre : <?= $user['firstname'] ?></h3>				
-				<p>Email : <?= $user['email'] ?></p>
-				<p>Membre depuis le <?= $registerDate ?></p>
-
+				<tr>
+				<td><?= $user['firstname'] ?></td>				
+				<td><?= $user['email'] ?></td>
+				<td><?= $registerDate ?></td>
+				<td>
 				<form method="POST" action="<?= $this->url('admin_update_user')?>">
-				<input type="text" name="id_user" style="display:none;" value="<?= $user['id'] ?>">				
-				<label for="role">Rôle :</label>
 				<select name="role" id="role">
 					<option value="admin" <?= $selectA ?>>Admin</option>
 					<option value="user" <?= $selectU ?>>User</option>         
 				</select>
+				</td>
+				<td>
+				<form method="POST" action="<?= $this->url('admin_update_user')?>">
+				<input type="text" name="id_user" style="display:none;" value="<?= $user['id'] ?>">				
 				<input type="submit" value="Update">
-				</form>			
-				<a href="<?= $this->url('admin_delete_user', ['id' => $user['id']]) ?>" style="color:red;">Supprimer le membre</a>	
-			</li>
+				</form>	
+				</td>
+				<td>
+				<a href="<?= $this->url('admin_delete_user', ['id' => $user['id']]) ?>" style="color:red;">Supprimer</a>
+				</td>					
+				</tr>			
 		<?php }
 		?>
-		</ul>
-	
+		</table>	
 	</div>
 	
 	<div>
 		<h2>Gestion des annonces</h2>
-		<ul><?php 
-			// var_dump($adverts) ;
-			
+		<table border='1'>
+		<tr>
+		<th>Id de l'annonce:</th>
+		<th>Date:</th>
+		<th>Postée le:</th>
+		<th>Action:</th>				
+		</tr>
+		<?php 
+			// var_dump($adverts) ;			
 			foreach($adverts as $advert){ 
 				$date=date_create_from_format('Y-m-d',$advert['event_date']);
 				$eventDate=$date->format('d/m/y');
 				$date=date_create_from_format('Y-m-d H:i:s',$advert['advert_post_date']);
 				$postDate=$date->format('d/m/y');
 				?>
-				<li>
-					<h3>Annonce : <?= $advert['id'] ?></h3>
-					<p>Date de l'évenement : <?= $eventDate ?></p>		
-					<p>Postée le <?= $postDate ?></p>
-					<a href="<?= $this->url('admin_delete_advert', ['id' => $advert['id']]) ?>" style="color:red;">Supprimer l\'annonce</a>	
-				</li>
+					<tr>
+					<td><?= $advert['id'] ?></td>
+					<td><?= $eventDate ?></td>		
+					<td><?= $postDate ?></td>
+					<td>
+					<a href="<?= $this->url('admin_delete_advert', ['id' => $advert['id']]) ?>" style="color:red;">Supprimer</a>
+					</td>
+					</tr>
 				<?php }
-			?>			
-		</ul>
-		
+			?>
+			</table>		
 	</div>
 	
 	
@@ -84,8 +102,9 @@
 				<label >Logo : </label><input type="text" name="logo" value=<?= $sport['logo'] ?>><br>
 				<label >Couleur : </label>
 				<input name="color" value="<?= $sport['bkg_color'] ?>" class="jscolor {closable:true, width:243, height:150, position:'right', borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}">
-				<input type="submit" value="Update"><br><br>
-			</form>				
+				<input type="submit" value="Update">
+			</form>	
+			<a href="<?= $this->url('admin_delete_sport', ['id' => $sport['id']]) ?>" style="color:red;">Supprimer</a>
 			</li>			
 		<?php } ?>
 		</ul>

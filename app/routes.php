@@ -44,6 +44,7 @@
 		// sports
 		['POST', '/admin/updateSports', 'User#adminUpdateSports', 'admin_update_sports'],
 		['GET', '/admin/addSport', 'User#adminAddSport', 'admin_add_sport'],
+		['GET', '/admin/deleteSport/[:id]', 'User#adminDeleteSport', 'admin_delete_sport'],
 
 		// annonces
 		['GET', '/admin/deleteAdvert/[:id]', 'User#adminDeleteAdvert', 'admin_delete_advert'],

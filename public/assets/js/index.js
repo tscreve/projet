@@ -78,9 +78,10 @@
         console.log(color);
         var marker = new google.maps.Marker({
            icon: {
-                path: google.maps.SymbolPath.CIRCLE,
+                path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
                 strokeColor: color,
-                scale: 12
+                scale: 6,
+                strokeWeight :4
             },
           position: pos,   
 
