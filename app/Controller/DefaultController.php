@@ -21,17 +21,22 @@ class DefaultController extends Controller
 		$AdvertModel=new AdvertModel();		
 		$sql="SELECT s.name AS sport, s.bkg_color, s.logo, m.firstname, a.id, a.description, a.place, a.level, a.event_date, a.event_time, a.remain_participant, a.advert_post_date FROM sports s, advert a, members m WHERE a.id_sport=s.id AND a.id_member=m.id ORDER BY a.event_date";
 		$allAdverts=$AdvertModel->query($sql);	
-		$this->show('default/index',['allAdverts'=>$allAdverts]);
+
+		$title='Accueil';
+		$this->show('default/index',['title'=>$title, 'allAdverts'=>$allAdverts]);
 	}
 
 	public function searchBySport($id){
-		$AdvertModel=new AdvertModel();
+		$AdvertModel=new AdvertModel();	
+		$SportsModel=new SportsModel();	
 
 		$sql="SELECT s.name AS sport, s.bkg_color, s.logo, m.firstname, a.id, a.description, a.place, a.level, a.event_date, a.event_time, a.remain_participant, a.advert_post_date FROM sports s, advert a, members m WHERE a.id_sport=s.id AND a.id_member=m.id AND s.id=$id";
 		$allAdverts=$AdvertModel->query($sql);	
 
-		// var_dump($allAdverts);
-		$this->show('default/index',['allAdverts'=>$allAdverts]);
+		$sport=$SportsModel->find($id);
+		$title=$sport['name'];
+	
+		$this->show('default/index',['title'=>$title, 'allAdverts'=>$allAdverts]);
 	}
 
 	public function searchByDate(){
@@ -42,7 +47,8 @@ class DefaultController extends Controller
 		$sql="SELECT s.name AS sport, s.bkg_color, s.logo, m.firstname, a.id, a.description, a.place, a.level, a.event_date, a.event_time, a.remain_participant, a.advert_post_date FROM sports s, advert a, members m WHERE a.id_sport=s.id AND a.id_member=m.id AND a.event_date='$searchDate'";
 		$allAdverts=$AdvertModel->query($sql);
 		
-		$this->show('default/index',['allAdverts'=>$allAdverts]);
+		$title=$_POST['search_date'];
+		$this->show('default/index',['title'=>$title, 'allAdverts'=>$allAdverts]);
 	}
 
 	public function viewAdvert($id){

@@ -82,8 +82,7 @@ else {
                <form method="POST" action="<?= $this->url('search_by_date')?>">
                   <input id="datepicker_header" class="filter-date btn btn-warning" name="search_date" value="Choisir une date" required>
                   <input class="btn btn-success" type="submit" value="GO">
-               </form>
-              
+               </form>              
             </div>
          </div>
 

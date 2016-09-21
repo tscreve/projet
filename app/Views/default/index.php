@@ -1,4 +1,4 @@
-	<?php $this->layout('layout_projet', ['title' => 'Accueil']) ?>
+	<?php $this->layout('layout_projet', ['title' => $title]) ?>
 	
 	
 	<?php $this->start('droite') ;?>
