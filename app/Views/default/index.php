@@ -47,7 +47,7 @@
 <!-- /////////////////////////////////////////////////////////////////////////////////////////// -->
 
 	<?php $this->start('gauche') ?>
-		<div id="map" >
+		<div id="map" class="big-map" >
 	    	Chargement en cours...
 	 	</div>
 	<?php $this->stop('gauche') ?>

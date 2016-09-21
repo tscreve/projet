@@ -97,7 +97,7 @@ nav{
 	color: #566b7A;
 /*	padding: 20px;*/
 	height: 780px;
-	overflow: auto;
+	
 }
 .gauche{
 	width: 70%;
@@ -106,6 +106,7 @@ nav{
 .droite{
 	width: 29%;
 	float: right;
+	overflow: auto;
 }
 .center{
 	width: 100%;
@@ -153,7 +154,7 @@ footer a:hover{
 
 
 /*MAPS*/
-#map{
+.big-map{
 	width: 100%;
 	height: 100%;
 }
@@ -407,6 +408,84 @@ p{
 
 
 
+/* VUE ANNONCE */
+.small-map{
+	width: 100%;
+	height: 40%;
+}
+
+.detail-annonce{
+	padding: 20px;
+	height: 40%;
+}
+.detail-annonce h2{
+	font-size: 1.4em;
+	margin: 0 0 10px;
+}
+.detail-annonce h3{
+	font-size: 1em;
+	margin: 0;
+}
+.detail-annonce ul{
+	padding: 0;
+}
+.detail-annonce li{
+	list-style: none;
+}
+.detail-annonce img{
+	display: block;
+	width: 80px;
+	float: left;
+	margin: 0 10px 10px 0;
+}
+
+
+.detail-annonce-gauche{
+	width: 50%;
+	float: left;
+/*	overflow: auto;*/
+}
+.detail-annonce-droite{
+	width: 50%;
+	float: right;
+	height: 60%;
+/*	overflow: auto;*/
+}
+
+.detail{
+	
+}
+#participant-button{
+	width: 70px;
+	margin: 20px;
+}
+textarea{
+	width: 100%;
+	height: 80px;
+	overflow: auto;
+	resize: none;
+}
+
+.liste-message{
+	margin-top: 20px;
+	height: 260px;
+	overflow: auto;
+}
+.liste-message li{
+	padding: 10px;
+}
+.liste-message li:nth-child(odd){
+	background-color: rgba(86,107,122,0.2);
+}
+.message{
+	margin: 0;
+}
+
+
+.participants{
+	width: 50%;
+	height: 20%;
+}
 
 
 
