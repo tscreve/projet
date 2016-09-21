@@ -1,7 +1,7 @@
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 48.8376, lng:2.3341883},
-      zoom: 14
+      zoom: 13
     });
     // marqueur ma position géolocalisée
     var maPosMarker = new google.maps.Marker({map: map});
@@ -24,7 +24,7 @@
         maPosMarker.setPosition(pos);
         maPosMarker.setLabel('C ');
         maPosMarker.setTitle('C Moi');
-        map.setCenter(pos);
+        
 
       }, function() {
         handleLocationError(true, maPosMarker, map.getCenter());
@@ -56,6 +56,8 @@
            map: map,
            position:pos
         });
+
+        map.setCenter(pos);
 
         marker.addListener('click', function(){
           infowindow.open(map, marker);
