@@ -26,7 +26,7 @@
 	?>
 	<input id="data-lat" type="text" style="display:none;" value=<?= $coords[0] ?>>
 	<input id="data-lng" type="text" style="display:none;" value=<?= $coords[1] ?>>
-	<p>Annonce pour <?= $advert['sport'] ?></p>
+	<p id="advert" data-sport=<?= $advert['sport'] ?> data-time="<?= $eventTime ?>" data-date="<?= $eventDate ?>">Annonce pour <?= $advert['sport'] ?></p>
 	<p>Détails :<br><?= $advert['description'] ?></p>
 	<p>Niveau <?= $advert['level'] ?></p>
 	<p>Rdv le <?= $eventDate." à ".$eventTime ?></p>

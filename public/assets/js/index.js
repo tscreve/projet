@@ -3,7 +3,7 @@
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 48.8376, lng:2.3341883},
-      zoom: 14
+      zoom: 13
     });
     // marqueur ma position géolocalisée
     var maPosMarker = new google.maps.Marker({map: map});
@@ -17,8 +17,7 @@
 
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(pos) {
-        
+      navigator.geolocation.getCurrentPosition(function(pos){        
         var pos = {
           lat: pos.coords.latitude,
           lng: pos.coords.longitude
@@ -54,9 +53,6 @@
             level="confirmé(s)";
             break;
         }
-
-
-
         var contentString='<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
@@ -64,8 +60,7 @@
             '<div id="bodyContent">'+
             '<a href="'+dUrl+'"><button type="button" class="btn btn-success">Participer</button></a>'+
             '</div>'+
-            '</div>';
-  
+            '</div>';  
         infowindow = new google.maps.InfoWindow({
           content: contentString,
           maxWidth: 200
@@ -75,7 +70,6 @@
           lat: Number(list.children[$i].getAttribute('data-lat')),
           lng: Number(list.children[$i].getAttribute('data-lng'))
         };
-        console.log(color);
         var marker = new google.maps.Marker({
            icon: {
                 path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
@@ -83,8 +77,7 @@
                 scale: 6,
                 strokeWeight :4
             },
-          position: pos,   
-
+          position: pos,  
           map: map         
         });
         // marker.setLabel('C');
@@ -98,8 +91,7 @@
   }
 
   function bindWindow(marker, map, infowindow){
-     marker.addListener('click', function() {
-      console.log(infowindow);         
+     marker.addListener('click', function() {        
           infowindow.open(map, this);
         });
   }

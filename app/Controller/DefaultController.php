@@ -13,7 +13,7 @@ use \W\Security\AuthentificationModel;
 
 class DefaultController extends Controller
 {
-	/**
+	/*
 	 * Page d'accueil par défaut
 	 */
 	public function index()
@@ -34,8 +34,7 @@ class DefaultController extends Controller
 		$allAdverts=$AdvertModel->query($sql);	
 
 		$sport=$SportsModel->find($id);
-		$title=$sport['name'];
-	
+		$title=$sport['name'];	
 		$this->show('default/index',['title'=>$title, 'allAdverts'=>$allAdverts]);
 	}
 
@@ -47,7 +46,7 @@ class DefaultController extends Controller
 		$sql="SELECT s.name AS sport, s.bkg_color, s.logo, m.firstname, a.id, a.description, a.place, a.level, a.event_date, a.event_time, a.remain_participant, a.advert_post_date FROM sports s, advert a, members m WHERE a.id_sport=s.id AND a.id_member=m.id AND a.event_date='$searchDate'";
 		$allAdverts=$AdvertModel->query($sql);
 		
-		$title=$_POST['search_date'];
+		$title="Pour le ".$_POST['search_date'];
 		$this->show('default/index',['title'=>$title, 'allAdverts'=>$allAdverts]);
 	}
 
