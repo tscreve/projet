@@ -32,7 +32,7 @@
 		<input id="data-lng" type="text" style="display:none;" value=<?= $coords[1] ?>>
 		
 		<img src="<?= $advert['logo'] ?>">
-		<p>Niveau : <?= $advert['level'] ?></p>
+		<p id="advert" data-sport=<?= $advert['sport'] ?> data-time="<?= $eventTime ?>" data-date="<?= $eventDate ?>">Niveau : <?= $advert['level'] ?></p>
 		<p>Rdv le <?= $eventDate." à ".$eventTime ?></p>
 
 
