@@ -96,12 +96,9 @@ function cacherDiv() {
          <div class="col-md-4">
             <div class="access">              
                 <?php
-               if(isset($_SESSION['user'])){ ?>                  
-                  <span>Salut <?= $_SESSION['user']['firstname'] ?>&nbsp;&nbsp;&nbsp;</span>
-                  <a href="<?= $this->url('user_profil') ?>"><button type="button" class="btn btn-success">Mon profil</button></a>
-                  <a href="<?= $this->url('user_logout') ?>"><button type="button" class="btn btn-success">Déconnexion</button></a>
+               if(isset($_SESSION['user'])){ ?>                 
+                  <span>Salut <a href="<?= $this->url('user_profil') ?>"><?= $_SESSION['user']['firstname'] ?>&nbsp;&nbsp;&nbsp;</a></span>                 
                 <?php }else{ ?>
-
                    <a href="<?= $this->url('user_login_form') ?>"><button type="button" class="btn btn-primary">Connexion</button></a>
                     <a href="<?= $this->url('user_register_form') ?>"><button type="button" class="btn btn-success">Inscription</button></a>
                <?php }               
@@ -114,11 +111,11 @@ function cacherDiv() {
          </div>
       </div>
    </nav>
-   <?php if($message!=null) { ?>
+<!--    <?php if($message!=null) { ?>
     
         <div class="alert alert-<?php echo $class_alert ?>"> <?= $message ?></div>
 
-        <?php } ?>
+        <?php } ?> -->
 </header>
 
 

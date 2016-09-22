@@ -27,7 +27,7 @@
 
 
 			<p class="rdv_date">Date de rdv</p>
-			<input type="text" id="datepicker" name="date">
+			<input type="text" id="datepicker_annonce" name="date">
 			
 			<label for="time">Heure :</label>
 		    <select name="time" id="time">	
