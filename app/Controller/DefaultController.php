@@ -47,7 +47,9 @@ class DefaultController extends Controller
 		$allAdverts=$AdvertModel->query($sql);
 		
 		$title="Pour le ".$_POST['search_date'];
-		$this->show('default/index',['title'=>$title, 'allAdverts'=>$allAdverts]);
+		$searchBtn=$_POST['search_date'];
+		$this->show('default/index',['title'=>$title,'searchBtn'=>$searchBtn, 'allAdverts'=>$allAdverts]);
+		// var_dump($searchBtn);
 	}
 
 	public function viewAdvert($id){
