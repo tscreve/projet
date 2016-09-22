@@ -51,9 +51,7 @@ else {
 
 <header>
 
-<?php if($message!=null) { ?>
-        <div class="alert alert-<?php echo $class_alert ?>"> <?= $message ?></div>
-        <?php } ?>
+
 
    <nav class="navbar navbar-default">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -81,20 +79,17 @@ else {
                   <li><a href="<?= $this->url('search_by_sport', ['id' => "3"]) ?>">Velo</a></li>
                </ul>
                <form id="form_search" method="POST" action="<?= $this->url('search_by_date')?>">
-                  <input id="datepicker_header" class="filter-date btn btn-warning" name="search_date" value="Choisir une date"> 
-               </form>              
+                  <input id="datepicker_header" class="filter-date btn btn-warning" name="search_date" value="Quelle date ?"> 
+               </form>        
             </div>
          </div>
 
          <div class="col-md-4">
             <div class="access">              
                 <?php
-               if(isset($_SESSION['user'])){ ?>                  
-                  <span>Salut <?= $_SESSION['user']['firstname'] ?>&nbsp;&nbsp;&nbsp;</span>
-                  <a href="<?= $this->url('user_profil') ?>"><button type="button" class="btn btn-success">Mon profil</button></a>
-                  <a href="<?= $this->url('user_logout') ?>"><button type="button" class="btn btn-success">Déconnexion</button></a>
+               if(isset($_SESSION['user'])){ ?>                 
+                  <span>Salut <a href="<?= $this->url('user_profil') ?>"><?= $_SESSION['user']['firstname'] ?>&nbsp;&nbsp;&nbsp;</a></span>                 
                 <?php }else{ ?>
-
                    <a href="<?= $this->url('user_login_form') ?>"><button type="button" class="btn btn-primary">Connexion</button></a>
                     <a href="<?= $this->url('user_register_form') ?>"><button type="button" class="btn btn-success">Inscription</button></a>
                <?php }               
@@ -107,4 +102,7 @@ else {
          </div>
       </div>
    </nav>
+   <?php if($message!=null) { ?>
+        <div class="alert alert-<?php echo $class_alert ?>"> <?= $message ?></div>
+        <?php } ?>
 </header>
