@@ -1,8 +1,8 @@
 <?php 
 // On charge le layout
- $this->layout('layout_projet', ['title' => 'Mon profil', 'message' => $message]); 
-$nom_photo ="";
-$photo = "";
+$this->layout('layout_projet', ['title' => 'Mon profil', 'message' => $message, 'photo' => $photo, 'default' => $default]); 
+
+$default = $this->assetUrl("img/profil_default.jpg");
 
 //modification de profil
 if(isset($_GET['action']) && $_GET['action'] == 'profil.php'){
@@ -89,7 +89,15 @@ if(isset($_GET['action']) && $_GET['action'] == 'profil.php'){
 
 	?>
 
-	<img style=""src="<?=$this->assetUrl("img/profil_default.jpg"); ?>">
+<?php if(isset($photo)){	
+	echo '<img src="'.$photo.'" alt="">';
+	}
+else{
+	echo '<img src="'.$default.'" alt="photo_profil">';
+	} ?>
+	
+
+
 	<h2 class="titre_inscription">Mon profil</h2>
 	<form method="POST" action="">
 	
@@ -106,7 +114,9 @@ if(isset($_GET['action']) && $_GET['action'] == 'profil.php'){
 	<select name="gender" id="gender">
 		<option value="m" <?= $selectM ?>>Un homme</option>
 		<option value="f" <?= $selectF ?>>Une femme</option>         
-	</select>
+	</select>  
+
+
 	<br><br>
 
 	<label for="firstname">Mon prénom</label><br>
