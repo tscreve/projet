@@ -56,12 +56,23 @@ nav{
 	width: 50px;
 }
 .navbar-brand{
-	height: 50px;
+	height: 80px; 
+	padding: 0; 
+} 
+.navbar-brand img{ 
+	height: 60px;
 	padding: 0;
+	margin-top: 10px; 
 }
 .navbar-default .navbar-nav>li>a{
 	color: #FFFFFF;
+	line-height: 80px;
 }
+.navbar-default .navbar-nav a{ 
+  padding: 0 10px; 
+  width: 80px; 
+  text-align: center; 
+} 
 .navbar-default .navbar-nav>li>a:hover{
 	background-color: #FFFFFF;
 }
@@ -73,8 +84,12 @@ nav{
 .filter-date{
 	margin: 8px 0 0 20px;
 }
+.navbar-collapse{ 
+  padding: 0; 
+} 
 .navbar .col-md-1{
 	padding: 0;
+	width: 80px;
 }
 .navbar .col-md-7{
 	padding: 0;
@@ -85,8 +100,8 @@ nav{
 /* --------------------------------- CONTENT --------------------------------- */
 
 .content{
-	padding: 2% 10%;
-	height: 850px;
+	padding: 1% 10%;
+	height: 820px;
 	background-color: #4D535D;
 }
 .row{
@@ -434,7 +449,7 @@ p{
 }
 .detail-annonce img{
 	display: block;
-	width: 80px;
+	width: 60px;
 	float: left;
 	margin: 0 10px 10px 0;
 }

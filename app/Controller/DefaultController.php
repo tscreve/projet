@@ -52,7 +52,7 @@ class DefaultController extends Controller
 
 	public function viewAdvert($id){
 		$AdvertModel=new AdvertModel();
-		$sql="SELECT a.*, s.name AS sport, m.id as poster, s.logo FROM advert a, sports s, members m WHERE a.id=$id
+		$sql="SELECT a.*, s.name AS sport, s.bkg_color, m.id as poster, s.logo FROM advert a, sports s, members m WHERE a.id=$id
 						AND a.id_sport=s.id
 						AND a.id_member=m.id";
 		$advert=$AdvertModel->query($sql);

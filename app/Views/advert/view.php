@@ -31,8 +31,8 @@
 		<input id="data-lat" type="text" style="display:none;" value=<?= $coords[0] ?>>
 		<input id="data-lng" type="text" style="display:none;" value=<?= $coords[1] ?>>
 		
-		<img src="<?= $advert['logo'] ?>">
-		<p id="advert" data-sport=<?= $advert['sport'] ?> data-time="<?= $eventTime ?>" data-date="<?= $eventDate ?>">Niveau : <?= $advert['level'] ?></p>
+		<img src="<?= $this->assetUrl("img/" . $advert['logo'] . "") ?>" alt="" >
+		<p id="advert" data-sport=<?= $advert['sport'] ?> data-time="<?= $eventTime ?>" data-date="<?= $eventDate ?>" data-color="<?= $advert['bkg_color'] ?>">Niveau : <?= $advert['level'] ?></p>
 		<p>Rdv le <?= $eventDate." à ".$eventTime ?></p>
 
 
@@ -197,7 +197,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA082QH94snG4T-XIsT6ayEukK-g5mNArg&libraries=places&callback=initMap"async defer></script>
 
 	<script type="text/javascript" src= <?= $this->assetUrl('js/viewadvert.js') ?> ></script>
-	
+	 <script type="text/javascript" src= <?= $this->assetUrl('js/map-icons.min.js') ?> ></script>
 	<script>
        $( function() {
           // SELECT

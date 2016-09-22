@@ -9,6 +9,7 @@
     var sport=advert.getAttribute('data-sport');
     var date=advert.getAttribute('data-date');
     var time=advert.getAttribute('data-time');
+    var color=advert.getAttribute('data-color');
 
     //les coordonnées
     var strLat=document.getElementById("data-lat");   
@@ -22,7 +23,6 @@
           lng: pos.coords.longitude
         };
         maPosMarker.setPosition(pos);
-        maPosMarker.setLabel('C ');
         maPosMarker.setTitle('C Moi');
         
 
@@ -48,10 +48,11 @@
 
         var marker=new google.maps.Marker({
           icon: {
-                path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-                strokeColor: "blue",
-                scale: 6,
-                strokeWeight :4
+                path: MAP_PIN,
+                fillColor: color,
+                fillOpacity: 0.8,
+                strokeColor: '#4d535d',
+                strokeWeight: 1.5
             },
            map: map,
            position:pos

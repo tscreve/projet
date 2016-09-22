@@ -32,7 +32,10 @@ $( function() {
     $( "#time" ).selectmenu();
     // DATEPICKER
     // Datepicker dans le header
-    $( "#datepicker_header" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });
+    $( "#datepicker_header" ).datepicker({ minDate: -20, maxDate: "+1M +10D",onSelect : function(){
+        $('#form_search').submit();
+      } 
+    });
     $( "#datepicker_header" ).datepicker( $.datepicker.regional[ "fr" ] );
     // Datepicker dans le formulaire
     $( "#datepicker" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });

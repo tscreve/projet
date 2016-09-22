@@ -80,9 +80,8 @@ else {
                   <li><a href="<?= $this->url('search_by_sport', ['id' => "1"]) ?>">Tennis</a></li>
                   <li><a href="<?= $this->url('search_by_sport', ['id' => "3"]) ?>">Velo</a></li>
                </ul>
-               <form method="POST" action="<?= $this->url('search_by_date')?>">
-                  <input id="datepicker_header" class="filter-date btn btn-warning" name="search_date" value="Choisir une date" required>
-                  <input class="btn btn-success" type="submit" value="GO">
+               <form id="form_search" method="POST" action="<?= $this->url('search_by_date')?>">
+                  <input id="datepicker_header" class="filter-date btn btn-warning" name="search_date" value="Choisir une date"> 
                </form>              
             </div>
          </div>
