@@ -189,15 +189,14 @@ class UserController extends Controller
 				'photo' => $photo,
 				'phone'=> $_POST['phone'],				
 				'gender' => $_POST['gender']			
-				);
-			// var_dump($_FILES);			
+				);		
 			copy($_FILES['photo']['tmp_name'], $photoPath);
 			//update de l'utilisateur 
 			if($UsersModel-> update($user, $id_user)){
 				// Si l'enregistrement est OK 
 				$message = "Profil mis à jour !";
 				$auth-> setFlash($message, 'success');
-				// var_dump($_FILES);
+				$_SESSION['user']['photo']=$photo;
 				$this -> redirectToRoute('user_profil');
 			} 
 			else{
