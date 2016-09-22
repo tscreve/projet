@@ -16,10 +16,7 @@
 			$dataTime=$date->format('H\hi');	
 			$dataUrl=$this->url('view_advert', ['id' => $advert['id']]);
 
-			$coords=explode(";", $advert['place']);	
-
-
-
+			$coords=explode(";", $advert['place']);
 		?>
 		
 
