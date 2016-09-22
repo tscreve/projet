@@ -114,4 +114,11 @@ function cacherDiv() {
          </div>
       </div>
    </nav>
+   <?php if($message!=null) { ?>
+    
+        <div class="alert alert-<?php echo $class_alert ?>"> <?= $message ?></div>
+
+        <?php } ?>
 </header>
+
+
