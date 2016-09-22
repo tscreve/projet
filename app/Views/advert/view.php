@@ -153,10 +153,6 @@
 			<?php endforeach; ?>
 		</ul>
 	</div>
-
-
-
-
 <?php $this->stop('gauche') ?>
 
 
