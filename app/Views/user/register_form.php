@@ -34,5 +34,16 @@ $this->start('center') ?>
 
 
   <?php $this->start('scripts') ?>
-  
+   <script>
+       $( function() {
+          // SELECT
+          $( "#gender" ).selectmenu();
+              $( "#datepicker" ).datepicker({
+                yearRange: "1966:2000",
+                changeMonth: true,                
+                changeYear: true
+              });
+        });
+
+   </script>
   <?php $this->stop('scripts') ?>
