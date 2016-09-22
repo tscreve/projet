@@ -112,6 +112,8 @@
 
 	<input type="submit" value="Mettre à jour mon profil">   
 	</form>
+
+	<a href="<?= $this->url('user_logout') ?>"><button type="button" class="btn btn-success">Déconnexion</button></a>
 <?php $this->stop('droite');  ?>
 
 
