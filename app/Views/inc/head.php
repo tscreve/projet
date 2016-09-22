@@ -46,8 +46,17 @@ else {
 
 
 
+<?php if($message!=null) { ?>
+        <div id="mess-alert" class="alert alert-<?php echo $class_alert ?>"> <?= $message ?></div>
+        <?php } ?>
 
+<SCRIPT language="JavaScript">
+function cacherDiv() {
+     document.getElementById("mess-alert").style.visibility = "hidden";
+}
+</SCRIPT>
 
+<body onload="setTimeout(cacherDiv,2000);">
 
 <header>
 
@@ -79,17 +88,20 @@ else {
                   <li><a href="<?= $this->url('search_by_sport', ['id' => "3"]) ?>">Velo</a></li>
                </ul>
                <form id="form_search" method="POST" action="<?= $this->url('search_by_date')?>">
-                  <input id="datepicker_header" class="filter-date btn btn-warning" name="search_date" value="Quelle date ?"> 
-               </form>        
+                  <input id="datepicker_header" class="filter-date btn btn-warning" name="search_date" value="Choisir une date"> 
+               </form>              
             </div>
          </div>
 
          <div class="col-md-4">
             <div class="access">              
                 <?php
-               if(isset($_SESSION['user'])){ ?>                 
-                  <span>Salut <a href="<?= $this->url('user_profil') ?>"><?= $_SESSION['user']['firstname'] ?>&nbsp;&nbsp;&nbsp;</a></span>                 
+               if(isset($_SESSION['user'])){ ?>                  
+                  <span>Salut <?= $_SESSION['user']['firstname'] ?>&nbsp;&nbsp;&nbsp;</span>
+                  <a href="<?= $this->url('user_profil') ?>"><button type="button" class="btn btn-success">Mon profil</button></a>
+                  <a href="<?= $this->url('user_logout') ?>"><button type="button" class="btn btn-success">Déconnexion</button></a>
                 <?php }else{ ?>
+
                    <a href="<?= $this->url('user_login_form') ?>"><button type="button" class="btn btn-primary">Connexion</button></a>
                     <a href="<?= $this->url('user_register_form') ?>"><button type="button" class="btn btn-success">Inscription</button></a>
                <?php }               
@@ -102,7 +114,4 @@ else {
          </div>
       </div>
    </nav>
-   <?php if($message!=null) { ?>
-        <div class="alert alert-<?php echo $class_alert ?>"> <?= $message ?></div>
-        <?php } ?>
 </header>
