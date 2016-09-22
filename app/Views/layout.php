@@ -38,7 +38,7 @@ else {
 		</header>
   
     <section>
-      <?= $this->section('haut-gauche') ?>
+      <?= $this->section('main_content') ?>
     </section>
 
     <section>

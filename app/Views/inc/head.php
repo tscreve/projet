@@ -46,14 +46,21 @@ else {
 
 
 
+<?php if($message!=null) { ?>
+        <div id="mess-alert" class="alert alert-<?php echo $class_alert ?>"> <?= $message ?></div>
+        <?php } ?>
 
+<SCRIPT language="JavaScript">
+function cacherDiv() {
+     document.getElementById("mess-alert").style.visibility = "hidden";
+}
+</SCRIPT>
 
+<body onload="setTimeout(cacherDiv,3000);">
 
 <header>
 
-<?php if($message!=null) { ?>
-        <div class="alert alert-<?php echo $class_alert ?>"> <?= $message ?></div>
-        <?php } ?>
+
 
    <nav class="navbar navbar-default">
       <!-- Brand and toggle get grouped for better mobile display -->

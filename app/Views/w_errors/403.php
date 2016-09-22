@@ -1,5 +1,6 @@
-<?php $this->layout('layout', ['title' => 'Nothing to see here']) ?>
+<?php $this->layout('layout_center', ['title' => 'Nothing to see here']) ?>
 
-<?php $this->start('main_content'); ?>
-<h1>403. Nothing to see here.</h1>
-<?php $this->stop('main_content'); ?>
+<?php $this->start('center'); ?>
+<h1>Erreur 403 : Vous n'avez pas les droits requis pour accéder à cette page.</h1>
+<a href="">Retour à l'accueil</a>
+<?php $this->stop('center'); ?>
