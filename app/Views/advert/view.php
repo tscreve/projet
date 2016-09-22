@@ -31,7 +31,7 @@
 		<input id="data-lat" type="text" style="display:none;" value=<?= $coords[0] ?>>
 		<input id="data-lng" type="text" style="display:none;" value=<?= $coords[1] ?>>
 		
-		<img src="<?= $advert['logo'] ?>">
+		<img src="<?= $this->assetUrl("img/" . $advert['logo'] . "") ?>" alt="" >
 		<p id="advert" data-sport=<?= $advert['sport'] ?> data-time="<?= $eventTime ?>" data-date="<?= $eventDate ?>" data-color="<?= $advert['bkg_color'] ?>">Niveau : <?= $advert['level'] ?></p>
 		<p>Rdv le <?= $eventDate." à ".$eventTime ?></p>
 
