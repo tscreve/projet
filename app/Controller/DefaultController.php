@@ -53,8 +53,8 @@ class DefaultController extends Controller
 	public function viewAdvert($id){
 		$AdvertModel=new AdvertModel();
 		$sql="SELECT a.*, s.name AS sport, s.bkg_color, m.id as poster, s.logo FROM advert a, sports s, members m WHERE a.id=$id
-						AND a.id_sport=s.id
-						AND a.id_member=m.id";
+		AND a.id_sport=s.id
+		AND a.id_member=m.id";
 		$advert=$AdvertModel->query($sql);
 		// var_dump($advert);
 
@@ -159,7 +159,7 @@ class DefaultController extends Controller
 	}
 
 	public function question(){	
-	var_dump($_POST);	
+		var_dump($_POST);	
 		$auth = new AuthentificationModel;
 		$loggedUser = $this->getUser();
 		$id=$_POST['id_advert'];
@@ -170,7 +170,7 @@ class DefaultController extends Controller
 				'id_sender' => $_POST['id_sender'],				
 				'id_advert' => $_POST['id_advert'],
 				'question'=> htmlentities($_POST['question'])
-			);	
+				);	
 			$Questions->insert($question);		
 			$this -> redirectToRoute('view_advert', ['id'=>$id]);
 		}else{

@@ -175,36 +175,40 @@ class UserController extends Controller
 			$birthdateTime = date_create_from_format('j/m/Y',$_POST['birthdate']);
 			$birthdate = $birthdateTime->format('Y-m-d');
 			//$extension = array('jpg', 'jpeg', 'png', 'gif');
-			$nom_photo = $_POST['photo'];
+			// $nom_photo = $_POST['photo'];
 			// var_dump($_POST);
-			// $photo = $this->assetUrl("img/$nom_photo.$extension");
+			$photo = $_FILES['photo']['name'];
+			$photoPath=$_SERVER['DOCUMENT_ROOT'].$_POST['path'].$photo;
+
 			$UsersModel=new UsersModel;
 
 			$user = array(
 				'firstname' => htmlentities($_POST['firstname']),				
 				'birthdate'=> $birthdate,
 				'presentation'=> $_POST['presentation'],
-				'photo' => $_POST['photo'],
+				'photo' => $photo,
 				'phone'=> $_POST['phone'],				
 				'gender' => $_POST['gender']			
 				);
+			// var_dump($_FILES);			
+			copy($_FILES['photo']['tmp_name'], $photoPath);
 			//update de l'utilisateur 
-	if($UsersModel-> update($user, $id_user)){
+			if($UsersModel-> update($user, $id_user)){
 				// Si l'enregistrement est OK 
-		$message = "Profil mis à jour !";
-		$auth-> setFlash($message, 'success');
-				// var_dump($_POST);
-		$this -> redirectToRoute('user_profil');
-	} 
-	else{
+				$message = "Profil mis à jour !";
+				$auth-> setFlash($message, 'success');
+				// var_dump($_FILES);
+				$this -> redirectToRoute('user_profil');
+			} 
+			else{
 				// Sinon on reste sur la page et on affiche le message d'erreur				
-		$message = "Il y a eu problème lors de la mise à jour de votre profil";
-		$auth-> setFlash($message, 'error');
+				$message = "Il y a eu problème lors de la mise à jour de votre profil";
+				$auth-> setFlash($message, 'error');
 				var_dump($_POST);
-		$this -> redirectToRoute('user_profil');
-	}	
-}
-}
+				$this -> redirectToRoute('user_profil');
+			}	
+		}
+	}
 	/*
 	*Déconnexion
 	*/
