@@ -37,6 +37,7 @@ else {
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
   <!-- <link rel="stylesheet" href="<?= $this->assetUrl('css/jquery-ui-1.12.0.css') ?>"> -->
 
+  <link rel="stylesheet" href="<?= $this->assetUrl('css/map-icons.min.css') ?>">
 	<link rel="stylesheet" href="<?= $this->assetUrl('css/style.css') ?>">
 
 

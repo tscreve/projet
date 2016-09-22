@@ -22,8 +22,7 @@
           lat: pos.coords.latitude,
           lng: pos.coords.longitude
         };
-        maPosMarker.setPosition(pos);
-        maPosMarker.setLabel('C ');
+        maPosMarker.setPosition(pos);       
         maPosMarker.setTitle('C Moi');
         map.setCenter(pos);
 
@@ -72,15 +71,15 @@
         };
         var marker = new google.maps.Marker({
            icon: {
-                path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-                strokeColor: color,
-                scale: 6,
-                strokeWeight :4
-            },
+                path:   MAP_PIN,
+                fillColor: color,
+                fillOpacity: 0.8,
+                strokeColor: '#4d535d',
+                strokeWeight: 1.5
+            },          
           position: pos,  
-          map: map         
+          map: map,  
         });
-        // marker.setLabel('C');
         marker.setTitle(sport);
         bindWindow(marker, map, infowindow);         
       }

@@ -69,31 +69,31 @@ class UserController extends Controller
         ** Si l'Email ou le prénom sont déjà utilisés, on redirige l'utilisateur vers la page du formulaire d'inscription avec le message d'erreur.
         */       
         $birthdateTime = date_create_from_format('j/m/Y',$_POST['birthdate']);//méthode  procédural
-   		$birthdate = $birthdateTime->format('Y-m-d');
+        $birthdate = $birthdateTime->format('Y-m-d');
 
-   		if($birthdate == false){
-   			$message = 'la date n\'est pas au bon format ex : 00-00-0000';
-			$auth-> setFlash($message,'error');
-			$this -> redirectToRoute('user_register_form');
-   		}
+        if($birthdate == false){
+        	$message = 'la date n\'est pas au bon format ex : 00-00-0000';
+        	$auth-> setFlash($message,'error');
+        	$this -> redirectToRoute('user_register_form');
+        }
 
-		if($userTable->emailExists($_POST['email'])) {
-			$message = 'Cet Email existe déjà, veuillez en choisir un autre.';
-			$auth-> setFlash($message, 'error');
-			$this -> redirectToRoute('user_register_form');
-		}
+        if($userTable->emailExists($_POST['email'])) {
+        	$message = 'Cet Email existe déjà, veuillez en choisir un autre.';
+        	$auth-> setFlash($message, 'error');
+        	$this -> redirectToRoute('user_register_form');
+        }
 		/* 
         ** Si l'Email(dans notre cas il n'ya que l'émail) et le Username n'existent pas alors on peut ajouter le nouvel utilisateur en BDD
         */
-        else{
-		$newUser = array(
-			'firstname' => htmlentities($_POST['firstname']),
-			'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-			'birthdate'=> $birthdate,
-			'email' => $_POST['email'],
-			'gender' => $_POST['gender'],
-			'role' => 'user'
-		);
+		else{
+			$newUser = array(
+				'firstname' => htmlentities($_POST['firstname']),
+				'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+				'birthdate'=> $birthdate,
+				'email' => $_POST['email'],
+				'gender' => $_POST['gender'],
+				'role' => 'user'
+				);
 		}
 		//ajout de l'utilisateur avec la fonction insert() dispo dans W/Model/Model.php
 		if($userTable-> insert($newUser)) {
@@ -155,9 +155,9 @@ class UserController extends Controller
 
 			$AdvertModel=new AdvertModel();
 			$sql="SELECT a.*, s.name AS sport FROM advert a, sports s, members m 
-											WHERE a.id_member=$id_user
-											AND a.id_member=m.id
-											AND a.id_sport=s.id";
+			WHERE a.id_member=$id_user
+			AND a.id_member=m.id
+			AND a.id_sport=s.id";
 			$adverts=$AdvertModel->query($sql);
 
 			$this -> show('user/profil', ['profil'=>$user, 'adverts'=>$adverts]);			
@@ -171,7 +171,7 @@ class UserController extends Controller
 		if($loggedUser) {
 			$id_user=$_SESSION['user']['id'];
 			$birthdateTime = date_create_from_format('j/m/Y',$_POST['birthdate']);
-   			$birthdate = $birthdateTime->format('Y-m-d');
+			$birthdate = $birthdateTime->format('Y-m-d');
 			$UsersModel=new UsersModel;
 			$user = array(
 				'firstname' => htmlentities($_POST['firstname']),				
@@ -179,7 +179,7 @@ class UserController extends Controller
 				'presentation'=> $_POST['presentation'],
 				'phone'=> $_POST['phone'],				
 				'gender' => $_POST['gender']			
-			);
+				);
 			//update de l'utilisateur 
 			if($UsersModel-> update($user, $id_user)){
 				// Si l'enregistrement est OK 
@@ -217,95 +217,95 @@ class UserController extends Controller
 		//si le bouton envoyer est  enregistrée 
 		if(isset($_POST['envoyer'])){
 			foreach ($_POST['email'] as $key => $value){// on chercher dans chaque ligne si la valeur nous renvoie  l'email  (à vérifier)  
-				echo $_POST['password'];
-			}
+			echo $_POST['password'];
 		}
 	}
+}
 
-	public function adminIndex(){
-		$this->allowTo('admin');
-		$AdvertModel=new AdvertModel;
-		$UsersModel=new UsersModel;
-		$SportsModel=new SportsModel;
+public function adminIndex(){
+	$this->allowTo('admin');
+	$AdvertModel=new AdvertModel;
+	$UsersModel=new UsersModel;
+	$SportsModel=new SportsModel;
 
-		$adverts=$AdvertModel->findAll();
-		$users=$UsersModel->findAll();
-		$sports=$SportsModel->findAll();
+	$adverts=$AdvertModel->findAll();
+	$users=$UsersModel->findAll();
+	$sports=$SportsModel->findAll();
 
 
-		$title = 'Administration';
-		$this -> show('admin/index', ['title' => $title, 'adverts' => $adverts, 'users' => $users, 'sports' => $sports]);
-	}
+	$title = 'Administration';
+	$this -> show('admin/index', ['title' => $title, 'adverts' => $adverts, 'users' => $users, 'sports' => $sports]);
+}
 
-	public function adminUpdateUser(){
-		$this->allowTo('admin');
+public function adminUpdateUser(){
+	$this->allowTo('admin');
 		// var_dump($_POST);
 
-		$UsersModel=new UsersModel;
-		$user=array('role'=>$_POST['role']);
-		$id=$_POST['id_user'];
-		$users=$UsersModel->update($user, $id);
-		$this -> redirectToRoute('user_admin_index');		
-	}
+	$UsersModel=new UsersModel;
+	$user=array('role'=>$_POST['role']);
+	$id=$_POST['id_user'];
+	$users=$UsersModel->update($user, $id);
+	$this -> redirectToRoute('user_admin_index');		
+}
 
-	public function adminDeleteUser($id){
-		$this->allowTo('admin');
+public function adminDeleteUser($id){
+	$this->allowTo('admin');
 		// var_dump($id);
 
-		$UsersModel=new UsersModel;
-		$UsersModel->delete($id);
-		$this -> redirectToRoute('user_admin_index');	
-	}
+	$UsersModel=new UsersModel;
+	$UsersModel->delete($id);
+	$this -> redirectToRoute('user_admin_index');	
+}
 
-	public function adminDeleteAdvert($id){
-		$this->allowTo('admin');
+public function adminDeleteAdvert($id){
+	$this->allowTo('admin');
 		// var_dump($id);
 
-		$adverts=new AdvertModel;
-		$adverts->delete($id);
-		$this -> redirectToRoute('user_admin_index');
-	}
+	$adverts=new AdvertModel;
+	$adverts->delete($id);
+	$this -> redirectToRoute('user_admin_index');
+}
 
-	public function adminUpdateSports(){
-		$this->allowTo('admin');
+public function adminUpdateSports(){
+	$this->allowTo('admin');
 		// var_dump($_POST);
 
-		$id=$_POST['id_sport'];
-		$sports = new SportsModel;
-		$sport=array('bkg_color'=>"#".$_POST['color'],
-						'name'=>$_POST['sports_name'],
-						'logo'=>$_POST['logo']);
-		$sports->update($sport, $id);
-		$this -> redirectToRoute('user_admin_index');
-	}
+	$id=$_POST['id_sport'];
+	$sports = new SportsModel;
+	$sport=array('bkg_color'=>"#".$_POST['color'],
+		'name'=>$_POST['sports_name'],
+		'logo'=>$_POST['logo']);
+	$sports->update($sport, $id);
+	$this -> redirectToRoute('user_admin_index');
+}
 
-	public function adminAddSport(){
-		$this->allowTo('admin');
-		
-		$sports = new SportsModel;
-		$sport=array(
-			'name'=>'sport',
-			'logo'=>'logo',
-			'bkg_color'=>'couleur'
-			);
-		$sports->insert($sport);
-		$this -> redirectToRoute('user_admin_index');
-	}
+public function adminAddSport(){
+	$this->allowTo('admin');
+	
+	$sports = new SportsModel;
+	$sport=array(
+		'name'=>'sport',
+		'logo'=>'logo',
+		'bkg_color'=>'couleur'
+		);
+	$sports->insert($sport);
+	$this -> redirectToRoute('user_admin_index');
+}
 
-	public function adminDeleteSport($id){
-		$this->allowTo('admin');
-		
-		$sports = new SportsModel;
-		$sports->delete($id);
-		$this -> redirectToRoute('user_admin_index');
-	}
+public function adminDeleteSport($id){
+	$this->allowTo('admin');
+	
+	$sports = new SportsModel;
+	$sports->delete($id);
+	$this -> redirectToRoute('user_admin_index');
+}
 
-	public function adminDeleteMessage($id, $id_advert){
-		$this->allowTo('admin');
+public function adminDeleteMessage($id, $id_advert){
+	$this->allowTo('admin');
 		// var_dump($id);
 
-		$question=new QuestionsModel;
-		$question->delete($id);
-		$this -> redirectToRoute('view_advert', ['id'=>$id_advert]);
-	}	
+	$question=new QuestionsModel;
+	$question->delete($id);
+	$this -> redirectToRoute('view_advert', ['id'=>$id_advert]);
+}	
 }
