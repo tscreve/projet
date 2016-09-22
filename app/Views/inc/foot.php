@@ -30,23 +30,17 @@ $( function() {
     $( "#level" ).selectmenu();
     $( "#nb_participant" ).selectmenu();
     $( "#time" ).selectmenu();
-    $( "#gender" ).selectmenu();
-
     // DATEPICKER
     // Datepicker dans le header
-    $( "#datepicker_header" ).datepicker({ minDate: 0, maxDate: "+1M +10D",onSelect : function(){
+    $( "#datepicker_header" ).datepicker({ minDate: -20, maxDate: "+1M +10D",onSelect : function(){
         $('#form_search').submit();
       } 
     });
     $( "#datepicker_header" ).datepicker( $.datepicker.regional[ "fr" ] );
     // Datepicker dans le formulaire
-   
-    
-    $( "#datepicker").datepicker({
-                yearRange: "1966:2000",
-                changeMonth: true,                
-                changeYear: true
-              });
+    $( "#datepicker" ).datepicker({ minDate: -20, maxDate: "+1M +10D" });
+    $( "#datepicker" ).datepicker( $.datepicker.regional[ "fr" ] );
+
   } );
   </script>
 

@@ -34,13 +34,13 @@
 		<img src="<?= $this->assetUrl("img/" . $advert['logo'] . "") ?>" alt="" >
 		<p id="advert" data-sport=<?= $advert['sport'] ?> data-time="<?= $eventTime ?>" data-date="<?= $eventDate ?>" data-color="<?= $advert['bkg_color'] ?>">Niveau : <?= $advert['level'] ?></p>
 		<p>Rdv le <?= $eventDate." à ".$eventTime ?></p>
-
-
-		<p class="detail"><?= $advert['description'] ?></p>
-
+		<p>Annonce postée le <?=$advertDate; ?></p>
+		<div class="description">
+		<p ><?= $advert['description'] ?></p>
+		</div>
 
 		<!-- <p><?=$poster['firstname'] ?> cherche <?= $advert['nb_participant'] ?> sportifs</p> -->
-		<p>Annonce postée le <?=$advertDate; ?></p>
+		
 
 		<form method="POST" action="">
 			<label for="participant">Je reserve : </label>
@@ -51,7 +51,7 @@
 					<option value="<?= $i+1 ?>"><?= $i+1 ?></option>;
 				<?php }
 			?> 
-	        </select> place(s)<br>
+	        </select> place(s)
 			<?php
 			if(isset($_SESSION['user'])){
 				if(($remain_participant!=0) && $poster['id']!=$_SESSION['user']['id']){		
@@ -76,15 +76,6 @@
 			?>			
 		</form>
 	</div>
-
-
-
-
-
-
-
-
-
 
 
 	<div class="detail-annonce detail-annonce-droite">
@@ -161,7 +152,7 @@
 
 
 <?php $this->start('droite') ?>
-	<h2>Profil de l'organisateur</h2>
+	<h1>Profil de l'organisateur</h1>
 		<?php
 		// calcul de l'age en fonction de la date d'anniversaire
 		$birthdateTime = date_create_from_format('Y-m-d',$poster['birthdate']);
@@ -172,7 +163,7 @@
 		$date=date_create_from_format('Y-m-d H:i:s',$poster['register_date']);	
 		$registerDate=$date->format('d/m/Y');
 		?>
-		<h3><?= $poster['firstname'] ?></h3>
+		<h2><?= $poster['firstname'] ?></h2>
 		<p><?php switch($poster['gender']){
 			case 'm':
 				echo "Homme";

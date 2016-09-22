@@ -1,5 +1,6 @@
-<?php $this->layout('layout', ['title' => 'Perdu ?']) ?>
+<?php $this->layout('layout_center', ['title' => 'Perdu ?']) ?>
 
-<?php $this->start('main_content'); ?>
-<h1>404. Perdu ?</h1>
-<?php $this->stop('main_content'); ?>
+<?php $this->start('center'); ?>
+	<h1>Erreur 404 : Cette page n'existe pas !</h1>
+	<a href="">Retour à l'accueil</a>
+<?php $this->stop('center'); ?>
