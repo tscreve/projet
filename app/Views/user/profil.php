@@ -1,7 +1,16 @@
 <?php 
-
 // On charge le layout
- $this->layout('layout_projet', ['title' => 'Mon profil', 'message' => $message]); ?>
+ $this->layout('layout_projet', ['title' => 'Mon profil', 'message' => $message]); 
+$nom_photo ="";
+$photo = "";
+
+//modification de profil
+if(isset($_GET['action']) && $_GET['action'] == 'profil.php'){
+	$nom_photo = $_POST['photo_actuelle'];
+}
+
+
+ ?>
 
  <?php $this->start('haut-gauche') ?>
 		<section class="map">		
@@ -79,6 +88,8 @@
    		$birthdate = $birthdateTime->format('d/m/Y');
 
 	?>
+
+	<img style=""src="<?=$this->assetUrl("img/profil_default.jpg"); ?>">
 	<h2 class="titre_inscription">Mon profil</h2>
 	<form method="POST" action="">
 	
@@ -109,6 +120,10 @@
 	<!--  <label for="login">Mon mot de passe</label><br>
 	<input type="password" name="password">
 	<br><br> -->
+
+	<label for="photo">Ma photo :</label>
+	<input type="file" name="photo">
+	<br><br>
 
 	<input type="submit" value="Mettre à jour mon profil">   
 	</form>
