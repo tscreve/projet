@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 20 Septembre 2016 à 10:14
+-- Généré le :  Ven 23 Septembre 2016 à 10:39
 -- Version du serveur :  5.7.9
 -- Version de PHP :  5.6.16
 
@@ -43,21 +43,22 @@ CREATE TABLE IF NOT EXISTS `advert` (
   PRIMARY KEY (`id`),
   KEY `id_member` (`id_member`),
   KEY `id_sport` (`id_sport`)
-) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `advert`
 --
 
 INSERT INTO `advert` (`id`, `id_member`, `id_sport`, `place`, `description`, `level`, `event_date`, `event_time`, `nb_participant`, `remain_participant`, `statut`, `advert_post_date`) VALUES
-(79, 11, 1, '48.86826332276116;2.3494434356689453', 'kgjhvhvh', 'debutant', '2016-09-29', '12:00:00', 2, 3, 'available', '2016-09-17 08:48:14'),
-(80, 11, 3, '48.86351961816249;2.3494434356689453', 'velo cool', 'debutant', '2016-09-30', '14:00:00', 10, 1, 'available', '2016-09-17 09:58:34'),
+(80, 11, 3, '48.86351961816249;2.3494434356689453', 'velo cool', 'debutant', '2016-09-30', '14:00:00', 10, 0, 'available', '2016-09-17 09:58:34'),
 (81, 12, 0, '48.873903;2.3399128', '', 'amateur', '2017-02-09', '12:00:00', 2, 2, 'available', '2016-09-19 17:18:56'),
-(82, 11, 0, '48.873916699999995;2.3398882999999997', '', 'amateur', '2017-08-09', '12:00:00', 2, 2, 'available', '2016-09-19 17:23:05'),
-(83, 11, 0, '48.8739172;2.3398817', '', 'amateur', '2016-08-09', '12:00:00', 2, 2, 'available', '2016-09-19 17:24:22'),
+(82, 11, 0, '48.873916699999995;2.3398882999999997', 'Voici un texte de descriptions pour l''annonce. Voici un texte de descriptions pour l''annonce.Voici un texte de descriptions pour l''annonce.Voici un texte de descriptions pour l''annonce.Voici un texte de descriptions pour l''annonce.Voici un texte de descriptions pour l''annonce.Voici un texte de descriptions pour l''annonce.', 'amateur', '2017-08-09', '12:00:00', 2, 2, 'available', '2016-09-19 17:23:05'),
 (84, 11, 0, '48.8739172;2.339889', '', 'amateur', '2017-01-09', '12:00:00', 2, 2, 'available', '2016-09-19 17:25:09'),
 (85, 11, 0, '48.87389280000001;2.3398852', '', 'amateur', '2017-01-09', '12:00:00', 2, 2, 'available', '2016-09-19 17:26:58'),
-(86, 11, 0, '48.8738847;2.3398931', '', 'amateur', '2017-03-09', '12:00:00', 2, 2, 'available', '2016-09-19 17:27:44');
+(86, 11, 0, '48.8738847;2.3398931', '', 'amateur', '2017-03-09', '12:00:00', 2, 2, 'available', '2016-09-19 17:27:44'),
+(87, 14, 4, '48.837641;2.3341274', '', 'amateur', '2016-09-30', '15:00:00', 3, 3, 'available', '2016-09-20 12:57:32'),
+(90, 14, 3, '48.837627499999996;2.3341343', '', 'amateur', '2016-09-30', '12:00:00', 2, 2, 'available', '2016-09-21 10:02:50'),
+(91, 14, 5, '48.8376525;2.3341412999999998', 'test', 'amateur', '2016-09-30', '11:00:00', 5, 5, 'available', '2016-09-21 13:09:11');
 
 -- --------------------------------------------------------
 
@@ -81,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `members` (
   `register_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `members`
@@ -92,7 +93,9 @@ INSERT INTO `members` (`id`, `email`, `name`, `firstname`, `gender`, `birthdate`
 (11, 'trev@hotmail.com', NULL, 'tom', 'm', '1980-01-01', '$2y$10$79kzztvmYKvbVQl8C30j/u.FkmJsqIl8Y7OdOxuKrVshPP9dWFUwq', NULL, 'ma descr		\r\n				\r\n		', '', 'user', '2016-09-16 12:56:06'),
 (12, 'membre@exemple.com', NULL, 'dqsvGH', 'm', '1979-09-07', '$2y$10$ZY1RvwE7t5vy9GrC8yV3tuk38kKZff.vMGm9Zj8lx.F8xfcbYxMVO', NULL, 'ma description		\r\n				\r\n		', '', 'user', '2016-09-16 12:58:45'),
 (13, 'tve@hotmail.com', NULL, 'MON_PRENOM', 'f', '1973-09-01', '$2y$10$Nvc7dSm8eX0s1nHAo2IC4.OwK3Nr4NVR3aQjgnTpLardMm9ruYnkO', NULL, '	ma descre	\r\n		', '09876', 'user', '2016-09-16 13:00:14'),
-(14, 'dvizier@hotmail.com', NULL, 'David', 'm', '1977-11-28', '$2y$10$FgpWL1I6jxowjv3I8it/R.Bfyh3PLDMkt4DZqeMtVpeYtKLUuINcW', NULL, NULL, NULL, 'user', '2016-09-19 09:12:20');
+(14, 'dvizier@hotmail.com', NULL, 'David', 'm', '1977-11-28', '$2y$10$FgpWL1I6jxowjv3I8it/R.Bfyh3PLDMkt4DZqeMtVpeYtKLUuINcW', 'moi.jpg', '', '', 'admin', '2016-09-19 09:12:20'),
+(15, 'test@test.fr', NULL, 'Test', 'm', '2016-09-30', '$2y$10$4unQs993YHbhvJQg3OHynOwxf6It64/zW.7FzZ8LCkukKjm5M.D5.', NULL, NULL, NULL, 'user', '2016-09-20 15:15:25'),
+(16, 'z@test.fr', NULL, 'Zlatan', 'm', '1981-10-03', '$2y$10$fDvgXal82Jenajl4zhH5BOX6Qiom6klm0F1WIOS33wP/WM3ce8K2q', 'z.png', '', '', 'user', '2016-09-23 09:29:25');
 
 -- --------------------------------------------------------
 
@@ -110,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `participation` (
   PRIMARY KEY (`id`),
   KEY `id_advert` (`id_advert`),
   KEY `id_member` (`id_member`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `participation`
@@ -119,8 +122,8 @@ CREATE TABLE IF NOT EXISTS `participation` (
 INSERT INTO `participation` (`id`, `id_advert`, `id_member`, `nb_participant`, `participation_date`) VALUES
 (1, 80, 10, 2, '2016-09-17 10:29:26'),
 (2, 80, 10, 1, '2016-09-17 10:29:42'),
-(3, 79, 12, 2, '2016-09-19 16:33:12'),
-(4, 80, 12, 2, '2016-09-19 16:33:50');
+(4, 80, 12, 2, '2016-09-19 16:33:50'),
+(6, 80, 14, 1, '2016-09-21 13:06:53');
 
 -- --------------------------------------------------------
 
@@ -152,20 +155,31 @@ CREATE TABLE IF NOT EXISTS `questions` (
   PRIMARY KEY (`id`),
   KEY `id_sender` (`id_sender`),
   KEY `id_advert` (`id_advert`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `questions`
 --
 
 INSERT INTO `questions` (`id`, `id_sender`, `id_advert`, `question`, `date`) VALUES
-(1, 11, 83, '', '2016-09-19 21:01:13'),
 (2, 11, 82, 'SALUT', '2016-09-19 21:12:26'),
 (3, 11, 82, 'duzagdbj', '2016-09-19 21:13:36'),
 (4, 11, 84, 'jhdbjkezdc', '2016-09-19 21:21:42'),
-(5, 11, 84, 'kqsjdbka', '2016-09-19 21:21:47'),
 (6, 12, 80, 'QSNLFLQS?N', '2016-09-20 08:26:41'),
-(7, 12, 80, 'qkjsdbskjq', '2016-09-20 08:46:50');
+(7, 12, 80, 'qkjsdbskjq', '2016-09-20 08:46:50'),
+(13, 14, 91, 'test', '2016-09-21 13:15:33'),
+(14, 14, 91, '', '2016-09-21 13:15:54'),
+(15, 14, 91, '', '2016-09-21 13:16:05'),
+(16, 14, 91, '', '2016-09-21 13:16:06'),
+(17, 14, 82, 'test', '2016-09-21 14:00:56'),
+(18, 14, 82, 'test', '2016-09-21 14:00:59'),
+(19, 14, 82, 'test\r\n', '2016-09-21 14:01:06'),
+(20, 14, 82, 'test', '2016-09-21 14:05:57'),
+(21, 14, 82, 'encore un test', '2016-09-21 14:06:04'),
+(22, 14, 82, 'un dernier ?', '2016-09-21 14:06:11'),
+(23, 14, 82, 'apr&egrave;s j''arrete', '2016-09-21 14:06:19'),
+(24, 14, 82, 'promis...', '2016-09-21 14:06:25'),
+(25, 14, 82, 'test', '2016-09-21 14:40:15');
 
 -- --------------------------------------------------------
 
@@ -187,12 +201,12 @@ CREATE TABLE IF NOT EXISTS `sports` (
 --
 
 INSERT INTO `sports` (`id`, `name`, `logo`, `bkg_color`) VALUES
-(0, 'football', 'http://www.iconshock.com/img_vista/FLAT/education/jpg/Ball_football_icon.jpg', '#b2dfdb'),
-(1, 'tennis', 'http://insmontsuar.cat/joomla/images/stories/Imatges_1213/Tennis.png', '#ffccbc'),
-(2, 'running', 'https://maxcdn.icons8.com/Android/PNG/512/Sports/exercise-512.png', '#b3e5fc'),
-(3, 'velo', 'http://img1.cfstatic.com/insolite/un-coureur-cycliste-se-la-joue-equilibriste-lors-du-championnat-de-grande-bretagne_74013_w620.jpg', '#fff9c4'),
-(4, 'basket', 'https://d30y9cdsu7xlg0.cloudfront.net/png/108213-200.png', '#ffe0b2'),
-(5, 'natation', 'http://www.icone-png.com/png/45/44979.png', '#b2ebf2');
+(0, 'Football', 'football.png', '#57ce43'),
+(1, 'Tennis', 'tennis.png', '#ee3926'),
+(2, 'Running', 'running.png', '#3e8cce'),
+(3, 'Velo', 'velo.png', '#ebee0f'),
+(4, 'Basket', 'basket.png', '#f9a80d'),
+(5, 'Natation', 'natation.png', '#28d4df');
 
 --
 -- Contraintes pour les tables exportées
