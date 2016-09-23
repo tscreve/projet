@@ -29,7 +29,7 @@ $photoUser = $_SESSION['user']['photo'];
 // var_dump($advert);
 
 	?>		
-	<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['nb_participant'] ?> data-level=<?= $advert['level'] ?> data-dUrl=<?= $dataUrl ?>>
+	<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['nb_participant'] ?> data-level=<?= $advert['level'] ?> data-dUrl=<?= $dataUrl ?> data-color="<?= $advert['bkg_color'] ?>">
 		
 		<img src="<?= $this->assetUrl("img/" . $advert['logo'] . "") ?>" alt="" >
 		<p>Détails :<br><?= $advert['description'] ?></p>		
@@ -126,7 +126,7 @@ $photo=($photoUser!=null) ? $photoUser : $defaultPhoto;
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA082QH94snG4T-XIsT6ayEukK-g5mNArg&libraries=places&callback=initMap"
 async defer></script>
 <script type="text/javascript" src= <?= $this->assetUrl('js/index.js') ?> ></script>
-
+<script type="text/javascript" src= <?= $this->assetUrl('js/map-icons.min.js') ?> ></script>
 <script>
 	$( function() {
     	// SELECT
