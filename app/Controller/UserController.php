@@ -154,7 +154,7 @@ class UserController extends Controller
 			$user=$UsersModel->find($id_user);
 
 			$AdvertModel=new AdvertModel();
-			$sql="SELECT a.*, s.name AS sport FROM advert a, sports s, members m 
+			$sql="SELECT a.*, s.name AS sport, s.logo FROM advert a, sports s, members m 
 			WHERE a.id_member=$id_user
 			AND a.id_member=m.id
 			AND a.id_sport=s.id";

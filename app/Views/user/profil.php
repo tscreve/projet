@@ -5,29 +5,14 @@ $this->layout('layout_projet', ['title' => 'Mon profil', 'message' => $message])
 $defaultPhoto = "profil_default.jpg";
 $photoUser = $_SESSION['user']['photo'];
 
-
-//modification de profil
-if(isset($_GET['action']) && $_GET['action'] == 'profil.php'){
-	$nom_photo = $_POST['photo_actuelle'];
-}
 ?>
-
-<?php $this->start('gauche') ;
-?>
-<section class="map">		
-	<div id="map">
-		Chargement en cours...
-	</div>			
-</section>	
-<?php $this->stop('gauche') ?>
-
-
 
 
 <?php $this->start('gauche') ?>		
-<?php 
-var_dump($_FILES); 	
-?>
+	<div id="map" class="small-map">
+	    Chargement en cours...
+	</div>
+	<div class="detail-annonce detail-annonce-gauche">
 <h2>Mes annonces</h2>
 <ul id="placesList">
 	<?php foreach($adverts as $advert): 
@@ -40,9 +25,13 @@ var_dump($_FILES);
 	$advertPostDate=$date->format('d/m \à H \h i \m\i\n');			
 	$coords=explode(";", $advert['place']);	
 	$dataUrl=$this->url('view_advert', ['id' => $advert['id']]);
+	
+// var_dump($advert);
+
 	?>		
 	<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['nb_participant'] ?> data-level=<?= $advert['level'] ?> data-dUrl=<?= $dataUrl ?>>
-		<p><?= $advert['sport'] ?></p>
+		
+		<img src="<?= $this->assetUrl("img/" . $advert['logo'] . "") ?>" alt="" >
 		<p>Détails :<br><?= $advert['description'] ?></p>		
 		<p>Niveau : <?php switch($advert['level']){
 			case 'debutant':
@@ -74,6 +63,7 @@ var_dump($_FILES);
 		</li>
 	<?php endforeach; ?>
 </ul>
+</div>
 <?php $this->stop('gauche') ?>
 
 
