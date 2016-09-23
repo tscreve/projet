@@ -80,7 +80,7 @@ var_dump($_FILES);
 <?php $this->start('droite') ?>
 
 <?php
-		// var_dump($profil);
+// var_dump($profil);
 $selectM=($profil['gender']=='m') ? 'selected="selected"' : null;
 $selectF=($profil['gender']=='f') ? 'selected="selected"' : null;		
 $birthdateTime = date_create_from_format('Y-m-d',$profil['birthdate']);
@@ -91,51 +91,46 @@ $birthdate = $birthdateTime->format('d/m/Y');
 <?php
 $photo=($photoUser!=null) ? $photoUser : $defaultPhoto;
 
-?>	
-<h2 class="titre_inscription">Mon profil</h2>
-<img src="<?= $this->assetUrl("img/" . $photo . "") ?>">
-<form method="POST" action="" enctype="multipart/form-data">
-	
-	<label for="presentation">Ma description :</label><br>
-	<textarea name="presentation"><?= $profil['presentation'] ?></textarea>	
+?>
+<div class="profil">	
+	<h1>Mon profil</h1>
+	<div class="photo-profil">
+		<img src="<?= $this->assetUrl("img/" . $photo . "") ?>">
+	</div>
+	<form method="POST" action="" enctype="multipart/form-data">
+		
+		<label for="presentation">Présentation</label>
+		<textarea name="presentation"><?= $profil['presentation'] ?></textarea>	
 
-	<br>
+		<label for="phone">Téléphone</label>
+		<input type="tel" name="phone" placeholder="Votre numéro de téléphone"  value="<?= $profil['phone'] ?>">
 
-	<label for="phone">Téléphone :</label><br>
-	<input placeholder="Votre numéro de téléphone" type="text" name="phone" value="<?= $profil['phone'] ?>">
-	<br><br>
+		<label for="gender">Sexe</label>
+		<select name="gender" id="gender">
+			<option value="m" <?= $selectM ?>>Un homme</option>
+			<option value="f" <?= $selectF ?>>Une femme</option>         
+		</select>  
 
-	<label for="gender">Je suis toujours :</label><br>
-	<select name="gender" id="gender">
-		<option value="m" <?= $selectM ?>>Un homme</option>
-		<option value="f" <?= $selectF ?>>Une femme</option>         
-	</select>  
+		<label for="firstname">Prénom</label>
+		<input type="text" name="firstname" placeholder="prenom" value="<?= $profil['firstname'] ?>">
 
+		<label for="birthdate">Date de naissance</label>
+		<input type="text" id="datepicker" name="birthdate" value=<?= $birthdate ?>>
 
-	<br><br>
+		<!--  <label for="login">Mon mot de passe</label><br>
+		<input type="password" name="password">
+		<br><br> -->
+		
+		<input type="text" name="path" style="display:none;" value=<?=  $this->assetUrl('img/') ?>>
+		<label for="photo">Photo</label>
+		<input type="file" name="photo">
 
-	<label for="firstname">Mon prénom</label><br>
-	<input placeholder="prenom" type="text" name="firstname" value="<?= $profil['firstname'] ?>">
-	<br>
+		<input type="submit" class="btn btn-success" value="Mettre à jour mon profil">   
+	</form>
 
-	<label for="birthdate">Ma date d'anniversaire :</label><br>
-	<input type="text" id="datepicker" name="birthdate" value=<?= $birthdate ?>>
-	<br><br>
-
-	<!--  <label for="login">Mon mot de passe</label><br>
-	<input type="password" name="password">
-	<br><br> -->
-	
-	<input name="path" type="text" style="display:none;" value=<?=  $this->assetUrl('img/') ?>>
-	<label for="photo">Ma photo :</label>
-	<input type="file" name="photo">
-	<br><br>
-
-	<input type="submit" value="Mettre à jour mon profil">   
-</form>
-<a href="<?= $this->url('user_logout') ?>"><button type="button" class="btn btn-success">Déconnexion</button></a>
-<?php $this->stop('droite');  ?>
-
+	<a href="<?= $this->url('user_logout') ?>"><button type="button" class="log-out btn btn-danger">Déconnexion</button></a>
+	<?php $this->stop('droite');  ?>
+</div>
 
 <?php $this->start('scripts') ?>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA082QH94snG4T-XIsT6ayEukK-g5mNArg&libraries=places&callback=initMap"
