@@ -18,9 +18,24 @@ class DefaultController extends Controller
 	 */
 	public function index()
 	{
-		$AdvertModel=new AdvertModel();		
+		$AdvertModel=new AdvertModel();				
+
+		$allAdverts=$AdvertModel->findAll();
+
+		foreach($allAdverts as $advert){
+			$advertDate = $advert['event_date'];
+			$advertId=$advert['id'];
+			// var_dump($advertDate);
+			$now=date('Y-m-d');
+			// var_dump($now);
+			if($advertDate<$now){
+				// echo "true";
+				$AdvertModel->delete($advertId);
+			}  	   		
+		}
+
 		$sql="SELECT s.name AS sport, s.bkg_color, s.logo, m.firstname, a.id, a.description, a.place, a.level, a.event_date, a.event_time, a.remain_participant, a.advert_post_date FROM sports s, advert a, members m WHERE a.id_sport=s.id AND a.id_member=m.id ORDER BY a.event_date";
-		$allAdverts=$AdvertModel->query($sql);	
+		$allAdverts=$AdvertModel->query($sql);
 
 		$title='Accueil';
 		$this->show('default/index',['title'=>$title, 'allAdverts'=>$allAdverts]);
