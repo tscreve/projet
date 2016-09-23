@@ -73,24 +73,46 @@ nav{
 .navbar-brand img{ 
 	height: 60px;
 	padding: 0;
-	margin-top: 10px; 
+	margin-top: 10px;
+	border: 1px solid #fbfbfb;
+	border-radius: 10px;
+		-webkit-transition-duration: 0.5s;
+	-o-transition-duration: 0.5s;
+	transition-duration: 0.5s;
+}
+.navbar-brand img:hover{ 
+	background-color: #4d535d;
 }
 .navbar-default .navbar-nav>li>a{
 	color: #FFFFFF;
 	line-height: 80px;
+		-webkit-transition-duration: 0.5s;
+	-o-transition-duration: 0.5s;
+	transition-duration: 0.5s;
 }
 .navbar-default .navbar-nav a{ 
   padding: 0 10px; 
-  width: 80px; 
+  width: 100px; 
   text-align: center; 
 } 
 .navbar-default .navbar-nav>li>a:hover{
 	background-color: #FFFFFF;
 }
 .access{
-	line-height: 50px;
+	line-height: 80px;
 	text-align: right;
 	vertical-align: middle;
+}
+.access span{
+	font-size: 1.2em;
+	color: #FFFFFF;
+	line-height: 80px;
+	display: inline;
+	vertical-align: middle;
+	margin-right: 20px;
+}
+.access span>a{
+	text-decoration: underline;
 }
 .filter-date{
 	margin: 8px 0 0 20px;
@@ -108,6 +130,14 @@ nav{
 .navbar .col-md-4{
 	padding: 0;
 }
+#form_search{
+	line-height: 80px;
+}
+#datepicker_header{
+	margin: 0 0 0 20px;
+	width: 120px;
+}
+
 /* --------------------------------- CONTENT --------------------------------- */
 
 .content{
