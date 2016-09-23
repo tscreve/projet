@@ -33,6 +33,7 @@
 
 		['GET', '/profil', 'User#profil', 'user_profil'],
 		['POST', '/profil', 'User#updateProfil', 'user_update_profil'],
+		['GET', '/profil/deleteAdvert/[:id]', 'User#deleteAdvert', 'user_delete_advert'],
 
 		['GET', '/logout', 'User#logout', 'user_logout'],
 

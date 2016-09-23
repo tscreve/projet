@@ -59,7 +59,8 @@ $photoUser = $_SESSION['user']['photo'];
 				echo "hors ligne";
 				break;
 			} 
-			?></p>		
+			?></p>	
+			<a href="<?= $this->url('user_delete_advert', ['id' => $advert['id']]) ?>" style="color:red;">Supprimer</a>
 		</li>
 	<?php endforeach; ?>
 </ul>
@@ -113,7 +114,7 @@ $photo=($photoUser!=null) ? $photoUser : $defaultPhoto;
 		
 		<input type="text" name="path" style="display:none;" value=<?=  $this->assetUrl('img/') ?>>
 		<label for="photo">Photo</label>
-		<input type="file" name="photo">
+		<input type="file" name="photo" value="profil_default.jpg">
 
 		<input type="submit" class="btn btn-success" value="Mettre à jour mon profil">   
 	</form>
