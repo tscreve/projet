@@ -174,9 +174,32 @@ class UserController extends Controller
 			$id_user=$_SESSION['user']['id'];
 			$birthdateTime = date_create_from_format('j/m/Y',$_POST['birthdate']);
 			$birthdate = $birthdateTime->format('Y-m-d');
-			//$extension = array('jpg', 'jpeg', 'png', 'gif');
+			$extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+				//1. strrchr renvoie l'extension avec le point (« . »).
+				//2. substr(chaine,1) ignore le premier caractère de chaine.
+				//3. strtolower met l'extension en minuscules.
+			$extension_upload = strtolower( substr( strrchr($_FILES['photo']['name'], '.')  ,1)  );
+			$image_sizes = getimagesize($_FILES['photo']['tmp_name']);
+			$maxwidth = 300;
+			$maxheight = 300;
+
+			//control de la photo uploader 
+			//si le tableau array ne retourne pas l'extension_valides alors on affiche 
+			if(!in_array($extension_upload,$extensions_valides)){
+				$message = "Veuillez choisir une photo au format jpg/jpeg, png, gif ";
+				$auth-> setFlash($message, 'error');
+				$this-> redirectToRoute('user_profil');
+			};
+
+			//si la taille de l'image de départ est plus grande que la largeur max ou si  la taille de l'image et plus grand que la hauteur max alors
+			if($image_sizes[0] > $maxwidth OR $image_sizes[1] > $maxheight){
+				$message = "Veuillez choisir une photo moin grande";
+				$auth-> setFlash($message, 'error');
+				$this-> redirectToRoute('user_profil');
+			};
+
+
 			// $nom_photo = $_POST['photo'];
-			// var_dump($_POST);
 			$photo = $_FILES['photo']['name'];
 			$photoPath=$_SERVER['DOCUMENT_ROOT'].$_POST['path'].$photo;
 
