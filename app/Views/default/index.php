@@ -2,7 +2,12 @@
 	
 	
 	<?php $this->start('droite') ;?>
-	<ul id="placesList">
+	
+	<div class="btnAdvertRegister">
+		<a href="<?= $this->url('default_registerPlace') ?>"><button type="button" class="btn btn-warning">Déposez votre annonce</button></a>
+	</div>
+	<div class="liste">
+		<ul id="placesList">
 		<?php foreach($allAdverts as $advert): 
 
 		$date=date_create_from_format('Y-m-d',$advert['event_date']);	
@@ -40,6 +45,8 @@
 		</li>
 	<?php endforeach; ?>
 </ul>
+	</div>
+	
 <?php $this->stop('droite') ?>
 
 <!-- ////////////////////////////////////////////////////////////////////////////////////////// -->

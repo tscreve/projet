@@ -120,7 +120,7 @@ class DefaultController extends Controller
 
 			$this->show('advert/register', ['allSports'=>$allSports]);
 		}
-		$this -> redirectToRoute('default_index');		
+		$this -> redirectToRoute('user_login_form');		
 	}
 
 	public function participate($id){
