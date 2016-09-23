@@ -31,7 +31,7 @@
 		<input id="data-lat" type="text" style="display:none;" value=<?= $coords[0] ?>>
 		<input id="data-lng" type="text" style="display:none;" value=<?= $coords[1] ?>>
 		
-		<img src="<?= $this->assetUrl("img/" . $advert['logo'] . "") ?>" alt="" >
+		<img class="icone-sport" src="<?= $this->assetUrl("img/" . $advert['logo'] . "") ?>" alt="" style="background-color: <?= $advert['bkg_color'] ?>;">
 		<p id="advert" data-sport=<?= $advert['sport'] ?> data-time="<?= $eventTime ?>" data-date="<?= $eventDate ?>" data-color="<?= $advert['bkg_color'] ?>">Niveau : <?= $advert['level'] ?></p>
 		<p>Rdv le <?= $eventDate." à ".$eventTime ?></p>
 		<p>Annonce postée le <?=$advertDate; ?></p>

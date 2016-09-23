@@ -37,7 +37,10 @@ a:hover {
 	text-decoration: none;
 	color: #FFFFFF;
 }
-
+.icone-sport{
+	border: 2px solid #4d535d;
+	border-radius: 10px;
+}
 
 
 
