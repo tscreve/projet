@@ -38,7 +38,7 @@ class UserController extends Controller
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
 			// var_dump($_SESSION);
-			// $this -> redirectToRoute('default_index');
+			$this -> redirectToRoute('default_index');
 		}
 		
 		$title = 'Connexion';
@@ -133,7 +133,7 @@ class UserController extends Controller
 			$auth -> logUserIn($user);
 			//affichage
 			$auth-> setFlash('Génial vous êtes connecté(e)', 'success');
-			$this->redirectToRoute('user_profil');
+			$this->redirectToRoute('default_index');
 		}
 		//sinon retour au formulaire
 		else {
