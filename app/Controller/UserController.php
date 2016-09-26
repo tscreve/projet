@@ -164,45 +164,51 @@ class UserController extends Controller
 		}
 		$this -> redirectToRoute('default_index');		
 	}
-	public function updateProfil()
-	{
-
-		// var_dump($_POST);
+	public function updateProfil(){
+		
 		$auth = new AuthentificationModel;
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
 			$id_user=$_SESSION['user']['id'];
 			$birthdateTime = date_create_from_format('j/m/Y',$_POST['birthdate']);
 			$birthdate = $birthdateTime->format('Y-m-d');
-			$extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+
+			if($_FILES['photo']['name']!=""){
+				$extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
 				//1. strrchr renvoie l'extension avec le point (« . »).
 				//2. substr(chaine,1) ignore le premier caractère de chaine.
 				//3. strtolower met l'extension en minuscules.
-			$extension_upload = strtolower( substr( strrchr($_FILES['photo']['name'], '.')  ,1)  );
-			$image_sizes = getimagesize($_FILES['photo']['tmp_name']);
-			$maxwidth = 300;
-			$maxheight = 300;
+				$extension_upload = strtolower( substr( strrchr($_FILES['photo']['name'], '.')  ,1)  );
+				$image_sizes = getimagesize($_FILES['photo']['tmp_name']);
+				$maxwidth = 300;
+				$maxheight = 300;
+				var_dump($_FILES);
+				//control de la photo uploader 
+				//si le tableau array ne retourne pas l'extension_valides alors on affiche 
+				if(!in_array($extension_upload,$extensions_valides)){
+					$message = "Veuillez choisir une photo au format jpg/jpeg, png, gif ";
+					$auth-> setFlash($message, 'error');
+					$this-> redirectToRoute('user_profil');
+				};
 
-			//control de la photo uploader 
-			//si le tableau array ne retourne pas l'extension_valides alors on affiche 
-			if(!in_array($extension_upload,$extensions_valides)){
-				$message = "Veuillez choisir une photo au format jpg/jpeg, png, gif ";
-				$auth-> setFlash($message, 'error');
-				$this-> redirectToRoute('user_profil');
-			};
+				//si la taille de l'image de départ est plus grande que la largeur max ou si  la taille de l'image et plus grand que la hauteur max alors
+				if($image_sizes[0] > $maxwidth OR $image_sizes[1] > $maxheight){
+					$message = "Veuillez choisir de 300 x 300 pixels maximum";
+					$auth-> setFlash($message, 'error');
+					$this-> redirectToRoute('user_profil');
+				};
 
-			//si la taille de l'image de départ est plus grande que la largeur max ou si  la taille de l'image et plus grand que la hauteur max alors
-			if($image_sizes[0] > $maxwidth OR $image_sizes[1] > $maxheight){
-				$message = "Veuillez choisir une photo moins grande";
-				$auth-> setFlash($message, 'error');
-				$this-> redirectToRoute('user_profil');
-			};
-
-			$photo = $_FILES['photo']['name'];
-			$photoPath=$_SERVER['DOCUMENT_ROOT'].$_POST['path'].$photo;
+				$photo = $_FILES['photo']['name'];
+				$photoPath=$_SERVER['DOCUMENT_ROOT'].$_POST['path'].$photo;
+				copy($_FILES['photo']['tmp_name'], $photoPath);
+				$_SESSION['user']['photo']=$photo;
+			}
+			else{
+				$photo=$_SESSION['user']['photo'];
+			}
+			
 
 			$UsersModel=new UsersModel;
-
 			$user = array(
 				'firstname' => htmlentities($_POST['firstname']),				
 				'birthdate'=> $birthdate,
@@ -211,13 +217,12 @@ class UserController extends Controller
 				'phone'=> $_POST['phone'],				
 				'gender' => $_POST['gender']			
 				);		
-			copy($_FILES['photo']['tmp_name'], $photoPath);
+			
 			//update de l'utilisateur 
 			if($UsersModel-> update($user, $id_user)){
 				// Si l'enregistrement est OK 
 				$message = "Profil mis à jour !";
-				$auth-> setFlash($message, 'success');
-				$_SESSION['user']['photo']=$photo;
+				$auth-> setFlash($message, 'success');				
 				$this -> redirectToRoute('user_profil');
 			} 
 			else{
