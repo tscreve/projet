@@ -38,7 +38,7 @@ class UserController extends Controller
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
 			// var_dump($_SESSION);
-			// $this -> redirectToRoute('default_index');
+			$this -> redirectToRoute('default_index');
 		}
 		
 		$title = 'Connexion';
@@ -72,7 +72,7 @@ class UserController extends Controller
         $birthdate = $birthdateTime->format('Y-m-d');
 
         if($birthdate == false){
-        	$message = 'la date n\'est pas au bon format ex : 00-00-0000';
+        	$message = 'la date n\'est pas au bon format ex : 01-01-2000';
         	$auth-> setFlash($message,'error');
         	$this -> redirectToRoute('user_register_form');
         }
@@ -133,7 +133,7 @@ class UserController extends Controller
 			$auth -> logUserIn($user);
 			//affichage
 			$auth-> setFlash('Génial vous êtes connecté(e)', 'success');
-			$this->redirectToRoute('user_profil');
+			$this->redirectToRoute('default_index');
 		}
 		//sinon retour au formulaire
 		else {
@@ -193,13 +193,11 @@ class UserController extends Controller
 
 			//si la taille de l'image de départ est plus grande que la largeur max ou si  la taille de l'image et plus grand que la hauteur max alors
 			if($image_sizes[0] > $maxwidth OR $image_sizes[1] > $maxheight){
-				$message = "Veuillez choisir une photo moin grande";
+				$message = "Veuillez choisir une photo moins grande";
 				$auth-> setFlash($message, 'error');
 				$this-> redirectToRoute('user_profil');
 			};
 
-
-			// $nom_photo = $_POST['photo'];
 			$photo = $_FILES['photo']['name'];
 			$photoPath=$_SERVER['DOCUMENT_ROOT'].$_POST['path'].$photo;
 

@@ -124,7 +124,7 @@ $photo=($photoUser!=null) ? $photoUser : $defaultPhoto;
 		
 		<input type="text" name="path" style="display:none;" value=<?=  $this->assetUrl('img/') ?>>
 		<label for="photo">Photo</label>
-		<input type="file" name="photo" value="">
+		<input type="file" name="photo">
 
 		<input type="submit" class="btn btn-success" value="Mettre à jour mon profil">   
 	</form>

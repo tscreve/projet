@@ -1,7 +1,7 @@
 	<?php $this->layout('layout_projet', ['title' => 'Administration']) ?>
 
 	<?php $this->start('gauche') ?>		
-	<div class=row>
+	<div class="row admin-tab">
 		<div class="col-md-8">
 			<h2>Gestion des membres</h2>
 			<table border='1'>
@@ -37,7 +37,7 @@
 					</form>	
 					</td>
 					<td>
-					<a href="<?= $this->url('admin_delete_user', ['id' => $user['id']]) ?>" style="color:red;">Supprimer</a>
+					<a href="<?= $this->url('admin_delete_user', ['id' => $user['id']]) ?>" style="color:red;"><button>Supprimer</button></a>
 					</td>					
 					</tr>			
 			<?php }
@@ -68,7 +68,7 @@
 						<td><?= $eventDate ?></td>		
 						<td><?= $postDate ?></td>
 						<td>
-						<a href="<?= $this->url('admin_delete_advert', ['id' => $advert['id']]) ?>" style="color:red;">Supprimer</a>
+						<a href="<?= $this->url('admin_delete_advert', ['id' => $advert['id']]) ?>" style="color:red;"><button>Supprimer</button></a>
 						</td>
 						</tr>
 					<?php }
@@ -94,19 +94,20 @@
 			<?php
 			foreach($sports as $sport){ ?>
 			<li>
+			<h4>Sport <?= $sport['id'] ?></h4>
 			<form method="POST" action="<?= $this->url('admin_update_sports')?>">
 				</label><input type="text" name="id_sport" style="display:none;" value=<?= $sport['id'] ?>><br>
 				<label >Nom : </label><input type="text" name="sports_name" value="<?= $sport['name'] ?>"><br>
 				<label >Logo : </label><input type="text" name="logo" value=<?= $sport['logo'] ?>><br>
 				<label >Couleur : </label>
-				<input name="color" value="<?= $sport['bkg_color'] ?>" class="jscolor {closable:true, width:243, height:150, position:'right', borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}">
+				<input name="color" value="<?= $sport['bkg_color'] ?>" class="jscolor {closable:true, width:243, height:150, position:'right', borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}"><br>
 				<input type="submit" value="Update">
-			</form>	
-			<a href="<?= $this->url('admin_delete_sport', ['id' => $sport['id']]) ?>" style="color:red;">Supprimer</a>
+				</form>	
+				<a href="<?= $this->url('admin_delete_sport', ['id' => $sport['id']]) ?>" style="color:red;"><button>Supprimer</button></a>			
 			</li>			
 		<?php } ?>
 		</ul>
-		<a href="<?= $this->url('admin_add_sport') ?>" style="color:red;">Ajouter un sport</a>
+		<a href="<?= $this->url('admin_add_sport') ?>" style="color:red;"><button class="add-sport">Ajouter un sport</button></a>
 		
 	
 
