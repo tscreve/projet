@@ -18,7 +18,7 @@
 
 		<input type="submit" class="btn btn-success" value="Se connecter" id="button">   
 
-		<a href="<?= $this->url('user_register_form') ?>">Inscrivez-vous</a>
+		<p class="links"><a href="<?= $this->url('user_register_form') ?>">Inscrivez-vous</a> ou <a href="<?= $this->url('default_index') ?>">Retournez à l'accueil</a></p>
 	</form>
 </div>
 <?php $this->stop('center');  ?>

@@ -1,16 +1,16 @@
 
-	<?php $this->layout('layout_projet', ['title' => 'Détail de l\'annonce']) ?>	
+<?php $this->layout('layout_projet', ['title' => 'Détail de l\'annonce']);	
+
+$defaultPhoto = "profil_default.jpg";
+$photoUser = $_SESSION['user']['photo'];
+
+?>
 
 
 <?php $this->start('gauche') ?>		
 	<div id="map" class="small-map">
 	    Chargement en cours...
 	</div>
-
-
-
-
-
 
 	<div class="detail-annonce detail-annonce-gauche">
 		<h2>Détail de l'annonce</h2>
@@ -150,19 +150,23 @@
 
 
 
-
 <?php $this->start('droite') ?>
-	<h1>Profil de l'organisateur</h1>
-		<?php
-		// calcul de l'age en fonction de la date d'anniversaire
-		$birthdateTime = date_create_from_format('Y-m-d',$poster['birthdate']);
-		$date=time();		
-   		$now=new DateTime("@$date");
-   		$age=$now->diff($birthdateTime);   		
-		// var_dump($age);
-		$date=date_create_from_format('Y-m-d H:i:s',$poster['register_date']);	
-		$registerDate=$date->format('d/m/Y');
-		?>
+	<div class="profil-organisateur">
+		<h1>Profil de l'organisateur</h1>
+			<?php
+			$photo=($photoUser!=null) ? $photoUser : $defaultPhoto;
+			// calcul de l'age en fonction de la date d'anniversaire
+			$birthdateTime = date_create_from_format('Y-m-d',$poster['birthdate']);
+			$date=time();		
+	   		$now=new DateTime("@$date");
+	   		$age=$now->diff($birthdateTime);   		
+			// var_dump($age);
+			$date=date_create_from_format('Y-m-d H:i:s',$poster['register_date']);	
+			$registerDate=$date->format('d/m/Y');
+			?>
+		<div class="photo-profil">
+			<img src="<?= $this->assetUrl("img/" . $photo . "") ?>">
+		</div>
 		<h2><?= $poster['firstname'] ?></h2>
 		<p><?php switch($poster['gender']){
 			case 'm':
@@ -173,10 +177,12 @@
 				break;
 			} ?></p>
 		<p><?= $age->format("%y") ?> ans</p>
-		<p><?= $poster['presentation'] ?></p>
+		<p class="presentation"><?= $poster['presentation'] ?></p>
 		<p>Membre depuis le <?= $registerDate ?></p>
-
+	</div>
 <?php $this->stop('droite') ?>
+
+
 
 
 
@@ -190,7 +196,6 @@
           // SELECT
           $( "#participant" ).selectmenu();              
         });
-
    </script>
 <?php $this->stop('scripts') ?>
 

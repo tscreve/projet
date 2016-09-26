@@ -31,6 +31,10 @@
 			
 			<label for="time">Heure :</label>
 		    <select name="time" id="time">	
+		      <option value="06">06h</option>
+		      <option value="07">07h</option>
+		      <option value="08">08h</option>
+		      <option value="09">09h</option>
 		      <option value="10">10h</option>
 		      <option value="11">11h</option>
 		      <option selected="selected" value="12">12h</option>
@@ -42,6 +46,9 @@
 		      <option value="18">18h</option>		   
 		      <option value="19">19h</option>		   
 		      <option value="20">20h</option>		   
+		      <option value="21">21h</option>		   
+		      <option value="22">22h</option>		   
+		      <option value="23">23h</option>		   
 		    </select>
 
 			<label for="nb_participant">Nombre de participant</label>
