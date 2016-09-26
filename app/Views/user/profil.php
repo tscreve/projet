@@ -12,7 +12,7 @@ $photoUser = $_SESSION['user']['photo'];
 	<div id="map" class="small-map">
 	    Chargement en cours...
 	</div>
-	<div class="detail-annonce detail-annonce-gauche">
+<div class="profil-annonce">
 <h2>Mes annonces</h2>
 <ul id="placesList">
 	<?php foreach($adverts as $advert): 
@@ -30,37 +30,46 @@ $photoUser = $_SESSION['user']['photo'];
 
 	?>		
 	<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['nb_participant'] ?> data-level=<?= $advert['level'] ?> data-dUrl=<?= $dataUrl ?> data-color="<?= $advert['bkg_color'] ?>">
-		
-		<img class="icone-sport" src="<?= $this->assetUrl("img/" . $advert['logo'] . "") ?>" alt="" style="background-color: <?= $advert['bkg_color'] ?>";>
-		<p>Détails :<br><?= $advert['description'] ?></p>		
-		<p>Niveau : <?php switch($advert['level']){
-			case 'debutant':
-			echo "Débutant";
-			break;
-			case 'amateur':
-			echo "Amateur";
-			break;
-			case 'confirme':
-			echo "Confirmé";
-			break;
-		}
-		?></p>
-		<p>Rdv le <?= $eventDate." à ".$eventTime ?></p>
-		
-		<p> Participants <?= $advert['nb_participant'] ?></p>
-		<p>Postée le <?= $advertPostDate ?></p>
-		<p>Statut :
-			<?php
-			switch($advert['statut']){
-				case 'available':
-				echo "en ligne";
-				break;
-				case 'not_available':
-				echo "hors ligne";
-				break;
-			} 
-			?></p>	
-			<a href="<?= $this->url('user_delete_advert', ['id' => $advert['id']]) ?>" style="color:red;">Supprimer</a>
+		<div class="row">
+			<div class="col-md-2">
+				<img class="icone-sport" src="<?= $this->assetUrl("img/" . $advert['logo'] . "") ?>" alt="" style="background-color: <?= $advert['bkg_color'] ?>";>
+			</div>
+			<div class="col-md-8">
+				<p>Détails :<br><?= $advert['description'] ?></p>		
+				<p>Niveau : <?php switch($advert['level']){
+					case 'debutant':
+					echo "Débutant";
+					break;
+					case 'amateur':
+					echo "Amateur";
+					break;
+					case 'confirme':
+					echo "Confirmé";
+					break;
+				}
+				?>			
+				</p>
+				<p>Rdv le <?= $eventDate." à ".$eventTime ?></p>
+				
+				<p> Participants <?= $advert['nb_participant'] ?></p>
+				<p>Postée le <?= $advertPostDate ?></p>
+				<p>Statut :
+					<?php
+					switch($advert['statut']){
+						case 'available':
+						echo "en ligne";
+						break;
+						case 'not_available':
+						echo "hors ligne";
+						break;
+					} 
+					?>				
+				</p>
+			</div>
+			<div class="col-md-2">
+				<a href="<?= $this->url('user_delete_advert', ['id' => $advert['id']]) ?>"><button type="button" class="btn btn-danger">Supprimer</button></a>
+			</div>
+		</div>
 		</li>
 	<?php endforeach; ?>
 </ul>
