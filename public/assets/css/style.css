@@ -1,17 +1,16 @@
 /*COLORS*/
-/* Bleu : #3289c8 */
-/* Vert : #5cb85c */
+/* Bleu : #3289C8 */
+/* Vert : #5CB85C */
 /* Orange : #f0ad4e */
 /* Gris foncé #4d535d */
 /* Gris-bleu : #566b7a */
 
 
 *{
-	font-family: roboto;
+	font-family: 'Roboto', sans-serif;
 }
 
 html, body {
-	font-family: roboto;
 	margin: 0;
 	padding: 0;
 	font-size: 0.9em;
@@ -53,6 +52,8 @@ a:hover {
 
 
 /* --------------------------------- HEADER --------------------------------- */
+
+/*MENU*/
 nav{
 	padding: 0 10%;
 }
@@ -64,7 +65,6 @@ nav{
 }
 .navbar-header{
 	padding: 0;
-/*	width: 50px;*/
 }
 .navbar-brand{
 	height: 80px; 
@@ -114,15 +114,11 @@ nav{
 .access span>a{
 	text-decoration: underline;
 }
-.filter-date{
-	margin: 8px 0 0 20px;
-}
 .navbar-collapse{ 
   padding: 0; 
 } 
 .navbar .col-md-1{
 	padding: 0;
-	/*width: 80px;*/
 }
 .navbar .col-md-7{
 	padding: 0;
@@ -134,9 +130,42 @@ nav{
 	line-height: 80px;
 }
 #datepicker_header{
-	margin: 0 0 0 20px;
 	width: 120px;
 }
+
+
+/*MENU RESPONSIVE*/
+@media only screen and (max-width: 766px) {
+	.navbar-nav{
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	.navbar-default .navbar-nav>li>a{
+		text-align: center;
+		line-height: 40px;
+		width: 100%;
+	}
+	#form_search{
+		line-height: 40px;
+		text-align: center;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* --------------------------------- CONTENT --------------------------------- */
 
@@ -151,7 +180,6 @@ nav{
 .gauche, .droite{
 	background-color: #FFFFFF;
 	color: #566b7A;
-/*	padding: 20px;*/
 	height: 780px;
 	
 }
@@ -162,7 +190,6 @@ nav{
 .droite{
 	width: 29%;
 	float: right;
-	/*overflow: auto;*/
 }
 .center{
 	width: 100%;
@@ -414,11 +441,12 @@ p{
 	padding-top: 10px;
 	display: inline-block;
 	text-decoration: underline;
-	text-align: center;
-
 }
 
-
+.links{
+	width: 100%;
+	text-align: center;
+}
 
 
 
@@ -468,14 +496,13 @@ p{
 .register-form a{
 	color: #4d535d;
 	padding-top: 10px;
-	display: block;
+	display: inline-block;
 	text-decoration: underline;
 }
 .register-form>.ui-button{
 	line-height: 30px;
 	border-radius: 0;
 }
-
 
 
 
@@ -511,26 +538,59 @@ p{
 }
 .detail-annonce-gauche{
 	width: 50%;
+	height: 33%;
 	float: left;
-/*	overflow: auto;*/
+	overflow: auto;
 }
 .detail-annonce-gauche input[type="submit"]{
 	margin: 0 0 0 80px;
 }
+.participants{
+	padding: 20px 0 0;
+	margin: 0 0 0 20px;
+
+}
+.participants li{
+	display: inline-block;
+}
+.info-participants{
+	position: absolute;
+	display: none;
+	background-color:  rgba(48,48,48,0.6);
+	color: #FFFFFF;
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	padding: 20px 0 0;
+		-webkit-transition-duration: 0.5s;
+	-o-transition-duration: 0.5s;
+	transition-duration: 0.5s;
+	opacity:0;
+}
+
+.photo-participants img{
+	width: 80px;
+}
+.photo-participants:hover .info-participants{
+	display: block;
+}
+.info-participants:hover{
+	display: block;
+	opacity: 1;
+	cursor: default;
+}
+
 
 .detail-annonce-droite{
 	width: 50%;
 	float: right;
 	height: 60%;
-/*	overflow: auto;*/
 }
 .description{
 	margin-top: 10px;
 	max-height: 100px;
 	width: 100%;
 	font-weight: 600;
-	/*background-color:  rgba(86,107,122,0.2);*/
-	/*padding: 5px;*/
 	overflow: auto;
 }
 #participant-button{
@@ -543,12 +603,14 @@ textarea{
 	overflow: auto;
 	resize: none;
 	border-color: #ccc;
+	border-radius: 5px;
 }
 .liste-message{
 	margin-top: 20px;
 	height: 260px;
 	overflow: auto;
 	border: 1px solid #ccc;
+	border-radius: 5px;
 }
 .liste-message li{
 	padding: 10px;
@@ -667,17 +729,18 @@ textarea{
 	margin: 20px 0 0 0;
 }
 .titre-profil-annonce{
-	padding-top: 20px;
-	height: 5%;
+	padding: 10px 0;
 	margin:0;
 	text-align: center;
 }
 .profil-annonce{
 	margin: 0 auto;
-	padding: 20px;
-	height: 55%;
+	padding: 0;
+	height: 51%;
 	width: 80%;
 	overflow: auto;
+	border: solid 1px #CCCCCC;
+	border-radius: 5px;
 }
 
 

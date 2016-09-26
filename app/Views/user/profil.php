@@ -113,7 +113,7 @@ $photo=($photoUser!=null) ? $photoUser : $defaultPhoto;
 		</select>  
 
 		<label for="firstname">Prénom</label>
-		<input type="text" name="firstname" placeholder="prenom" value="<?= $profil['firstname'] ?>">
+		<input type="text" name="firstname" placeholder="prenom" value="<?= $profil['firstname'] ?>" required>
 
 		<label for="birthdate">Date de naissance</label>
 		<input type="text" id="datepicker" name="birthdate" value=<?= $birthdate ?>>
@@ -124,7 +124,7 @@ $photo=($photoUser!=null) ? $photoUser : $defaultPhoto;
 		
 		<input type="text" name="path" style="display:none;" value=<?=  $this->assetUrl('img/') ?>>
 		<label for="photo">Photo</label>
-		<input type="file" name="photo" value="profil_default.jpg">
+		<input type="file" name="photo" value="">
 
 		<input type="submit" class="btn btn-success" value="Mettre à jour mon profil">   
 	</form>

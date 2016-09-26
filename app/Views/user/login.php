@@ -1,11 +1,6 @@
-	<?php 
-
-	// VUE DES FILMS - APPELEE PAR movie#index (/app/Controller/MovieController.php)
-
-	// On charge le layout
-	$this->layout('layout_center', ['title' => $title]); ?>
-
-
+<?php 
+// On charge le layout
+$this->layout('layout_center', ['title' => $title]); ?>
 
 <?php $this->start('center') ?>
 <div class="light-box">

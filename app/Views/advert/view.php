@@ -125,20 +125,29 @@ $defaultPhoto = "profil_default.png";
 		   		$now=new DateTime("@$date");
 		   		$age=$now->diff($birthdateTime);   		
 				// var_dump($age);
+			$photoUser=$participant['photo'];
+			$photo=($photoUser!=null) ? $photoUser : $defaultPhoto;
+
 			?>
 			<li>
-			<h3><?= $participant['firstname'] ?></h3>
-			
-			<p><?php switch($participant['gender']){
-				case 'm':
-					echo "Homme";
-					break;
-				case 'f':
-					echo "Femme";
-					break;
-				} ?></p>
-			<p><?= $age->format("%y") ?> ans</p>
-			<p><?= $participant['nb_participant'] ?> place(s)</p>
+				<div class="photo-participants">
+					<img src="<?= $this->assetUrl("img/" . $photo . "") ?>">
+					<div class="info-participants">			
+						<h3><?= $participant['firstname'] ?></h3>
+						<p><?php switch($participant['gender']){
+							case 'm':
+								echo "Homme";
+								break;
+							case 'f':
+								echo "Femme";
+								break;
+							} ?></p>
+						<p><?= $age->format("%y") ?> ans</p>
+
+						<!-- <p><?= $participant['nb_participant'] ?> place(s)</p> -->
+					</div>
+				</div>
+
 			</li>
 			<?php endforeach; ?>
 		</ul>

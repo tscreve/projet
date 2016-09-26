@@ -9,7 +9,7 @@ $this->start('center') ?>
         <label for="gender">Je suis</label>
         <select name="gender" id="gender">
             <option value="m" selected="selected">Un homme</option>
-            <option value="f">Une femme</option>         
+            <option value="f">Une femme</option>
         </select>
 
         <label for="Prenom">Prenom</label>
