@@ -1,8 +1,7 @@
 
 <?php $this->layout('layout_projet', ['title' => 'Détail de l\'annonce']);	
 
-$defaultPhoto = "profil_default.jpg";
-$photoUser = $_SESSION['user']['photo'];
+$defaultPhoto = "profil_default.png";
 
 ?>
 
@@ -154,6 +153,7 @@ $photoUser = $_SESSION['user']['photo'];
 	<div class="profil-organisateur">
 		<h1>Profil de l'organisateur</h1>
 			<?php
+			$photoUser=$poster['photo'];
 			$photo=($photoUser!=null) ? $photoUser : $defaultPhoto;
 			// calcul de l'age en fonction de la date d'anniversaire
 			$birthdateTime = date_create_from_format('Y-m-d',$poster['birthdate']);
