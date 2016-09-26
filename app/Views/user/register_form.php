@@ -24,7 +24,9 @@ $this->start('center') ?>
         <label for="login">Mot de passe</label>
         <input type="password" name="password" placeholder="Choisissez un mot de passe" >
 
-        <input type="submit" class="btn btn-warning" value="S'inscrire">   
+        <input type="submit" class="btn btn-warning" value="S'inscrire">
+
+        <p class="links"><a href="<?= $this->url('user_login_form') ?>">Connectez-vous</a> ou <a href="<?= $this->url('default_index') ?>">Retournez à l'accueil</a></p>
     </form>
 </div>
 
