@@ -636,49 +636,27 @@ textarea{
 .profil label{
 	margin: 20px 0 0 0;
 }
-
-
-
+.titre-profil-annonce{
+	padding-top: 20px;
+	height: 5%;
+	margin:0;
+	text-align: center;
+}
 .profil-annonce{
 	margin: 0 auto;
 	padding: 20px;
-	height: 60%;
+	height: 55%;
 	width: 80%;
 	overflow: auto;
 }
-/*
-.profil-annonce h2{
-	font-size: 1.4em;
-	margin: 0 0 10px;
-}
-.profil-annonce h3{
-	font-size: 1em;
-	margin: 0;
-}
-.profil-annonce ul{
-	padding: 0;
 
-}
-.profil-annonce li{
+
+/*VUE ADMIN*/
+.admin-liste-sport{
 	list-style: none;
+	height: 90%;
+	overflow: auto;
 }
-.profil-annonce img{
-	display: block;
-	width: 60px;
-	float: left;
-	margin: 0 10px 10px 0;
-}
-.profil-annonce p{
-	clear: both;
-}
-.profil-annonce button{
-	float: right;
-}
-
-*/
-
-
-
 
 
 

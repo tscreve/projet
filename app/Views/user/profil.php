@@ -12,8 +12,9 @@ $photoUser = $_SESSION['user']['photo'];
 	<div id="map" class="small-map">
 	    Chargement en cours...
 	</div>
+
+<h2 class="titre-profil-annonce">Mes annonces</h2>
 <div class="profil-annonce">
-<h2>Mes annonces</h2>
 <ul id="placesList">
 	<?php foreach($adverts as $advert): 
 	$date=date_create_from_format('Y-m-d',$advert['event_date']);	
