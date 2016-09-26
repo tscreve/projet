@@ -682,14 +682,33 @@ textarea{
 
 
 /*VUE ADMIN*/
+
 .admin-liste-sport{
+	padding: 0;
+	margin: 0 auto;
 	list-style: none;
+	width: 100%;
 	height: 90%;
 	overflow: auto;
+
+}
+.admin-liste-sport li{
+	border:solid 1px #ccc;
+	margin: 0 auto;
+	width: 80%;
+	margin-top: 10px;
+	padding: 5px;
+}
+.admin-liste-sport label{
+	width: 100px;
+	margin: 0;
 }
 
-
-
+.add-sport{
+	display: block;
+	width: 80%;
+	margin: 0 auto;
+}
 
 /* MESSAGES ALERT/SUCCESS */
 .alert{
