@@ -412,9 +412,12 @@ p{
 .login-form a{
 	color: #4d535d;
 	padding-top: 10px;
-	display: block;
+	display: inline-block;
 	text-decoration: underline;
+	text-align: center;
+
 }
+
 
 
 
@@ -666,8 +669,43 @@ textarea{
 
 
 
+.profil-annonce{
+	margin: 0 auto;
+	padding: 20px;
+	height: 60%;
+	width: 80%;
+	overflow: auto;
+}
+/*
+.profil-annonce h2{
+	font-size: 1.4em;
+	margin: 0 0 10px;
+}
+.profil-annonce h3{
+	font-size: 1em;
+	margin: 0;
+}
+.profil-annonce ul{
+	padding: 0;
 
+}
+.profil-annonce li{
+	list-style: none;
+}
+.profil-annonce img{
+	display: block;
+	width: 60px;
+	float: left;
+	margin: 0 10px 10px 0;
+}
+.profil-annonce p{
+	clear: both;
+}
+.profil-annonce button{
+	float: right;
+}
 
+*/
 
 
 

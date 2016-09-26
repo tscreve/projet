@@ -231,6 +231,13 @@ class UserController extends Controller
 			}	
 		}
 	}
+
+	public function deleteAdvert($id){
+		$AdvertModel=new AdvertModel();	
+
+		$AdvertModel->delete($id);
+		$this -> redirectToRoute('user_profil');
+	}
 	/*
 	*Déconnexion
 	*/
