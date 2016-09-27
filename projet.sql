@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 23 Septembre 2016 à 10:39
+-- Généré le :  Mar 27 Septembre 2016 à 14:23
 -- Version du serveur :  5.7.9
 -- Version de PHP :  5.6.16
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `advert` (
 --
 
 INSERT INTO `advert` (`id`, `id_member`, `id_sport`, `place`, `description`, `level`, `event_date`, `event_time`, `nb_participant`, `remain_participant`, `statut`, `advert_post_date`) VALUES
-(80, 11, 3, '48.86351961816249;2.3494434356689453', 'velo cool', 'debutant', '2016-09-30', '14:00:00', 10, 0, 'available', '2016-09-17 09:58:34'),
+(80, 11, 3, '48.86351961816249;2.3494434356689453', 'velo cool', 'debutant', '2016-09-30', '14:00:00', 10, 8, 'available', '2016-09-17 09:58:34'),
 (81, 12, 0, '48.873903;2.3399128', '', 'amateur', '2017-02-09', '12:00:00', 2, 2, 'available', '2016-09-19 17:18:56'),
 (82, 11, 0, '48.873916699999995;2.3398882999999997', 'Voici un texte de descriptions pour l''annonce. Voici un texte de descriptions pour l''annonce.Voici un texte de descriptions pour l''annonce.Voici un texte de descriptions pour l''annonce.Voici un texte de descriptions pour l''annonce.Voici un texte de descriptions pour l''annonce.Voici un texte de descriptions pour l''annonce.', 'amateur', '2017-08-09', '12:00:00', 2, 2, 'available', '2016-09-19 17:23:05'),
 (84, 11, 0, '48.8739172;2.339889', '', 'amateur', '2017-01-09', '12:00:00', 2, 2, 'available', '2016-09-19 17:25:09'),
@@ -82,20 +82,23 @@ CREATE TABLE IF NOT EXISTS `members` (
   `register_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `members`
 --
 
 INSERT INTO `members` (`id`, `email`, `name`, `firstname`, `gender`, `birthdate`, `password`, `photo`, `presentation`, `phone`, `role`, `register_date`) VALUES
-(10, 'tscreve@hotmail.com', NULL, 'gh', 'm', '1998-09-14', '$2y$10$rgoJHULoWMNPD7JbrFlGPOsLPblEW7vVGrYIRY/CZWcMikhL/Nlzi', NULL, NULL, NULL, 'user', '2016-09-16 12:50:57'),
+(10, 'tscreve@hotmail.com', NULL, 'thomas', 'm', '1998-09-14', '$2y$10$rgoJHULoWMNPD7JbrFlGPOsLPblEW7vVGrYIRY/CZWcMikhL/Nlzi', 'image1.jpg', '', '0667133433', 'user', '2016-09-16 12:50:57'),
 (11, 'trev@hotmail.com', NULL, 'tom', 'm', '1980-01-01', '$2y$10$79kzztvmYKvbVQl8C30j/u.FkmJsqIl8Y7OdOxuKrVshPP9dWFUwq', NULL, 'ma descr		\r\n				\r\n		', '', 'user', '2016-09-16 12:56:06'),
 (12, 'membre@exemple.com', NULL, 'dqsvGH', 'm', '1979-09-07', '$2y$10$ZY1RvwE7t5vy9GrC8yV3tuk38kKZff.vMGm9Zj8lx.F8xfcbYxMVO', NULL, 'ma description		\r\n				\r\n		', '', 'user', '2016-09-16 12:58:45'),
 (13, 'tve@hotmail.com', NULL, 'MON_PRENOM', 'f', '1973-09-01', '$2y$10$Nvc7dSm8eX0s1nHAo2IC4.OwK3Nr4NVR3aQjgnTpLardMm9ruYnkO', NULL, '	ma descre	\r\n		', '09876', 'user', '2016-09-16 13:00:14'),
 (14, 'dvizier@hotmail.com', NULL, 'David', 'm', '1977-11-28', '$2y$10$FgpWL1I6jxowjv3I8it/R.Bfyh3PLDMkt4DZqeMtVpeYtKLUuINcW', 'moi.jpg', '', '', 'admin', '2016-09-19 09:12:20'),
 (15, 'test@test.fr', NULL, 'Test', 'm', '2016-09-30', '$2y$10$4unQs993YHbhvJQg3OHynOwxf6It64/zW.7FzZ8LCkukKjm5M.D5.', NULL, NULL, NULL, 'user', '2016-09-20 15:15:25'),
-(16, 'z@test.fr', NULL, 'Zlatan', 'm', '1981-10-03', '$2y$10$fDvgXal82Jenajl4zhH5BOX6Qiom6klm0F1WIOS33wP/WM3ce8K2q', 'z.png', '', '', 'user', '2016-09-23 09:29:25');
+(16, 'z@test.fr', NULL, 'Zlatan', 'm', '1981-10-03', '$2y$10$fDvgXal82Jenajl4zhH5BOX6Qiom6klm0F1WIOS33wP/WM3ce8K2q', 'z.png', '', '', 'user', '2016-09-23 09:29:25'),
+(17, 'juju@hotmail.fr', NULL, 'juju', 'm', '1980-12-22', '$2y$10$KQIZsXgvh65GxEz4uYAQ1.SeVhKXar1I6uLXThvqjV2rO4I3NTjfS', 'patate.jpg', '', '0667133433', 'user', '2016-09-27 09:33:52'),
+(18, 'admin@mail.com', NULL, 'admin', 'm', '2016-09-08', '$2y$10$xSZmMBkI58hNtJnrfSw8QOVxEk.wdye1KpwhRxEWOkSib4Ihc4IOm', NULL, NULL, NULL, 'admin', '2016-09-27 10:19:04'),
+(19, 'user@mail.com', NULL, 'user', 'm', '2016-09-02', '$2y$10$x2fGdCzayxEesHMebxiTAejSjTl9tsB0gDmsY1p/5vuP43xiREp0e', NULL, NULL, NULL, 'user', '2016-09-27 10:20:40');
 
 -- --------------------------------------------------------
 
@@ -113,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `participation` (
   PRIMARY KEY (`id`),
   KEY `id_advert` (`id_advert`),
   KEY `id_member` (`id_member`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `participation`
@@ -123,7 +126,8 @@ INSERT INTO `participation` (`id`, `id_advert`, `id_member`, `nb_participant`, `
 (1, 80, 10, 2, '2016-09-17 10:29:26'),
 (2, 80, 10, 1, '2016-09-17 10:29:42'),
 (4, 80, 12, 2, '2016-09-19 16:33:50'),
-(6, 80, 14, 1, '2016-09-21 13:06:53');
+(6, 80, 14, 1, '2016-09-21 13:06:53'),
+(9, 80, 17, 4, '2016-09-27 09:36:15');
 
 -- --------------------------------------------------------
 
@@ -155,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   PRIMARY KEY (`id`),
   KEY `id_sender` (`id_sender`),
   KEY `id_advert` (`id_advert`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `questions`
@@ -179,7 +183,8 @@ INSERT INTO `questions` (`id`, `id_sender`, `id_advert`, `question`, `date`) VAL
 (22, 14, 82, 'un dernier ?', '2016-09-21 14:06:11'),
 (23, 14, 82, 'apr&egrave;s j''arrete', '2016-09-21 14:06:19'),
 (24, 14, 82, 'promis...', '2016-09-21 14:06:25'),
-(25, 14, 82, 'test', '2016-09-21 14:40:15');
+(25, 14, 82, 'test', '2016-09-21 14:40:15'),
+(32, 17, 80, '45', '2016-09-27 09:37:27');
 
 -- --------------------------------------------------------
 
