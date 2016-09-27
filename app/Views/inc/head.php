@@ -67,23 +67,40 @@ else {
 
 
 
-                <div class="col-md-7 col-sm-12">
+                <div class="col-md-11 col-sm-12">
                     <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
+                        
+                        <ul class="nav navbar-nav navbar-left">
                             <li><a href="<?= $this->url('search_by_sport', ['id' => "4"]) ?>">Basket</a></li>
                             <li><a href="<?= $this->url('search_by_sport', ['id' => "0"]) ?>">Football</a></li>
                             <li><a href="<?= $this->url('search_by_sport', ['id' => "5"]) ?>">Natation</a></li>
                             <li><a href="<?= $this->url('search_by_sport', ['id' => "2"]) ?>">Running</a></li>
                             <li><a href="<?= $this->url('search_by_sport', ['id' => "1"]) ?>">Tennis</a></li>
                             <li><a href="<?= $this->url('search_by_sport', ['id' => "3"]) ?>">Velo</a></li>
+                            <li>
+                            <form id="form_search" method="POST" action="<?= $this->url('search_by_date')?>">
+                                <input id="datepicker_header" class="filter-date btn btn-warning" name="search_date" value="Quand ?"> 
+                            </form>
+                            </li>
                         </ul>
-                        <form id="form_search" method="POST" action="<?= $this->url('search_by_date')?>">
-                            <input id="datepicker_header" class="filter-date btn btn-warning" name="search_date" value="Quand ?"> 
-                        </form>              
+                        
+                        <div class="navbar-right access">              
+                            <?php
+                            if(isset($_SESSION['user'])){ ?>                 
+                            <span>Salut <a href="<?= $this->url('user_profil') ?>"><?= $_SESSION['user']['firstname'] ?></a></span>                 
+                            <?php }else{ ?>
+                            <a href="<?= $this->url('user_login_form') ?>"><button type="button" class="btn btn-primary">Connexion</button></a>
+                            <a href="<?= $this->url('user_register_form') ?>"><button type="button" class="btn btn-success">Inscription</button></a>
+                            <?php }               
+                            if(isset($_SESSION['user']) && $_SESSION['user']['role']=='admin'){ ?>
+                            <a href="<?= $this->url('user_admin_index') ?>"><button type="button" class="btn btn-success">Admin</button></a>
+                            <?php }
+                            ?>               
+                        </div>             
                     </div>
                 </div>
 
-                <div class="col-md-4 col-sm-12">
+<!--                 <div class="col-md-4 col-sm-12">
                     <div class="access">              
                         <?php
                         if(isset($_SESSION['user'])){ ?>                 
@@ -97,7 +114,7 @@ else {
                         <?php }
                         ?>               
                     </div>
-                </div>
+                </div> -->
             </div>
         </nav>
     </header>

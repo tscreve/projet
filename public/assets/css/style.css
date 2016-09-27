@@ -102,6 +102,7 @@ nav{
 	line-height: 80px;
 	text-align: right;
 	vertical-align: middle;
+
 }
 .access span{
 	font-size: 1.2em;
@@ -136,6 +137,12 @@ nav{
 
 /*MENU RESPONSIVE*/
 @media only screen and (max-width: 766px) {
+	header{
+		position: fixed;
+		top: 0;
+		z-index: 10;
+		width: 100%;
+	}
 	.navbar-nav{
 		width: 100%;
 		margin: 0;
@@ -203,17 +210,22 @@ nav{
 }
 
 
-
-
-
+/*RESPONSIVE*/
 @media only screen and (max-width: 766px) {
+	.content{
+		height: 100%;
+		min-height: 600px;
+		padding: 90px 10px 10px;
+	}
 	.gauche{
 		float: none;
 		width: 100%;
 		height: 200px;
 	}
 	.droite{
+		float: none;
 		width: 100%;
+		height: 100%;
 		margin-top: 10px;
 	}
 }
@@ -252,9 +264,36 @@ footer a:hover{
 	background-color: #FFFFFF;
 	text-decoration: none;
 }
+footer p{
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
 .fa-envelope-o{
 	padding: 0 10px 0 0;
 }
+
+
+@media only screen and (max-width: 766px) {
+	footer{
+	
+	}
+	footer p{
+		display: none;
+	}
+	.copyright{
+		width: 90%;
+		font-size: 0.8em;
+	}
+	.contact{
+		width: 10%;
+	}
+	.fa-envelope-o{
+		font-size: 1.2em;
+		padding: 0;
+}
+}
+
 
 
 
@@ -413,6 +452,12 @@ p{
 @media only screen and (max-width: 766px) {
 	.liste{
 		overflow: visible;
+	}
+	.btnAdvertRegister{
+		height:8%;
+		background-color:#4D535D;
+		text-align: center;
+		padding-bottom: 10px;
 	}
 }
 

@@ -1,10 +1,10 @@
 <footer>
     <div class="row">
-        <div class="copyright">
+        <div class="col-md-6 col-sm-6 copyright">
             <div>&copy; Copyright 2016 - T.A.D - Tous droits réservés</div>
         </div>
-        <div class="contact">
-            <a href="mailto:test@test.fr"><i class="fa fa-envelope-o" aria-hidden="true"></i>Nous contacter</a>
+        <div class="col-md-6 col-sm-6 contact">
+            <a href="mailto:test@test.fr"><i class="fa fa-envelope-o" aria-hidden="true"></i><p>Nous contacter</p></a>
         </div>
    </div>
 </footer>
