@@ -18,11 +18,9 @@ class UserController extends Controller
 	*/
 	public function registerForm()
 	{
-		// Si l'utilisateur est connecté on le redirige vers la page de tous les films 
-		// (il ne doit pas à accéder à la page d'inscription)
+		// Si l'utilisateur est connecté on le redirige vers son profil
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
-			// var_dump($_SESSION);
 			$this -> redirectToRoute('user_profil');
 		}		
 		$title = 'Inscription';
@@ -34,13 +32,11 @@ class UserController extends Controller
 	*/
 	public function loginForm()
 	{	 
-		// (il ne doit pas à accéder à la page de connexion)
+		// redirection si userr connecté
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
-			// var_dump($_SESSION);
 			$this -> redirectToRoute('default_index');
-		}
-		
+		}		
 		$title = 'Connexion';
 		$this -> show('user/login', ['title' => $title]);
 	}
@@ -49,9 +45,7 @@ class UserController extends Controller
 	 */
 	public function addUser()
 	{
-		//Instanciation d'un objet de la class "UsersModel" pour l'accès à la BDD
 		$userTable = new UsersModel;
-	 	// récupération d'un objet de la classe AuthentificationModel
 		$auth = new AuthentificationModel;
 
 		if(filter_var($_POST['email'],FILTER_VALIDATE_EMAIL)== false){
@@ -96,7 +90,7 @@ class UserController extends Controller
 				'role' => 'user'
 				);
 		}
-		//ajout de l'utilisateur avec la fonction insert() dispo dans W/Model/Model.php
+		//ajout de l'utilisateur avec la fonction
 		if($userTable-> insert($newUser)) {
 			// Si l'enregistrement est OK on affiche la page d'acceuil avec le message de succès			
 			$message = "Votre inscription est validée.";
@@ -119,12 +113,9 @@ class UserController extends Controller
 	*/
 	public function login()
 	{		
-		// récupération d'un objet de la classe AuthentificationModel
 		$auth = new AuthentificationModel;
-		//vérification login/password
 		if($auth -> isValidLoginInfo($_POST['email'], $_POST['password']))
 		{
-			//récupération d'un "modèle" Utilisateur
 			$util = new UsersModel;
 			$user = $util -> getUserByUsernameOrEmail($_POST['email']);
 			//connexion de l'utilisateur
@@ -147,7 +138,6 @@ class UserController extends Controller
 		$loggedUser = $this->getUser();
 		if($loggedUser) {
 			$id_user=$_SESSION['user']['id'];
-			// var_dump($_SESSION);
 			$UsersModel=new UsersModel;
 			$user=$UsersModel->find($id_user);
 
@@ -239,9 +229,9 @@ class UserController extends Controller
 		}
 	}
 
+	// suppression d'une annonce par le user
 	public function deleteAdvert($id){
-		$AdvertModel=new AdvertModel();	
-
+		$AdvertModel=new AdvertModel();
 		$AdvertModel->delete($id);
 		$this -> redirectToRoute('user_profil');
 	}
@@ -250,13 +240,9 @@ class UserController extends Controller
 	*/
 	public function logout()
 	{
-		// récupération d'un objet de la classe AuthentificationModel
 		$auth = new AuthentificationModel;
-		//déconnexion de l'utilisateur (session)
 		$auth -> logUserOut();
-		//redirection vers l'accueil
 		$auth-> setFlash('Vous êtes deconnecté(e)', 'info');
-		// var_dump($_SESSION);
 		$this -> redirectToRoute('default_index');
 	}
 
@@ -275,10 +261,9 @@ class UserController extends Controller
 		$this -> show('admin/index', ['title' => $title, 'adverts' => $adverts, 'users' => $users, 'sports' => $sports]);
 	}
 
+	// admin change le rôle des users
 	public function adminUpdateUser(){
 		$this->allowTo('admin');
-			// var_dump($_POST);
-
 		$UsersModel=new UsersModel;
 		$user=array('role'=>$_POST['role']);
 		$id=$_POST['id_user'];
@@ -286,28 +271,25 @@ class UserController extends Controller
 		$this -> redirectToRoute('user_admin_index');		
 	}
 
+	// admin supprime user
 	public function adminDeleteUser($id){
 		$this->allowTo('admin');
-			// var_dump($id);
-
 		$UsersModel=new UsersModel;
 		$UsersModel->delete($id);
 		$this -> redirectToRoute('user_admin_index');	
 	}
 
+	// admin supprime une annonce
 	public function adminDeleteAdvert($id){
 		$this->allowTo('admin');
-			// var_dump($id);
-
 		$adverts=new AdvertModel;
 		$adverts->delete($id);
 		$this -> redirectToRoute('user_admin_index');
 	}
 
+	// admin met à jour un sport
 	public function adminUpdateSports(){
 		$this->allowTo('admin');
-			// var_dump($_POST);
-
 		$id=$_POST['id_sport'];
 		$sports = new SportsModel;
 		$sport=array('bkg_color'=>"#".$_POST['color'],
@@ -317,6 +299,7 @@ class UserController extends Controller
 		$this -> redirectToRoute('user_admin_index');
 	}
 
+	// admin ajoute un sport
 	public function adminAddSport(){
 		$this->allowTo('admin');
 		
@@ -330,6 +313,7 @@ class UserController extends Controller
 		$this -> redirectToRoute('user_admin_index');
 	}
 
+	// admin supprime un sport
 	public function adminDeleteSport($id){
 		$this->allowTo('admin');
 		
@@ -338,10 +322,9 @@ class UserController extends Controller
 		$this -> redirectToRoute('user_admin_index');
 	}
 
+	// admin supprime un message d'une annonce
 	public function adminDeleteMessage($id, $id_advert){
 		$this->allowTo('admin');
-			// var_dump($id);
-
 		$question=new QuestionsModel;
 		$question->delete($id);
 		$this -> redirectToRoute('view_advert', ['id'=>$id_advert]);

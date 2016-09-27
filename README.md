@@ -1,21 +1,17 @@
-## W
+projet aster, david et thomas
 
-W est un framework minimaliste. Il suit les structures et les grand thèmes des frameworks PHP OO MVC actuels, tout en en facilitant l'approche. 
+dans un terminal : faire un composer install à la racine du projet
 
----
+importer projet.sql
 
-####Pour télécharger le framework et en consulter la documentation :
+créer une copie de app/config.dist.php et renommer la app/config.php
+configurer le mot de passe de la BDD dans app/config.php si besoin
 
-1. Dans un terminal : 
-
-  ```
-  cd c:/xampp/htdocs
-  composer create-project webforce3/w nom_de_mon_projet
-  ```
-
-2. Naviguez vers http://localhost/nom_de_mon_projet/docs/tuto/
+compte admin du site : 
+	login : admin@mail.com
+	mdp : admin
 
 
-####Auteurs :
-* Guillaume Sylvestre : [@gsylvestre](https://github.com/gsylvestre) (auteur original)
-* Axel Wargnier : [@axessweb](https://github.com/axessweb)
+compte user du site : 
+	login : user@mail.com
+	mdp : user
