@@ -6,6 +6,7 @@
 	
 		<form class="register" action="<?= $this->url('default_addPlace')?>" method="POST">
 		<h1>Déposer votre annonce</h1>
+			<!-- sauvegarde des coordonees saisies sur la carte -->
 			<input id="data-lat" type="text" name="data-lat" style="display:none;">
 			<input id="data-lng" type="text" name="data-lng" style="display:none;">
 			
@@ -68,7 +69,6 @@
 			<label for="description">Informations complémentaires</label>
 			<textarea name="description"></textarea>
 
-			<!-- <input class="ui-button ui-widget ui-corner-all" type="submit" value="Enregistrer une annonce"> -->
 			<input class="btn btn-warning" type="submit" value="Enregistrer votre annonce">
 		</form>
 	<?php $this->stop('droite') ?>
@@ -84,12 +84,6 @@
 	    	Chargement en cours...
 	 	</div>			
 	<?php $this->stop('gauche') ?>
-
-
-	
-
-
-
 
 
 

@@ -13,10 +13,11 @@
 			<th colspan='2'>Action</th>
 			</tr>
 			<?php 
-			// var_dump($users);
 			foreach($users as $user){ 
+				// formatage des dates
 				$date=date_create_from_format('Y-m-d H:i:s',$user['register_date']);
 				$registerDate=$date->format('d/m/Y');
+				// balise select sselected ?
 				$selectA=($user['role']=='admin') ? 'selected="selected"' : null;
 				$selectU=($user['role']=='user') ? 'selected="selected"' : null;	
 				?>
@@ -56,8 +57,8 @@
 			<th>Action:</th>				
 			</tr>
 			<?php 
-				// var_dump($adverts) ;			
 				foreach($adverts as $advert){ 
+					// formatage des dates
 					$date=date_create_from_format('Y-m-d',$advert['event_date']);
 					$eventDate=$date->format('d/m/y');
 					$date=date_create_from_format('Y-m-d H:i:s',$advert['advert_post_date']);

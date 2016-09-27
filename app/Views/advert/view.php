@@ -14,37 +14,35 @@ $defaultPhoto = "profil_default.png";
 	<div class="detail-annonce detail-annonce-gauche">
 		<h2>Détail de l'annonce</h2>
 		<?php
-			// var_dump($advert);
+			// formatage des dates et heures
 			$date=date_create_from_format('Y-m-d',$advert['event_date']);	
 			$eventDate=$date->format('d/m');
 			$date=date_create_from_format('H:i:s',$advert['event_time']);	
 			$eventTime=$date->format('H\hi');
-			$coords="";
-			$coords=explode(";", $advert['place']);
-			// var_dump($poster);	
-			// var_dump($_SESSION);	
 			$date=date_create_from_format('Y-m-d H:i:s',$advert['advert_post_date']);	
 			$advertDate=$date->format('d/m \à H\hi');
+			// récupération des coordonnees en BDD
+			$coords="";
+			$coords=explode(";", $advert['place']);			
 		?>
-
+		<!-- data pour le paramétrage de la map -->
 		<input id="data-lat" type="text" style="display:none;" value=<?= $coords[0] ?>>
 		<input id="data-lng" type="text" style="display:none;" value=<?= $coords[1] ?>>
-		
 		<img class="icone-sport" src="<?= $this->assetUrl("img/" . $advert['logo'] . "") ?>" alt="" style="background-color: <?= $advert['bkg_color'] ?>;">
+
+		<!-- data pour le paramétrage de la map en javascript -->
 		<p id="advert" data-sport=<?= $advert['sport'] ?> data-time="<?= $eventTime ?>" data-date="<?= $eventDate ?>" data-color="<?= $advert['bkg_color'] ?>">Niveau : <?= $advert['level'] ?></p>
 		<p>Rdv le <?= $eventDate." à ".$eventTime ?></p>
 		<p>Annonce postée le <?=$advertDate; ?></p>
 		<div class="description">
 		<p ><?= $advert['description'] ?></p>
-		</div>
-
-		<!-- <p><?=$poster['firstname'] ?> cherche <?= $advert['nb_participant'] ?> sportifs</p> -->
-		
+		</div>		
 
 		<form method="POST" action="">
 			<label for="participant">Je reserve : </label>
 	        <select name="participant" id="participant">
 			<?php
+				// on affiche le nombre de places disponibles
 				$remain_participant=$advert['remain_participant'];
 				for($i=0;$i<$remain_participant;$i++){ ?>
 					<option value="<?= $i+1 ?>"><?= $i+1 ?></option>;
@@ -52,9 +50,12 @@ $defaultPhoto = "profil_default.png";
 			?> 
 	        </select> place(s)
 			<?php
+			// affichage du bonton participer 
 			if(isset($_SESSION['user'])){
+				// si il reste des places et si user n'est pas l'organisateur 
 				if(($remain_participant!=0) && $poster['id']!=$_SESSION['user']['id']){		
-				$part=false;			
+				$part=false;		
+						// si user ne participe pas déjà
 						foreach($participants as $participant){						
 							if($participant['id']==$_SESSION['user']['id']){
 								$part=true;
@@ -76,11 +77,11 @@ $defaultPhoto = "profil_default.png";
 		</form>
 	</div>
 
-
 	<div class="detail-annonce detail-annonce-droite">
 		<h2>Messagerie</h2>
 		<form method="POST" action="<?= $this->url('advert_question')?>">	
-			<?php 				
+			<?php 	
+				// si user connecté on récupère son id sinon redirection vers page login
 				if(isset($_SESSION['user'])) {
 			?>
 			<input name="id_sender" type="text" value="<?= $_SESSION['user']['id'] ?>" style="display:none;">
@@ -90,18 +91,18 @@ $defaultPhoto = "profil_default.png";
 			<input name="id_advert" type="text" value="<?= $advert['id'] ?>" style="display:none;">
 			<textarea name="question"></textarea>
 			<input class="btn btn-success" type="submit" value="Envoyer votre message">
-		</form>
-		
+		</form>		
 		<div class="liste-message">
 			<ul>
 				<?php
-				// var_dump($questions);
+				// si il y'a des questions en bases alors on les affiche
 				if(isset($questions)){
 					foreach($questions as $question){?>
 						<li>
 							<h3><?= $question['firstname'] ?> a dit...</h3>
 							<p class="message"><?= $question['question'] ?></p>
 							<?php
+								// si user est admin alors on affiche un lien pour supprimer la question
 								if(isset($_SESSION['user']) && $_SESSION['user']['role']=='admin'){ ?>
 									<a href="<?= $this->url('admin_delete_message', ['id' => $question['id'], 'id_advert'=>$advert['id']]) ?>" style="color:red";>Supprimer</a>
 									 <?php }
@@ -120,14 +121,16 @@ $defaultPhoto = "profil_default.png";
 		<ul>
 		<?php
 			foreach($participants as $participant):
+				// formatage des dates
 				$birthdateTime = date_create_from_format('Y-m-d',$participant['birthdate']);
-				$date=time();		
+				// on récupère la date d'aujourd'hui
+				$date=time();					
 		   		$now=new DateTime("@$date");
-		   		$age=$now->diff($birthdateTime);   		
-				// var_dump($age);
-			$photoUser=$participant['photo'];
-			$photo=($photoUser!=null) ? $photoUser : $defaultPhoto;
-
+		   		// on calcule l'âge des participants
+		   		$age=$now->diff($birthdateTime);
+		   		// on récupère la photo, si pas de photo, on affiche une par défaut
+				$photoUser=$participant['photo'];
+				$photo=($photoUser!=null) ? $photoUser : $defaultPhoto;
 			?>
 			<li>
 				<div class="photo-participants">
@@ -143,8 +146,6 @@ $defaultPhoto = "profil_default.png";
 								break;
 							} ?></p>
 						<p><?= $age->format("%y") ?> ans</p>
-
-						<!-- <p><?= $participant['nb_participant'] ?> place(s)</p> -->
 					</div>
 				</div>
 
@@ -162,16 +163,19 @@ $defaultPhoto = "profil_default.png";
 	<div class="profil-organisateur">
 		<h1>Profil de l'organisateur</h1>
 			<?php
+			// on récupère la photo, si pas de photo, on affiche une par défaut
 			$photoUser=$poster['photo'];
 			$photo=($photoUser!=null) ? $photoUser : $defaultPhoto;
-			// calcul de l'age en fonction de la date d'anniversaire
-			$birthdateTime = date_create_from_format('Y-m-d',$poster['birthdate']);
-			$date=time();		
-	   		$now=new DateTime("@$date");
-	   		$age=$now->diff($birthdateTime);   		
-			// var_dump($age);
+			// formatage des dates
 			$date=date_create_from_format('Y-m-d H:i:s',$poster['register_date']);	
 			$registerDate=$date->format('d/m/Y');
+			$birthdateTime = date_create_from_format('Y-m-d',$poster['birthdate']);
+			// on récupère la date d'aujourd'hui
+			$date=time();			
+	   		$now=new DateTime("@$date");
+	   		// calcul de l'age en fonction de la date d'anniversaire
+	   		$age=$now->diff($birthdateTime);   		
+	   	
 			?>
 		<div class="photo-profil">
 			<img src="<?= $this->assetUrl("img/" . $photo . "") ?>">

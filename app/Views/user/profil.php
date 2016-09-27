@@ -27,7 +27,6 @@ $photoUser = $_SESSION['user']['photo'];
 	$coords=explode(";", $advert['place']);	
 	$dataUrl=$this->url('view_advert', ['id' => $advert['id']]);
 	
-// var_dump($advert);
 
 	?>		
 	<li data-lat=<?= $coords[0] ?> data-lng=<?= $coords[1] ?> data-sport=<?= $advert['sport'] ?> data-date=<?= $eventDate ?> data-time=<?= $dataTime ?> data-participant=<?= $advert['nb_participant'] ?> data-level=<?= $advert['level'] ?> data-dUrl=<?= $dataUrl ?> data-color="<?= $advert['bkg_color'] ?>">
@@ -81,7 +80,6 @@ $photoUser = $_SESSION['user']['photo'];
 <?php $this->start('droite') ?>
 
 <?php
-// var_dump($profil);
 $selectM=($profil['gender']=='m') ? 'selected="selected"' : null;
 $selectF=($profil['gender']=='f') ? 'selected="selected"' : null;		
 $birthdateTime = date_create_from_format('Y-m-d',$profil['birthdate']);
@@ -117,10 +115,6 @@ $photo=($photoUser!=null) ? $photoUser : $defaultPhoto;
 
 		<label for="birthdate">Date de naissance</label>
 		<input type="text" id="datepicker" name="birthdate" value=<?= $birthdate ?>>
-
-		<!--  <label for="login">Mon mot de passe</label><br>
-		<input type="password" name="password">
-		<br><br> -->
 		
 		<input type="text" name="path" style="display:none;" value=<?=  $this->assetUrl('img/') ?>>
 		<label for="photo">Photo</label>
@@ -145,7 +139,6 @@ async defer></script>
     	$( "#datepicker" ).datepicker({
     		yearRange: "1966:2000",
     		changeMonth: true,
-			// dateFormat:"d/m/Y",
 			changeYear: true
 		});
     });
