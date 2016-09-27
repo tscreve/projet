@@ -150,6 +150,9 @@ nav{
 		line-height: 40px;
 		text-align: center;
 	}
+	.access{
+		text-align: center;
+	}
 }
 
 
@@ -198,6 +201,30 @@ nav{
 	color: #566b7A;
 	height: 780px;
 }
+
+
+
+
+
+@media only screen and (max-width: 766px) {
+	.gauche{
+		float: none;
+		width: 100%;
+		height: 200px;
+	}
+	.droite{
+		width: 100%;
+		margin-top: 10px;
+	}
+}
+
+
+
+
+
+
+
+
 
 
 /* --------------------------------- FOOTER --------------------------------- */
@@ -381,6 +408,13 @@ p{
 	vertical-align: middle;
 }
 
+
+/*RESPONSIVE*/
+@media only screen and (max-width: 766px) {
+	.liste{
+		overflow: visible;
+	}
+}
 
 
 

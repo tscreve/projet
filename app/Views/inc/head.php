@@ -83,7 +83,7 @@ else {
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-12">
                     <div class="access">              
                         <?php
                         if(isset($_SESSION['user'])){ ?>                 
